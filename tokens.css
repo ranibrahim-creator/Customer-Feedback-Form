@@ -40,10 +40,11 @@
   --color-border-default: var(--color-gray-300);
   --color-border-subtle: var(--color-gray-300);
   --color-border-input: var(--color-gray-300);
-  --color-cta-bg: var(--color-noon-yellow);
-  --color-cta-bg-hover: var(--color-noon-yellow-hover);
-  --color-cta-text: var(--color-gray-950);
-  --color-cta-opacity-hover: 0.92;
+  --color-cta-bg: var(--color-gray-950);
+  --color-cta-bg-hover: var(--color-gray-800);
+  --color-cta-text: var(--color-white);
+  --color-cta-opacity-hover: 0.88;
+  --color-focus-ring-neutral: rgba(26, 26, 26, 0.14);
 
   /* Typography — Inter */
   --font-family-base: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -52,7 +53,7 @@
   --font-size-body-xs: 0.8125rem;   /* 13px */
   --font-size-heading: 1.0625rem;   /* 17px */
   --font-size-greeting: 1.75rem;    /* 28px */
-  --font-size-logo: 1.4375rem;      /* 23px — ~28% larger */
+  --logo-mark-width: 196px;
   --font-size-slate-placeholder: 0.9375rem;
   --line-height-body-md: 1.65;
   --line-height-body-sm: 1.5;
@@ -64,7 +65,6 @@
   --font-weight-bold: 700;
   --letter-spacing-heading: -0.015em;
   --letter-spacing-greeting: -0.025em;
-  --letter-spacing-logo: -0.02em;
 
   /* Spacing */
   --spacing-xs: 4px;

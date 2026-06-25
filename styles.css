@@ -42,7 +42,7 @@ body {
   display: block;
   width: var(--logo-mark-width);
   height: auto;
-  max-width: min(220px, 62vw);
+  max-width: min(260px, 72vw);
 }
 
 .card {
@@ -324,7 +324,7 @@ section.step:not(#step-1) .step__headline {
   }
 
   .logo-mark {
-    width: min(188px, 68vw);
+    width: min(204px, 72vw);
   }
 
   .card {

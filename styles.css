@@ -45,17 +45,30 @@ body {
   max-width: min(260px, 72vw);
 }
 
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  height: 0;
+  pointer-events: none;
+}
+
 .lang-switch {
   position: fixed;
   top: var(--spacing-xl);
   right: var(--spacing-xl);
-  z-index: 100;
+  left: auto;
+  z-index: 201;
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-xs);
+  margin: 0;
   padding: var(--spacing-xs);
   background: var(--color-bg-muted);
   border-radius: var(--radius-full);
+  pointer-events: auto;
 }
 
 .lang-switch__btn {

@@ -1,18 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 52" fill="none" role="img" aria-label="noon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 172 44" fill="none" role="img" aria-label="noon">
   <title>noon</title>
-  <!-- Brand icon: signature yellow circle with noon mark -->
-  <circle cx="26" cy="26" r="24" fill="#FEEE00"/>
+  <!-- Signature yellow disc -->
+  <circle cx="22" cy="22" r="20" fill="#FEEE00"/>
+  <!-- Black crescent / noon numeral emblem -->
   <path
     fill="#1A1A1A"
-    d="M26 12c7.7 0 14 6.3 14 14s-6.3 14-14 14S12 33.7 12 26s6.3-14 14-14Zm0 6a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z"
+    d="M32 7a15 15 0 1 1-11.8 26.5A15 15 0 0 0 32 7z"
   />
   <!-- Corporate wordmark -->
   <text
-    x="62"
-    y="35"
+    x="50"
+    y="30.5"
     fill="#1A1A1A"
-    font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
-    font-size="30"
+    font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+    font-size="27"
     font-weight="700"
     letter-spacing="-0.04em"
   >noon</text>

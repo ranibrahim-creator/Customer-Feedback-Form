@@ -16,8 +16,11 @@
   --color-gray-900: #2e2e2e;
   --color-gray-950: #1a1a1a;
 
-  /* Brand (reserved — not used in grey theme UI) */
+  /* Brand */
   --color-noon-yellow: #feee00;
+  --color-noon-yellow-hover: #f7df00;
+  --color-noon-yellow-tint: #fffce6;
+  --color-noon-yellow-ring: rgba(254, 238, 0, 0.45);
   --color-white: #ffffff;
   --color-black: #000000;
 
@@ -37,10 +40,10 @@
   --color-border-default: var(--color-gray-300);
   --color-border-subtle: var(--color-gray-300);
   --color-border-input: var(--color-gray-300);
-  --color-cta-bg: var(--color-gray-950);
-  --color-cta-bg-hover: var(--color-gray-800);
-  --color-cta-text: var(--color-white);
-  --color-cta-opacity-hover: 0.88;
+  --color-cta-bg: var(--color-noon-yellow);
+  --color-cta-bg-hover: var(--color-noon-yellow-hover);
+  --color-cta-text: var(--color-gray-950);
+  --color-cta-opacity-hover: 0.92;
 
   /* Typography — Inter */
   --font-family-base: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -48,16 +51,19 @@
   --font-size-body-sm: 0.875rem;    /* 14px */
   --font-size-body-xs: 0.8125rem;   /* 13px */
   --font-size-heading: 1.0625rem;   /* 17px */
-  --font-size-logo: 1.125rem;       /* 18px */
+  --font-size-greeting: 1.75rem;    /* 28px */
+  --font-size-logo: 1.4375rem;      /* 23px — ~28% larger */
   --font-size-slate-placeholder: 0.9375rem;
   --line-height-body-md: 1.65;
   --line-height-body-sm: 1.5;
   --line-height-heading: 1.55;
+  --line-height-greeting: 1.2;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --letter-spacing-heading: -0.015em;
+  --letter-spacing-greeting: -0.025em;
   --letter-spacing-logo: -0.02em;
 
   /* Spacing */
@@ -71,6 +77,7 @@
   --spacing-4xl: 32px;
   --spacing-5xl: 40px;
   --spacing-6xl: 48px;
+  --spacing-7xl: 64px;
 
   /* Radius */
   --radius-sm: 4px;
@@ -89,7 +96,7 @@
 
   /* Layout */
   --card-max-width: 480px;
-  --logo-gap: var(--spacing-6xl);
+  --logo-gap: var(--spacing-7xl);
   --button-height-lg: 46px;
   --slate-min-height: 156px;
   --transition-base: 0.2s ease;

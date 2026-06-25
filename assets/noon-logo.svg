@@ -1,26 +1,108 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 188 48" fill="none" role="img" aria-label="noon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 48" fill="none" role="img" aria-label="noon">
   <title>noon</title>
-  <!-- Signature yellow disc -->
-  <circle cx="24" cy="24" r="22" fill="#FEEE00"/>
-  <!-- Arabic noon (ن): dot -->
-  <circle cx="24" cy="11.4" r="2.55" fill="#1A1A1A"/>
-  <!-- Arabic noon (ن): bowl curve -->
-  <path
-    fill="none"
-    stroke="#1A1A1A"
-    stroke-width="5.2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    d="M31.2 28.4c0-7.2-5.8-11.8-11.6-9.8-4 1.3-6.6 5.4-5.7 9.8.9 4.2 5 6.9 9.2 5.9"
-  />
-  <!-- Corporate wordmark -->
-  <text
-    x="56"
-    y="31.6"
-    fill="#1A1A1A"
-    font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
-    font-size="26"
-    font-weight="700"
-    letter-spacing="-0.04em"
-  >noon</text>
+
+  <!-- Yellow emblem -->
+  <g id="emblem">
+    <circle cx="24" cy="24" r="22" fill="#FEEE00"/>
+    <!-- Arabic noon (ن): symmetrical thick U, both arms vertical at top -->
+    <path
+      fill="#1A1A1A"
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="
+        M 16.75 29.25
+        V 19.75
+        C 16.75 15.65 19.95 12.75 24 12.75
+        C 28.05 12.75 31.25 15.65 31.25 19.75
+        V 29.25
+        H 27.85
+        V 20.35
+        C 27.85 18.05 26.15 16.55 24 16.55
+        C 21.85 16.55 20.15 18.05 20.15 20.35
+        V 29.25
+        H 16.75
+        Z
+      "
+    />
+    <!-- Arabic noon (ن): centered dot, clear gap above U -->
+    <circle cx="24" cy="10.5" r="2.5" fill="#1A1A1A"/>
+  </g>
+
+  <!-- Wordmark: path-built lowercase "noon" -->
+  <g id="wordmark" fill="#1A1A1A">
+    <!-- n -->
+    <path d="
+      M 54 33
+      V 14.4
+      C 54 13.1 55.05 12.1 56.35 12.1
+      H 57.55
+      C 58.45 12.1 59.15 12.55 59.55 13.35
+      C 61.25 12.05 63.85 12.35 65.05 14.05
+      C 66.05 15.45 66.05 17.35 66.05 19.35
+      V 33
+      H 62.55
+      V 19.85
+      C 62.55 18.05 61.25 16.85 59.55 16.85
+      C 57.85 16.85 56.55 18.05 56.55 19.85
+      V 33
+      H 54
+      Z
+    "/>
+    <!-- o -->
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="
+        M 79.2 33
+        C 74.35 33 70.4 29.05 70.4 24.2
+        C 70.4 19.35 74.35 15.4 79.2 15.4
+        C 84.05 15.4 88 19.35 88 24.2
+        C 88 29.05 84.05 33 79.2 33
+        Z
+        M 79.2 29.35
+        C 81.95 29.35 84.15 27.15 84.15 24.4
+        C 84.15 21.65 81.95 19.45 79.2 19.45
+        C 76.45 19.45 74.25 21.65 74.25 24.4
+        C 74.25 27.15 76.45 29.35 79.2 29.35
+        Z
+      "
+    />
+    <!-- o -->
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="
+        M 95.2 33
+        C 90.35 33 86.4 29.05 86.4 24.2
+        C 86.4 19.35 90.35 15.4 95.2 15.4
+        C 100.05 15.4 104 19.35 104 24.2
+        C 104 29.05 100.05 33 95.2 33
+        Z
+        M 95.2 29.35
+        C 97.95 29.35 100.15 27.15 100.15 24.4
+        C 100.15 21.65 97.95 19.45 95.2 19.45
+        C 92.45 19.45 90.25 21.65 90.25 24.4
+        C 90.25 27.15 92.45 29.35 95.2 29.35
+        Z
+      "
+    />
+    <!-- n -->
+    <path d="
+      M 108 33
+      V 14.4
+      C 108 13.1 109.05 12.1 110.35 12.1
+      H 111.55
+      C 112.45 12.1 113.15 12.55 113.55 13.35
+      C 115.25 12.05 117.85 12.35 119.05 14.05
+      C 120.05 15.45 120.05 17.35 120.05 19.35
+      V 33
+      H 116.55
+      V 19.85
+      C 116.55 18.05 115.25 16.85 113.55 16.85
+      C 111.85 16.85 110.55 18.05 110.55 19.85
+      V 33
+      H 108
+      Z
+    "/>
+  </g>
 </svg>

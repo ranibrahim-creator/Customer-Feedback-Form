@@ -11,19 +11,14 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="navbar__inner">
+  <main class="page">
+    <div class="page__brand">
       <span class="logo" aria-label="noon">noon</span>
     </div>
-  </header>
 
-  <main class="page">
     <div class="card">
       <!-- STEP 1 -->
       <section class="step" id="step-1" data-step="1">
-        <div class="step__hero" aria-hidden="true">
-          <span class="step__hero-icon">👋</span>
-        </div>
         <h2 class="step__headline">
           Hala! We recently assisted you with your concern. Was everything sorted out to your satisfaction?
         </h2>
@@ -35,11 +30,8 @@
 
       <!-- STEP 2A — Success path -->
       <section class="step" id="step-2a" data-step="2a" hidden>
-        <div class="step__hero" aria-hidden="true">
-          <span class="step__hero-icon">🎉</span>
-        </div>
         <h2 class="step__headline">
-          YAY! We're so glad we could get that sorted for you.
+          We're so glad we could get that sorted for you.
         </h2>
         <p class="step__lede">Is there anything else we can do to make your noon experience even better?</p>
         <form class="step__form" id="form-2a">
@@ -62,11 +54,8 @@
 
       <!-- STEP 2B — Resolution fail path -->
       <section class="step" id="step-2b" data-step="2b" hidden>
-        <div class="step__hero" aria-hidden="true">
-          <span class="step__hero-icon">😔</span>
-        </div>
         <h2 class="step__headline">
-          Oh no! Let's make this right. What went wrong?
+          Let's make this right. What went wrong?
         </h2>
         <form class="step__form" id="form-2b">
           <div class="slate">
@@ -82,13 +71,13 @@
           </div>
           <div class="quick-tags" role="group" aria-label="Quick suggestions">
             <button type="button" class="chip" data-inject="The resolution took too long.">
-              ⏱️ Resolution Speed
+              Resolution Speed
             </button>
             <button type="button" class="chip" data-inject="The agent didn't fully understand my issue.">
-              💡 Agent Understanding
+              Agent Understanding
             </button>
             <button type="button" class="chip" data-inject="The solution provided didn't work for me.">
-              ❌ Solution Didn't Work
+              Solution Didn't Work
             </button>
           </div>
           <p class="field__error" id="issue-error" hidden>Please share a few words so we can help.</p>
@@ -101,9 +90,6 @@
 
       <!-- Done state -->
       <section class="step step--center" id="step-done" data-step="done" hidden>
-        <div class="step__hero" aria-hidden="true">
-          <span class="step__hero-icon">✨</span>
-        </div>
         <h2 class="step__headline step__headline--center">
           Thanks! Your feedback means a lot.
         </h2>
@@ -114,7 +100,6 @@
 
   <footer class="page-footer" aria-hidden="true">
     <svg class="skyline" viewBox="0 0 1440 120" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
-      <!-- Riyadh / Dubai-inspired single-stroke skyline -->
       <path
         class="skyline__line"
         fill="none"

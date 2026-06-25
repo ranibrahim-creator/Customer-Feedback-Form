@@ -16,47 +16,49 @@
   --color-gray-900: #2e2e2e;
   --color-gray-950: #1a1a1a;
 
-  /* Brand */
+  /* Brand (reserved — not used in grey theme UI) */
   --color-noon-yellow: #feee00;
-  --color-noon-yellow-hover: #f7df00;
   --color-white: #ffffff;
   --color-black: #000000;
 
   /* App chrome */
-  --color-navbar-border: #e0e0e0;
   --color-skyline: #d4d4d4;
 
   /* Semantic aliases */
   --color-bg-page: var(--color-gray-50);
   --color-bg-surface: var(--color-white);
   --color-bg-muted: var(--color-gray-100);
-  --color-bg-slate: var(--color-gray-100);
+  --color-bg-slate: var(--color-white);
   --color-text-primary: var(--color-gray-950);
-  --color-text-secondary: var(--color-gray-700);
+  --color-text-secondary: var(--color-gray-600);
   --color-text-placeholder: var(--color-gray-500);
   --color-text-link: var(--color-gray-600);
-  --color-text-link-hover: var(--color-gray-950);
-  --color-border-default: rgba(0, 0, 0, 0.1);
-  --color-border-input: rgba(22, 64, 112, 0.15);
-  --color-cta-bg: var(--color-noon-yellow);
-  --color-cta-bg-hover: var(--color-noon-yellow-hover);
-  --color-cta-text: var(--color-gray-950);
+  --color-text-link-hover: var(--color-gray-800);
+  --color-border-default: var(--color-gray-300);
+  --color-border-subtle: var(--color-gray-300);
+  --color-border-input: var(--color-gray-300);
+  --color-cta-bg: var(--color-gray-950);
+  --color-cta-bg-hover: var(--color-gray-800);
+  --color-cta-text: var(--color-white);
+  --color-cta-opacity-hover: 0.88;
 
   /* Typography — Inter */
   --font-family-base: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --font-size-body-md: 0.9375rem;   /* 15px */
   --font-size-body-sm: 0.875rem;    /* 14px */
   --font-size-body-xs: 0.8125rem;   /* 13px */
-  --font-size-heading-sm: 1.25rem;  /* 20px */
-  --font-size-slate-placeholder: 1.0625rem; /* 17px */
-  --font-size-hero-icon: 3.5rem;
-  --line-height-body-md: 1.6;
-  --line-height-body-sm: 1.43;
+  --font-size-heading: 1.0625rem;   /* 17px */
+  --font-size-logo: 1.125rem;       /* 18px */
+  --font-size-slate-placeholder: 0.9375rem;
+  --line-height-body-md: 1.65;
+  --line-height-body-sm: 1.5;
+  --line-height-heading: 1.55;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
-  --letter-spacing-heading: -0.02em;
+  --letter-spacing-heading: -0.015em;
+  --letter-spacing-logo: -0.02em;
 
   /* Spacing */
   --spacing-xs: 4px;
@@ -68,6 +70,7 @@
   --spacing-3xl: 24px;
   --spacing-4xl: 32px;
   --spacing-5xl: 40px;
+  --spacing-6xl: 48px;
 
   /* Radius */
   --radius-sm: 4px;
@@ -78,18 +81,17 @@
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-xs: 0 1px 2px rgba(15, 17, 20, 0.06);
-  --shadow-component: 0 1px 2px rgba(15, 17, 20, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 10px 16px -3px rgba(15, 17, 20, 0.06), 0 4px 6px -2px rgba(15, 17, 20, 0.04);
+  --shadow-xs: 0 1px 2px rgba(15, 17, 20, 0.04);
+  --shadow-component: 0 1px 2px rgba(15, 17, 20, 0.04);
+  --shadow-lg: 0 8px 24px rgba(15, 17, 20, 0.05), 0 2px 6px rgba(15, 17, 20, 0.03);
   --shadow-card: var(--shadow-lg);
-  --shadow-slate: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+  --shadow-slate: inset 0 0 0 1px var(--color-border-subtle);
 
   /* Layout */
-  --navbar-height: 56px;
-  --card-max-width: 520px;
-  --button-height-lg: 48px;
-  --slate-min-height: 168px;
+  --card-max-width: 480px;
+  --logo-gap: var(--spacing-6xl);
+  --button-height-lg: 46px;
+  --slate-min-height: 156px;
   --transition-base: 0.2s ease;
-  --transition-step: 0.32s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-hero: 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-step: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }

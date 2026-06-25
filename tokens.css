@@ -98,7 +98,7 @@
 
   /* Layout */
   --card-max-width: 480px;
-  --logo-gap: 80px;
+  --logo-gap: 64px;
   --button-height-lg: 46px;
   --slate-min-height: 156px;
   --transition-base: 0.2s ease;

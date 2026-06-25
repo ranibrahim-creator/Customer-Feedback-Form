@@ -75,8 +75,14 @@
   --shadow-card: var(--shadow-lg);
 
   /* Layout */
-  --card-max-width: 480px;
+  --navbar-height: 56px;
+  --card-max-width: 520px;
   --button-height-lg: 48px;
+  --textarea-min-height: 148px;
   --transition-base: 0.2s ease;
   --transition-step: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* CTA interaction */
+  --color-cta-opacity: 1;
+  --color-cta-opacity-hover: 0.82;
 }

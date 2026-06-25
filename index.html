@@ -11,131 +11,82 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header class="navbar">
+    <div class="navbar__inner">
+      <span class="logo" aria-label="noon">noon</span>
+    </div>
+  </header>
+
   <main class="page">
-    <div class="form-shell">
-      <!-- Header: noon logo placeholder -->
-      <header class="page-header">
-        <div class="logo" aria-label="noon">
-          <span class="logo__mark">noon</span>
+    <div class="card">
+      <!-- STEP 1 -->
+      <section class="step" id="step-1" data-step="1">
+        <h2 class="step__headline">
+          Hala! 👋 We recently assisted you with your concern. Was everything sorted out to your satisfaction?
+        </h2>
+        <div class="choice-row" role="group" aria-label="Resolution status">
+          <button type="button" class="choice choice--primary" data-goto="2a">Yes, all fixed!</button>
+          <button type="button" class="choice" data-goto="2b">No, still need help</button>
         </div>
-      </header>
+      </section>
 
-      <!-- Progress pin badge -->
-      <div class="progress-pin" aria-live="polite">
-        <span class="progress-pin__badge" id="progress-badge" data-step="1">Hala! 👋</span>
-        <span class="progress-pin__arrow" aria-hidden="true"></span>
-      </div>
+      <!-- STEP 2A — Success path -->
+      <section class="step" id="step-2a" data-step="2a" hidden>
+        <h2 class="step__headline">
+          YAY! 🎉 We're so glad we could get that sorted for you.
+        </h2>
+        <p class="step__lede">Is there anything else we can do to make your noon experience even better?</p>
+        <form class="step__form" id="form-2a">
+          <textarea
+            class="field__textarea field__textarea--spacious"
+            id="success-feedback"
+            name="successFeedback"
+            rows="5"
+            placeholder="We'd love to hear your thoughts…"
+            aria-label="Optional feedback"
+          ></textarea>
+          <button type="submit" class="btn btn--primary">Done</button>
+        </form>
+      </section>
 
-      <!-- Floating card -->
-      <div class="card">
-        <!-- STEP 1 -->
-        <section class="step" id="step-1" data-step="1">
-          <p class="step__question">
-            We recently assisted you with your concern. Was everything sorted out to your satisfaction?
-          </p>
-          <div class="pill-group pill-group--stack" role="group" aria-label="Resolution status">
-            <button type="button" class="pill pill--action" data-goto="2a">Yes, all fixed!</button>
-            <button type="button" class="pill pill--action" data-goto="2b">No, still need help</button>
+      <!-- STEP 2B — Resolution fail path -->
+      <section class="step" id="step-2b" data-step="2b" hidden>
+        <h2 class="step__headline">
+          Oh no! 😔 Let's make this right. What went wrong?
+        </h2>
+        <form class="step__form" id="form-2b">
+          <textarea
+            class="field__textarea field__textarea--spacious"
+            id="issue-feedback"
+            name="issueFeedback"
+            rows="5"
+            placeholder="Tell us what happened — we're listening…"
+            aria-label="Describe what went wrong"
+            required
+          ></textarea>
+          <div class="quick-tags" role="group" aria-label="Quick suggestions">
+            <button type="button" class="chip" data-inject="The resolution took too long.">
+              ⏱️ Resolution speed
+            </button>
+            <button type="button" class="chip" data-inject="The agent didn't fully understand my issue.">
+              💡 Agent understanding
+            </button>
+            <button type="button" class="chip" data-inject="The solution provided didn't work for me.">
+              ❌ Solution didn't work
+            </button>
           </div>
-        </section>
+          <p class="field__error" id="issue-error" hidden>Please share a few words so we can help.</p>
+          <button type="submit" class="btn btn--primary">Submit feedback</button>
+        </form>
+      </section>
 
-        <!-- STEP 2A — Success path -->
-        <section class="step" id="step-2a" data-step="2a" hidden>
-          <p class="step__message">Awesome! We're so glad we could get that sorted for you.</p>
-          <form class="step__form" id="form-2a">
-            <label class="field__label" for="success-feedback">Is there anything else we can do to make your noon experience even better?</label>
-            <textarea
-              class="field__textarea"
-              id="success-feedback"
-              name="successFeedback"
-              rows="4"
-              placeholder="We'd love to hear your thoughts…"
-            ></textarea>
-            <button type="submit" class="btn btn--primary">DONE</button>
-          </form>
-        </section>
-
-        <!-- STEP 2B — Resolution fail path -->
-        <section class="step" id="step-2b" data-step="2b" hidden>
-          <p class="step__message">
-            We're truly sorry your experience didn't hit the mark. Let's make it right. What went wrong?
-          </p>
-          <form class="step__form" id="form-2b">
-            <fieldset class="pill-fieldset">
-              <legend class="visually-hidden">Select one issue</legend>
-              <div class="pill-group pill-group--stack">
-                <input type="radio" name="issue" id="issue-1" value="solution-didnt-work" class="pill__input" />
-                <label class="pill pill--select" for="issue-1">The solution didn't work</label>
-
-                <input type="radio" name="issue" id="issue-2" value="took-too-long" class="pill__input" />
-                <label class="pill pill--select" for="issue-2">It took too long to resolve</label>
-
-                <input type="radio" name="issue" id="issue-3" value="agent-didnt-understand" class="pill__input" />
-                <label class="pill pill--select" for="issue-3">The agent didn't understand me</label>
-
-                <input type="radio" name="issue" id="issue-4" value="something-else" class="pill__input" />
-                <label class="pill pill--select" for="issue-4">Something else</label>
-              </div>
-              <p class="field__error" id="issue-error" hidden>Please select an option above.</p>
-            </fieldset>
-
-            <div class="panel panel--slide" id="something-else-panel" hidden>
-              <div class="panel__inner">
-                <label class="field__label" for="issue-detail">Tell us more</label>
-                <textarea
-                  class="field__textarea"
-                  id="issue-detail"
-                  name="issueDetail"
-                  rows="3"
-                  placeholder="Please tell us a bit more so we can fix this ASAP…"
-                ></textarea>
-              </div>
-            </div>
-
-            <button type="submit" class="btn btn--primary">SUBMIT FEEDBACK</button>
-          </form>
-        </section>
-
-        <!-- Done state -->
-        <section class="step step--center" id="step-done" data-step="done" hidden>
-          <div class="done__icon" aria-hidden="true">✓</div>
-          <h2 class="done__title">Thank you!</h2>
-          <p class="done__text">Your feedback helps us deliver a better noon experience.</p>
-        </section>
-      </div>
-
-      <!-- Footer: noon skyline illustration -->
-      <footer class="page-footer" aria-hidden="true">
-        <svg class="skyline" viewBox="0 0 400 80" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
-          <!-- Yellow horizon band -->
-          <rect x="0" y="58" width="400" height="22" fill="#FEEE00" />
-          <!-- Black skyline silhouettes -->
-          <rect x="0" y="52" width="18" height="28" fill="#1A1A1A" />
-          <rect x="22" y="44" width="14" height="36" fill="#1A1A1A" />
-          <rect x="40" y="48" width="20" height="32" fill="#1A1A1A" />
-          <rect x="64" y="38" width="12" height="42" fill="#1A1A1A" />
-          <rect x="80" y="42" width="24" height="38" fill="#1A1A1A" />
-          <rect x="108" y="34" width="16" height="46" fill="#1A1A1A" />
-          <rect x="128" y="40" width="22" height="40" fill="#1A1A1A" />
-          <rect x="154" y="28" width="14" height="52" fill="#1A1A1A" />
-          <rect x="172" y="36" width="28" height="44" fill="#1A1A1A" />
-          <rect x="204" y="32" width="12" height="48" fill="#1A1A1A" />
-          <rect x="220" y="40" width="20" height="40" fill="#1A1A1A" />
-          <rect x="244" y="26" width="16" height="54" fill="#1A1A1A" />
-          <rect x="264" y="38" width="24" height="42" fill="#1A1A1A" />
-          <rect x="292" y="44" width="14" height="36" fill="#1A1A1A" />
-          <rect x="310" y="36" width="20" height="44" fill="#1A1A1A" />
-          <rect x="334" y="42" width="18" height="38" fill="#1A1A1A" />
-          <rect x="356" y="48" width="16" height="32" fill="#1A1A1A" />
-          <rect x="376" y="40" width="24" height="40" fill="#1A1A1A" />
-          <!-- Yellow accent windows -->
-          <rect x="86" y="48" width="4" height="4" fill="#FEEE00" opacity="0.9" />
-          <rect x="134" y="46" width="4" height="4" fill="#FEEE00" opacity="0.9" />
-          <rect x="180" y="42" width="4" height="4" fill="#FEEE00" opacity="0.9" />
-          <rect x="270" y="44" width="4" height="4" fill="#FEEE00" opacity="0.9" />
-          <rect x="318" y="42" width="4" height="4" fill="#FEEE00" opacity="0.9" />
-        </svg>
-      </footer>
+      <!-- Done state -->
+      <section class="step step--center" id="step-done" data-step="done" hidden>
+        <h2 class="step__headline step__headline--center">
+          Thanks! ✨ Your feedback means a lot.
+        </h2>
+        <p class="step__lede step__lede--center">We'll use it to deliver a better noon experience.</p>
+      </section>
     </div>
   </main>
 

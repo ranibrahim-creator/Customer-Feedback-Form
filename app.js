@@ -1,30 +1,18 @@
 (function () {
-  const badge = document.getElementById("progress-badge");
-  const steps = {
+  var steps = {
     1: document.getElementById("step-1"),
     "2a": document.getElementById("step-2a"),
     "2b": document.getElementById("step-2b"),
     done: document.getElementById("step-done"),
   };
 
-  const badgeText = {
-    1: "Hala! 👋",
-    "2a": "YAY! 🎉",
-    "2b": "Oh no! 😔",
-    done: "Thanks! ✨",
-  };
-
-  let currentStep = "1";
-  let selectedIssue = "";
+  var currentStep = "1";
 
   function showStep(nextStep) {
-    const outgoing = steps[currentStep];
-    const incoming = steps[nextStep];
+    var outgoing = steps[currentStep];
+    var incoming = steps[nextStep];
 
     if (!incoming || nextStep === currentStep) return;
-
-    badge.textContent = badgeText[nextStep] || badgeText[1];
-    badge.dataset.step = nextStep;
 
     if (outgoing) {
       outgoing.classList.add("step--exit");
@@ -40,6 +28,9 @@
           requestAnimationFrame(function () {
             incoming.classList.remove("step--enter");
           });
+
+          var focusTarget = incoming.querySelector(".field__textarea, .choice");
+          if (focusTarget) focusTarget.focus();
         },
         { once: true }
       );
@@ -56,52 +47,38 @@
     });
   });
 
-  var somethingElsePanel = document.getElementById("something-else-panel");
-  var issueRadios = document.querySelectorAll('input[name="issue"]');
+  document.querySelectorAll(".chip[data-inject]").forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      var textarea = document.getElementById("issue-feedback");
+      var phrase = chip.getAttribute("data-inject");
+      if (!textarea || !phrase) return;
 
-  issueRadios.forEach(function (radio) {
-    radio.addEventListener("change", function () {
-      selectedIssue = radio.value;
+      var current = textarea.value.trim();
+      textarea.value = current ? current + " " + phrase : phrase;
+      textarea.focus();
+
+      chip.classList.add("chip--used");
+      setTimeout(function () {
+        chip.classList.remove("chip--used");
+      }, 400);
+
       document.getElementById("issue-error").hidden = true;
-      if (radio.value === "something-else") {
-        somethingElsePanel.hidden = false;
-        requestAnimationFrame(function () {
-          somethingElsePanel.classList.add("panel--open");
-        });
-        setTimeout(function () {
-          document.getElementById("issue-detail").focus();
-        }, 280);
-      } else {
-        somethingElsePanel.classList.remove("panel--open");
-        setTimeout(function () {
-          somethingElsePanel.hidden = true;
-        }, 280);
-      }
     });
   });
 
   document.getElementById("form-2b").addEventListener("submit", function (e) {
     e.preventDefault();
-    if (!selectedIssue) {
+    var textarea = document.getElementById("issue-feedback");
+    if (!textarea.value.trim()) {
       document.getElementById("issue-error").hidden = false;
+      textarea.focus();
       return;
     }
-    if (selectedIssue === "something-else") {
-      var detail = document.getElementById("issue-detail").value.trim();
-      if (!detail) {
-        document.getElementById("issue-detail").focus();
-        return;
-      }
-    }
-    submitFeedback("2b");
+    showStep("done");
   });
 
   document.getElementById("form-2a").addEventListener("submit", function (e) {
     e.preventDefault();
-    submitFeedback("2a");
-  });
-
-  function submitFeedback(path) {
     showStep("done");
-  }
+  });
 })();

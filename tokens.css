@@ -1,0 +1,82 @@
+/**
+ * Weaver Design System — Gray Theme tokens
+ * Source: noon Weaver Design System (Foundations)
+ */
+:root {
+  /* Gray scale (Light) */
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #f0f0f0;
+  --color-gray-300: #ebebeb;
+  --color-gray-400: #dbdbdb;
+  --color-gray-500: #adadad;
+  --color-gray-600: #8c8c8c;
+  --color-gray-700: #595959;
+  --color-gray-800: #2e2e2e;
+  --color-gray-900: #2e2e2e;
+  --color-gray-950: #1a1a1a;
+
+  /* Brand */
+  --color-noon-yellow: #feee00;
+  --color-noon-yellow-hover: #f7df00;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Semantic aliases */
+  --color-bg-page: var(--color-gray-50);
+  --color-bg-surface: var(--color-white);
+  --color-bg-muted: var(--color-gray-100);
+  --color-text-primary: var(--color-gray-950);
+  --color-text-secondary: var(--color-gray-700);
+  --color-text-placeholder: var(--color-gray-500);
+  --color-border-default: rgba(0, 0, 0, 0.1);
+  --color-border-input: rgba(22, 64, 112, 0.15);
+  --color-cta-bg: var(--color-gray-950);
+  --color-cta-bg-hover: var(--color-gray-800);
+  --color-cta-text: var(--color-white);
+
+  /* Typography — Inter */
+  --font-family-base: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-size-body-md: 0.9375rem;   /* 15px */
+  --font-size-body-sm: 0.875rem;    /* 14px */
+  --font-size-body-xs: 0.8125rem;   /* 13px */
+  --font-size-heading-sm: 1.25rem;  /* 20px */
+  --line-height-body-md: 1.6;       /* 24px */
+  --line-height-body-sm: 1.43;      /* 20px */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --letter-spacing-heading: -0.02em;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 6px;
+  --spacing-md: 8px;
+  --spacing-lg: 12px;
+  --spacing-xl: 16px;
+  --spacing-2xl: 20px;
+  --spacing-3xl: 24px;
+  --spacing-4xl: 32px;
+  --spacing-5xl: 40px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(15, 17, 20, 0.06);
+  --shadow-component: 0 1px 2px rgba(15, 17, 20, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 16px -3px rgba(15, 17, 20, 0.06), 0 4px 6px -2px rgba(15, 17, 20, 0.04);
+  --shadow-card: var(--shadow-lg);
+
+  /* Layout */
+  --card-max-width: 480px;
+  --button-height-lg: 48px;
+  --transition-base: 0.2s ease;
+  --transition-step: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}

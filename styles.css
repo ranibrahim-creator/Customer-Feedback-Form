@@ -166,6 +166,14 @@ html[dir="rtl"] .slate__input {
   text-align: center;
 }
 
+.step__intro .step__headline {
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body-md);
+  letter-spacing: normal;
+  color: var(--color-text-secondary);
+}
+
 section.step:not(#step-1) .step__headline {
   margin-bottom: var(--spacing-3xl);
 }

@@ -182,8 +182,8 @@ section.step:not(#step-1) .step__headline {
 }
 
 .slate:focus-within {
-  border-color: var(--color-border-input-idle);
-  box-shadow: 0 0 0 2px var(--color-noon-yellow-ring);
+  border-color: var(--color-gray-400);
+  box-shadow: none;
 }
 
 .field__error {

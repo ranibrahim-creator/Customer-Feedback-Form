@@ -38,7 +38,7 @@
     ar: {
       pageTitle: "ملاحظات العملاء | noon",
       langSwitchAria: "اللغة",
-      greeting: "Hala!",
+      greeting: "هلا!",
       step1Headline: "لقد ساعدناك مؤخراً في مشكلتك. هل تم حل كل شيء على رضاك؟",
       step1ActionsAria: "حالة الحل",
       yesFixed: "نعم، تم حل كل شيء!",

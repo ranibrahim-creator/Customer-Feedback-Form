@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Customer Feedback | noon</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="tokens.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -16,27 +16,32 @@
       <img class="logo-mark" src="assets/noon-logo.svg" width="303" height="88" alt="noon" />
     </div>
 
+    <nav class="lang-switch" aria-label="Language">
+      <button type="button" class="lang-switch__btn is-active" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" class="lang-switch__btn" data-lang="ar" aria-pressed="false">AR</button>
+    </nav>
+
     <div class="card">
       <!-- STEP 1 -->
       <section class="step" id="step-1" data-step="1">
         <div class="step__intro">
-          <p class="step__greeting">Hala!</p>
-          <h2 class="step__headline">
+          <p class="step__greeting" data-i18n="greeting">Hala!</p>
+          <h2 class="step__headline" data-i18n="step1Headline">
             We recently assisted you with your concern. Was everything sorted out to your satisfaction?
           </h2>
         </div>
-        <div class="step__actions" role="group" aria-label="Resolution status">
-          <button type="button" class="btn btn--primary" data-goto="2a">Yes, All Fixed!</button>
-          <button type="button" class="btn btn--link" data-goto="2b">No, Still Need Help</button>
+        <div class="step__actions" role="group" data-i18n-aria="step1ActionsAria" aria-label="Resolution status">
+          <button type="button" class="btn btn--primary" data-goto="2a" data-i18n="yesFixed">Yes, All Fixed!</button>
+          <button type="button" class="btn btn--link" data-goto="2b" data-i18n="noHelp">No, Still Need Help</button>
         </div>
       </section>
 
       <!-- STEP 2A — Success path -->
       <section class="step" id="step-2a" data-step="2a" hidden>
-        <h2 class="step__headline">
+        <h2 class="step__headline" data-i18n="step2aHeadline">
           We're so glad we could get that sorted for you.
         </h2>
-        <p class="step__lede">Is there anything else we can do to make your noon experience even better?</p>
+        <p class="step__lede" data-i18n="step2aLede">Is there anything else we can do to make your noon experience even better?</p>
         <form class="step__form" id="form-2a">
           <div class="slate">
             <textarea
@@ -44,20 +49,22 @@
               id="success-feedback"
               name="successFeedback"
               rows="5"
+              data-i18n-placeholder="successPlaceholder"
+              data-i18n-aria="successAria"
               placeholder="Share anything on your mind — we're all ears…"
               aria-label="Optional feedback"
             ></textarea>
           </div>
           <div class="step__actions step__actions--form">
-            <button type="submit" class="btn btn--primary">Done</button>
-            <button type="button" class="btn btn--link" data-goto="1">Previous</button>
+            <button type="submit" class="btn btn--primary" data-i18n="doneBtn">Done</button>
+            <button type="button" class="btn btn--link" data-goto="1" data-i18n="previousBtn">Previous</button>
           </div>
         </form>
       </section>
 
       <!-- STEP 2B — Resolution fail path -->
       <section class="step" id="step-2b" data-step="2b" hidden>
-        <h2 class="step__headline">
+        <h2 class="step__headline" data-i18n="step2bHeadline">
           Let's make this right. What went wrong?
         </h2>
         <form class="step__form" id="form-2b">
@@ -67,36 +74,32 @@
               id="issue-feedback"
               name="issueFeedback"
               rows="6"
+              data-i18n-placeholder="issuePlaceholder"
+              data-i18n-aria="issueAria"
               placeholder="Please spill the details here so we can jump on this and fix it for you ASAP…"
               aria-label="Describe what went wrong"
               required
             ></textarea>
           </div>
-          <div class="quick-tags" role="group" aria-label="Quick suggestions">
-            <button type="button" class="chip" data-inject="The resolution took too long.">
-              Resolution Speed
-            </button>
-            <button type="button" class="chip" data-inject="The agent didn't fully understand my issue.">
-              Agent Understanding
-            </button>
-            <button type="button" class="chip" data-inject="The solution provided didn't work for me.">
-              Solution Didn't Work
-            </button>
+          <div class="quick-tags" role="group" data-i18n-aria="quickTagsAria" aria-label="Quick suggestions">
+            <button type="button" class="chip" data-chip="speed" data-i18n="chipSpeed">Resolution Speed</button>
+            <button type="button" class="chip" data-chip="agent" data-i18n="chipAgent">Agent Understanding</button>
+            <button type="button" class="chip" data-chip="solution" data-i18n="chipSolution">Solution Didn't Work</button>
           </div>
-          <p class="field__error" id="issue-error" hidden>Please share a few words so we can help.</p>
+          <p class="field__error" id="issue-error" hidden data-i18n="issueError">Please share a few words so we can help.</p>
           <div class="step__actions step__actions--form">
-            <button type="submit" class="btn btn--primary">Submit Feedback</button>
-            <button type="button" class="btn btn--link" data-goto="1">Previous</button>
+            <button type="submit" class="btn btn--primary" data-i18n="submitFeedback">Submit Feedback</button>
+            <button type="button" class="btn btn--link" data-goto="1" data-i18n="previousBtn">Previous</button>
           </div>
         </form>
       </section>
 
       <!-- Done state -->
       <section class="step step--center" id="step-done" data-step="done" hidden>
-        <h2 class="step__headline step__headline--center">
+        <h2 class="step__headline step__headline--center" data-i18n="doneHeadline">
           Thanks! Your feedback means a lot.
         </h2>
-        <p class="step__lede step__lede--center">We'll use it to deliver a better noon experience.</p>
+        <p class="step__lede step__lede--center" data-i18n="doneLede">We'll use it to deliver a better noon experience.</p>
       </section>
     </div>
   </main>

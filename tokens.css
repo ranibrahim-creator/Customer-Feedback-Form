@@ -49,6 +49,7 @@
 
   /* Typography — Inter */
   --font-family-base: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-family-ar: "Cairo", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --font-size-body-md: 0.9375rem;   /* 15px */
   --font-size-body-sm: 0.875rem;    /* 14px */
   --font-size-body-xs: 0.8125rem;   /* 13px */

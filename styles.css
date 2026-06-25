@@ -45,6 +45,53 @@ body {
   max-width: min(260px, 72vw);
 }
 
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin: calc(var(--spacing-xl) * -1) 0 var(--spacing-3xl);
+  padding: var(--spacing-xs);
+  background: var(--color-bg-muted);
+  border-radius: var(--radius-full);
+}
+
+.lang-switch__btn {
+  min-width: 44px;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-family: inherit;
+  font-size: var(--font-size-body-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background var(--transition-base), color var(--transition-base);
+}
+
+.lang-switch__btn:hover {
+  color: var(--color-text-primary);
+}
+
+.lang-switch__btn.is-active {
+  color: var(--color-text-primary);
+  background: var(--color-bg-surface);
+  box-shadow: var(--shadow-xs);
+}
+
+.lang-switch__btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-focus-ring-neutral);
+}
+
+html[dir="rtl"] body {
+  font-family: var(--font-family-ar);
+}
+
+html[dir="rtl"] .slate__input {
+  text-align: right;
+}
+
 .card {
   width: 100%;
   max-width: var(--card-max-width);

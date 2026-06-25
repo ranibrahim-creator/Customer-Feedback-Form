@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Feedback | noon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page">
+    <div class="card">
+      <header class="card__header">
+        <div class="brand">
+          <span class="brand__mark" aria-hidden="true">noon</span>
+        </div>
+        <h1 class="card__title">Customer Feedback</h1>
+        <p class="card__subtitle">Help us improve your experience. It only takes a minute.</p>
+      </header>
+
+      <form class="form" id="feedback-form" novalidate>
+        <div class="field">
+          <label class="field__label" for="full-name">Full Name</label>
+          <input
+            class="field__input"
+            type="text"
+            id="full-name"
+            name="fullName"
+            placeholder="Enter your full name"
+            autocomplete="name"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="email">Email Address</label>
+          <input
+            class="field__input"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+          />
+        </div>
+
+        <fieldset class="field field--rating">
+          <legend class="field__label">How satisfied are you?</legend>
+          <div class="rating" role="radiogroup" aria-label="Satisfaction rating">
+            <input type="radio" name="rating" id="rating-1" value="1" class="rating__input" required />
+            <label class="rating__option" for="rating-1" title="Very dissatisfied">
+              <span class="rating__emoji" aria-hidden="true">😞</span>
+              <span class="rating__text">1</span>
+            </label>
+
+            <input type="radio" name="rating" id="rating-2" value="2" class="rating__input" />
+            <label class="rating__option" for="rating-2" title="Dissatisfied">
+              <span class="rating__emoji" aria-hidden="true">😕</span>
+              <span class="rating__text">2</span>
+            </label>
+
+            <input type="radio" name="rating" id="rating-3" value="3" class="rating__input" />
+            <label class="rating__option" for="rating-3" title="Neutral">
+              <span class="rating__emoji" aria-hidden="true">😐</span>
+              <span class="rating__text">3</span>
+            </label>
+
+            <input type="radio" name="rating" id="rating-4" value="4" class="rating__input" />
+            <label class="rating__option" for="rating-4" title="Satisfied">
+              <span class="rating__emoji" aria-hidden="true">🙂</span>
+              <span class="rating__text">4</span>
+            </label>
+
+            <input type="radio" name="rating" id="rating-5" value="5" class="rating__input" />
+            <label class="rating__option" for="rating-5" title="Very satisfied">
+              <span class="rating__emoji" aria-hidden="true">😍</span>
+              <span class="rating__text">5</span>
+            </label>
+          </div>
+          <p class="rating__hint">Tap an emoji to rate your experience</p>
+        </fieldset>
+
+        <div class="field">
+          <label class="field__label" for="comments">Comments / Feedback</label>
+          <textarea
+            class="field__input field__textarea"
+            id="comments"
+            name="comments"
+            rows="5"
+            placeholder="Tell us what went well, or what we can do better…"
+          ></textarea>
+        </div>
+
+        <button class="btn-submit" type="submit">Submit Feedback</button>
+      </form>
+
+      <div class="success" id="success-message" hidden>
+        <div class="success__icon" aria-hidden="true">✓</div>
+        <h2 class="success__title">Thank you!</h2>
+        <p class="success__text">Your feedback helps us deliver a better noon experience.</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('feedback-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (!this.checkValidity()) {
+        this.reportValidity();
+        return;
+      }
+      this.hidden = true;
+      document.getElementById('success-message').hidden = false;
+    });
+  </script>
+</body>
+</html>

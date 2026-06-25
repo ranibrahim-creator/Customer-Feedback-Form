@@ -299,12 +299,15 @@ section.step:not(#step-1) .step__headline {
   left: 0;
   right: 0;
   z-index: 1;
+  width: 100vw;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .skyline {
   display: block;
   width: 100%;
+  min-width: 100vw;
   height: 72px;
   color: var(--color-skyline);
 }

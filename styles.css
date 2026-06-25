@@ -41,8 +41,8 @@ body {
 .logo-mark {
   display: block;
   width: var(--logo-mark-width);
-  max-width: min(172px, 46vw);
   height: auto;
+  max-width: min(170px, 48vw);
 }
 
 .card {
@@ -324,7 +324,7 @@ section.step:not(#step-1) .step__headline {
   }
 
   .logo-mark {
-    width: min(148px, 52vw);
+    width: min(148px, 54vw);
   }
 
   .card {
@@ -359,7 +359,7 @@ section.step:not(#step-1) .step__headline {
   }
 
   .logo-mark {
-    width: 172px;
+    width: 190px;
   }
 
   .card {

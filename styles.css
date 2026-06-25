@@ -299,21 +299,20 @@ section.step:not(#step-1) .step__headline {
   left: 0;
   right: 0;
   z-index: 1;
-  width: 100vw;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.skyline {
-  display: block;
-  width: 100%;
-  min-width: 100vw;
   height: 72px;
-  color: var(--color-skyline);
+  pointer-events: none;
+  background-image: url("assets/skyline.svg");
+  background-repeat: repeat-x;
+  background-position: bottom left;
+  background-size: auto 72px;
 }
 
-.skyline__line {
-  opacity: 0.75;
+@media (max-width: 863px) {
+  .page-footer {
+    background-size: 100% 72px;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+  }
 }
 
 /* Responsive */

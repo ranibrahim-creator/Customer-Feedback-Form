@@ -8,6 +8,14 @@
 
   var currentStep = "1";
 
+  function getFocusTarget(stepEl) {
+    return (
+      stepEl.querySelector(".slate__input") ||
+      stepEl.querySelector(".btn--primary") ||
+      stepEl.querySelector(".btn--link")
+    );
+  }
+
   function showStep(nextStep) {
     var outgoing = steps[currentStep];
     var incoming = steps[nextStep];
@@ -29,8 +37,8 @@
             incoming.classList.remove("step--enter");
           });
 
-          var focusTarget = incoming.querySelector(".field__textarea, .choice");
-          if (focusTarget) focusTarget.focus();
+          var focusTarget = getFocusTarget(incoming);
+          if (focusTarget) focusTarget.focus({ preventScroll: true });
         },
         { once: true }
       );

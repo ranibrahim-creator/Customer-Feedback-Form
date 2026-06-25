@@ -21,74 +21,130 @@
     <div class="card">
       <!-- STEP 1 -->
       <section class="step" id="step-1" data-step="1">
+        <div class="step__hero" aria-hidden="true">
+          <span class="step__hero-icon">👋</span>
+        </div>
         <h2 class="step__headline">
-          Hala! 👋 We recently assisted you with your concern. Was everything sorted out to your satisfaction?
+          Hala! We recently assisted you with your concern. Was everything sorted out to your satisfaction?
         </h2>
-        <div class="choice-row" role="group" aria-label="Resolution status">
-          <button type="button" class="choice choice--primary" data-goto="2a">Yes, all fixed!</button>
-          <button type="button" class="choice" data-goto="2b">No, still need help</button>
+        <div class="step__actions" role="group" aria-label="Resolution status">
+          <button type="button" class="btn btn--primary" data-goto="2a">Yes, All Fixed!</button>
+          <button type="button" class="btn btn--link" data-goto="2b">No, Still Need Help</button>
         </div>
       </section>
 
       <!-- STEP 2A — Success path -->
       <section class="step" id="step-2a" data-step="2a" hidden>
+        <div class="step__hero" aria-hidden="true">
+          <span class="step__hero-icon">🎉</span>
+        </div>
         <h2 class="step__headline">
-          YAY! 🎉 We're so glad we could get that sorted for you.
+          YAY! We're so glad we could get that sorted for you.
         </h2>
         <p class="step__lede">Is there anything else we can do to make your noon experience even better?</p>
         <form class="step__form" id="form-2a">
-          <textarea
-            class="field__textarea field__textarea--spacious"
-            id="success-feedback"
-            name="successFeedback"
-            rows="5"
-            placeholder="We'd love to hear your thoughts…"
-            aria-label="Optional feedback"
-          ></textarea>
-          <button type="submit" class="btn btn--primary">Done</button>
+          <div class="slate">
+            <textarea
+              class="slate__input"
+              id="success-feedback"
+              name="successFeedback"
+              rows="5"
+              placeholder="Share anything on your mind — we're all ears…"
+              aria-label="Optional feedback"
+            ></textarea>
+          </div>
+          <div class="step__actions step__actions--form">
+            <button type="submit" class="btn btn--primary">Done</button>
+            <button type="button" class="btn btn--link" data-goto="1">Previous</button>
+          </div>
         </form>
       </section>
 
       <!-- STEP 2B — Resolution fail path -->
       <section class="step" id="step-2b" data-step="2b" hidden>
+        <div class="step__hero" aria-hidden="true">
+          <span class="step__hero-icon">😔</span>
+        </div>
         <h2 class="step__headline">
-          Oh no! 😔 Let's make this right. What went wrong?
+          Oh no! Let's make this right. What went wrong?
         </h2>
         <form class="step__form" id="form-2b">
-          <textarea
-            class="field__textarea field__textarea--spacious"
-            id="issue-feedback"
-            name="issueFeedback"
-            rows="5"
-            placeholder="Tell us what happened — we're listening…"
-            aria-label="Describe what went wrong"
-            required
-          ></textarea>
+          <div class="slate">
+            <textarea
+              class="slate__input slate__input--conversational"
+              id="issue-feedback"
+              name="issueFeedback"
+              rows="6"
+              placeholder="Please spill the details here so we can jump on this and fix it for you ASAP…"
+              aria-label="Describe what went wrong"
+              required
+            ></textarea>
+          </div>
           <div class="quick-tags" role="group" aria-label="Quick suggestions">
             <button type="button" class="chip" data-inject="The resolution took too long.">
-              ⏱️ Resolution speed
+              ⏱️ Resolution Speed
             </button>
             <button type="button" class="chip" data-inject="The agent didn't fully understand my issue.">
-              💡 Agent understanding
+              💡 Agent Understanding
             </button>
             <button type="button" class="chip" data-inject="The solution provided didn't work for me.">
-              ❌ Solution didn't work
+              ❌ Solution Didn't Work
             </button>
           </div>
           <p class="field__error" id="issue-error" hidden>Please share a few words so we can help.</p>
-          <button type="submit" class="btn btn--primary">Submit feedback</button>
+          <div class="step__actions step__actions--form">
+            <button type="submit" class="btn btn--primary">Submit Feedback</button>
+            <button type="button" class="btn btn--link" data-goto="1">Previous</button>
+          </div>
         </form>
       </section>
 
       <!-- Done state -->
       <section class="step step--center" id="step-done" data-step="done" hidden>
+        <div class="step__hero" aria-hidden="true">
+          <span class="step__hero-icon">✨</span>
+        </div>
         <h2 class="step__headline step__headline--center">
-          Thanks! ✨ Your feedback means a lot.
+          Thanks! Your feedback means a lot.
         </h2>
         <p class="step__lede step__lede--center">We'll use it to deliver a better noon experience.</p>
       </section>
     </div>
   </main>
+
+  <footer class="page-footer" aria-hidden="true">
+    <svg class="skyline" viewBox="0 0 1440 120" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+      <!-- Riyadh / Dubai-inspired single-stroke skyline -->
+      <path
+        class="skyline__line"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        vector-effect="non-scaling-stroke"
+        d="
+          M0 118 L0 96 L28 96 L28 82 L44 82 L44 96 L72 96 L72 68 L88 68 L88 96
+          L112 96 L112 54 L120 38 L128 54 L128 96 L156 96 L156 74 L168 74 L168 96
+          L196 96 L196 60 L208 44 L220 60 L220 96 L248 96 L248 78 L260 78 L260 96
+          L288 96 L288 50 L296 28 L304 50 L304 96 L332 96 L332 72 L344 72 L344 96
+          L372 96 L372 58 L384 42 L396 58 L396 96 L424 96 L424 80 L436 80 L436 96
+          L464 96 L464 62 L476 46 L488 62 L488 96 L516 96 L516 76 L528 76 L528 96
+          L556 96 L556 48 L564 22 L572 48 L572 96 L600 96 L600 70 L612 70 L612 96
+          L640 96 L640 56 L652 40 L664 56 L664 96 L692 96 L692 84 L704 84 L704 96
+          L732 96 L732 52 L740 18 L748 52 L748 96 L776 96 L776 74 L788 74 L788 96
+          L816 96 L816 64 L828 48 L840 64 L840 96 L868 96 L868 78 L880 78 L880 96
+          L908 96 L908 54 L916 30 L924 54 L924 96 L952 96 L952 72 L964 72 L964 96
+          L992 96 L992 60 L1004 44 L1016 60 L1016 96 L1044 96 L1044 82 L1056 82 L1056 96
+          L1084 96 L1084 50 L1092 26 L1100 50 L1100 96 L1128 96 L1128 68 L1140 68 L1140 96
+          L1168 96 L1168 58 L1180 42 L1192 58 L1192 96 L1220 96 L1220 76 L1232 76 L1232 96
+          L1260 96 L1260 52 L1268 24 L1276 52 L1276 96 L1304 96 L1304 74 L1316 74 L1316 96
+          L1344 96 L1344 62 L1356 46 L1368 62 L1368 96 L1396 96 L1396 88 L1408 88 L1408 96
+          L1440 96 L1440 118
+        "
+      />
+    </svg>
+  </footer>
 
   <script src="app.js"></script>
 </body>

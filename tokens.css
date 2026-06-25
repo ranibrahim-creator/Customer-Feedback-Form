@@ -54,8 +54,7 @@
   --font-size-body-xs: 0.8125rem;   /* 13px */
   --font-size-heading: 1.0625rem;   /* 17px */
   --font-size-greeting: 1.75rem;    /* 28px */
-  --logo-mark-height: 40px;
-  --logo-mark-width: 170px;
+  --logo-mark-width: 220px;
   --font-size-slate-placeholder: 0.9375rem;
   --line-height-body-md: 1.65;
   --line-height-body-sm: 1.5;
@@ -98,7 +97,7 @@
 
   /* Layout */
   --card-max-width: 480px;
-  --logo-gap: 72px;
+  --logo-gap: 80px;
   --button-height-lg: 46px;
   --slate-min-height: 156px;
   --transition-base: 0.2s ease;

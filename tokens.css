@@ -102,6 +102,8 @@
   /* Layout */
   --card-max-width: 480px;
   --logo-gap: 64px;
+  --footer-height: 72px;
+  --lang-switch-inset: var(--spacing-4xl);
   --button-height-lg: 46px;
   --slate-min-height: 156px;
   --transition-base: 0.2s ease;

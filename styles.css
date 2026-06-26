@@ -37,9 +37,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   min-height: 100vh;
-  padding: var(--spacing-5xl) var(--spacing-xl) calc(var(--spacing-5xl) + 72px);
+  padding: var(--spacing-6xl) var(--spacing-xl) calc(var(--footer-height) + var(--spacing-5xl));
+  position: relative;
+  z-index: 2;
 }
 
 .page__brand {
@@ -47,6 +48,7 @@ body {
   justify-content: center;
   width: 100%;
   max-width: var(--card-max-width);
+  margin-top: auto;
   margin-bottom: var(--logo-gap);
 }
 
@@ -69,8 +71,8 @@ body {
 
 .lang-switch {
   position: fixed;
-  top: var(--spacing-xl);
-  right: var(--spacing-xl);
+  top: var(--lang-switch-inset);
+  right: var(--lang-switch-inset);
   left: auto;
   z-index: 201;
   display: inline-flex;
@@ -81,6 +83,11 @@ body {
   background: var(--color-bg-muted);
   border-radius: var(--radius-full);
   pointer-events: auto;
+}
+
+html[dir="rtl"] .lang-switch {
+  right: auto;
+  left: var(--lang-switch-inset);
 }
 
 .lang-switch__btn {
@@ -123,6 +130,7 @@ html[dir="rtl"] .slate__input {
 .card {
   width: 100%;
   max-width: var(--card-max-width);
+  margin-bottom: auto;
   padding: var(--spacing-4xl) var(--spacing-3xl);
   background: var(--color-bg-surface);
   border-radius: var(--radius-2xl);
@@ -209,6 +217,8 @@ section.step:not(#step-1) .step__headline {
 
 .step__lede--sub {
   margin: calc(var(--spacing-xl) * -1) 0 var(--spacing-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
   text-align: center;
 }
 
@@ -328,7 +338,7 @@ html[dir="rtl"] .sentiment-card__title {
   gap: var(--spacing-lg);
   padding: var(--spacing-lg) var(--spacing-xl);
   background: var(--color-bg-surface);
-  border: 1px solid var(--color-border-subtle);
+  border: 1px solid var(--color-gray-950);
   border-radius: var(--radius-lg);
   cursor: pointer;
   transition: border-color var(--transition-base), box-shadow var(--transition-base),
@@ -336,12 +346,14 @@ html[dir="rtl"] .sentiment-card__title {
 }
 
 .option-item:hover {
-  border-color: var(--color-gray-400);
+  border-color: var(--color-gray-950);
   background: var(--color-bg-muted);
+  box-shadow: var(--shadow-xs);
 }
 
 .option-item:has(.option-item__input:checked) {
-  border-color: var(--color-gray-700);
+  border-color: var(--color-gray-950);
+  background: var(--color-bg-muted);
   box-shadow: var(--shadow-xs);
 }
 
@@ -356,9 +368,9 @@ html[dir="rtl"] .sentiment-card__title {
 
 .option-item__label {
   font-size: var(--font-size-body-sm);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-body-sm);
-  color: var(--color-text-primary);
+  color: var(--color-gray-950);
   text-align: start;
 }
 
@@ -373,13 +385,9 @@ html[dir="rtl"] .sentiment-card__title {
 }
 
 .panel--slide.panel--open {
-  max-height: 220px;
+  max-height: 200px;
   opacity: 1;
   margin-top: var(--spacing-md);
-}
-
-.panel--slide .field__label {
-  margin-top: var(--spacing-sm);
 }
 
 .panel--slide .slate__input {
@@ -460,7 +468,7 @@ html[dir="rtl"] .sentiment-card__title {
   width: 100%;
   color: var(--color-cta-text);
   background: var(--color-cta-bg);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   box-shadow: var(--shadow-component);
 }
 
@@ -519,20 +527,32 @@ html[dir="rtl"] .sentiment-card__title {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1;
-  height: 72px;
+  z-index: 0;
+  height: var(--footer-height);
   pointer-events: none;
   background-image: url("assets/skyline.svg");
   background-repeat: repeat-x;
   background-position: bottom left;
-  background-size: auto 72px;
+  background-size: auto var(--footer-height);
 }
 
 @media (max-width: 863px) {
   .page-footer {
-    background-size: 100% 72px;
+    background-size: 100% var(--footer-height);
     background-repeat: no-repeat;
     background-position: bottom center;
+  }
+}
+
+@media (max-width: 640px) {
+  .lang-switch {
+    top: var(--spacing-3xl);
+    right: var(--spacing-3xl);
+  }
+
+  html[dir="rtl"] .lang-switch {
+    right: auto;
+    left: var(--spacing-3xl);
   }
 }
 
@@ -540,6 +560,18 @@ html[dir="rtl"] .sentiment-card__title {
 @media (max-width: 400px) {
   .page {
     padding-top: var(--spacing-4xl);
+    padding-left: var(--spacing-xl);
+    padding-right: var(--spacing-xl);
+  }
+
+  .lang-switch {
+    top: var(--spacing-xl);
+    right: var(--spacing-xl);
+  }
+
+  html[dir="rtl"] .lang-switch {
+    right: auto;
+    left: var(--spacing-xl);
   }
 
   .page__brand {

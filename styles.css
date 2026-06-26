@@ -20,6 +20,18 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Page layout */
 .page {
   display: flex;
@@ -195,6 +207,11 @@ section.step:not(#step-1) .step__headline {
   margin: 0;
 }
 
+.step__lede--sub {
+  margin: calc(var(--spacing-xl) * -1) 0 var(--spacing-2xl);
+  text-align: center;
+}
+
 .step__form {
   display: flex;
   flex-direction: column;
@@ -258,6 +275,7 @@ section.step:not(#step-1) .step__headline {
   justify-content: center;
   width: 32px;
   height: 32px;
+  margin-bottom: var(--spacing-xs);
 }
 
 .sentiment-card__icon svg {
@@ -276,19 +294,96 @@ section.step:not(#step-1) .step__headline {
 .sentiment-card__title {
   font-size: var(--font-size-body-xs);
   font-weight: var(--font-weight-semibold);
-  letter-spacing: 0.04em;
+  letter-spacing: normal;
   color: var(--color-text-primary);
-}
-
-.sentiment-card__helper {
-  font-size: 0.75rem;
-  font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-body-sm);
-  color: var(--color-text-secondary);
+  margin-bottom: 0;
 }
 
 html[dir="rtl"] .sentiment-card__title {
   letter-spacing: normal;
+}
+
+.field__label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  text-align: start;
+}
+
+/* Issue option list */
+.option-list {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base),
+    background var(--transition-base);
+}
+
+.option-item:hover {
+  border-color: var(--color-gray-400);
+  background: var(--color-bg-muted);
+}
+
+.option-item:has(.option-item__input:checked) {
+  border-color: var(--color-gray-700);
+  box-shadow: var(--shadow-xs);
+}
+
+.option-item__input {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--color-gray-950);
+  cursor: pointer;
+}
+
+.option-item__label {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body-sm);
+  color: var(--color-text-primary);
+  text-align: start;
+}
+
+/* Progressive disclosure panel */
+.panel--slide {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-step), opacity var(--transition-step),
+    margin-top var(--transition-step);
+  margin-top: 0;
+}
+
+.panel--slide.panel--open {
+  max-height: 220px;
+  opacity: 1;
+  margin-top: var(--spacing-md);
+}
+
+.panel--slide .field__label {
+  margin-top: var(--spacing-sm);
+}
+
+.panel--slide .slate__input {
+  min-height: 96px;
 }
 
 /* Text slate */
@@ -343,49 +438,7 @@ html[dir="rtl"] .sentiment-card__title {
   text-align: center;
 }
 
-/* Quick-tag chips */
-.quick-tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--spacing-md);
-  margin-top: calc(var(--spacing-lg) * -1);
-}
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  font-family: inherit;
-  font-size: var(--font-size-body-xs);
-  font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-body-sm);
-  color: var(--color-text-secondary);
-  background: transparent;
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transition: background var(--transition-base), border-color var(--transition-base),
-    color var(--transition-base);
-}
-
-.chip:hover,
-.chip--used {
-  color: var(--color-text-primary);
-  background: var(--color-bg-muted);
-  border-color: var(--color-gray-400);
-}
-
-.chip--used {
-  box-shadow: none;
-}
-
-.chip:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-focus-ring-neutral);
-}
-
-/* Buttons */
+/* Skyline footer */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -416,6 +469,24 @@ html[dir="rtl"] .sentiment-card__title {
 }
 
 .btn--primary:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-component), 0 0 0 3px var(--color-focus-ring-neutral);
+}
+
+.btn--secondary {
+  width: 100%;
+  color: var(--color-text-primary);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-component);
+}
+
+.btn--secondary:hover {
+  background: var(--color-bg-muted);
+  border-color: var(--color-gray-400);
+}
+
+.btn--secondary:focus-visible {
   outline: none;
   box-shadow: var(--shadow-component), 0 0 0 3px var(--color-focus-ring-neutral);
 }
@@ -491,26 +562,13 @@ html[dir="rtl"] .sentiment-card__title {
     font-size: 1rem;
   }
 
-  .btn--primary {
+  .btn--primary,
+  .btn--secondary {
     min-height: 44px;
   }
 
-  .quick-tags {
-    gap: var(--spacing-sm);
-  }
-
-  .chip {
-    padding: var(--spacing-xs) var(--spacing-md);
-    font-size: 0.75rem;
-  }
-
   .sentiment-card {
-    min-height: 120px;
     padding: var(--spacing-lg) var(--spacing-md);
-  }
-
-  .sentiment-card__helper {
-    font-size: 0.6875rem;
   }
 }
 

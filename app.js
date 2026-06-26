@@ -7,32 +7,26 @@
       langSwitchAria: "Language",
       greeting: "Hala!",
       step1Headline:
-        "We recently assisted you with your concern. Was everything sorted out to your satisfaction?",
+        "We recently assisted you with your concern. Was your concern handled as needed?",
       step1ActionsAria: "Resolution status",
-      sentimentNotFixedTitle: "NOT FIXED",
-      sentimentNotFixedHelper: "Tap to reopen your request",
-      sentimentAllFixedTitle: "ALL FIXED",
-      sentimentAllFixedHelper: "Tap to complete",
-      step2aHeadline: "We're so glad we could get that sorted for you.",
-      step2aLede: "Is there anything else we can do to make your noon experience even better?",
-      successPlaceholder: "Share anything on your mind — we're all ears…",
+      sentimentNotFixedTitle: "No, it's not fixed",
+      sentimentAllFixedTitle: "Yes, it's fixed",
+      step2aHeadline: "Thank you for your feedback. We're glad we could help.",
+      successPlaceholder: "We'd love to hear more.",
       successAria: "Optional feedback",
-      doneBtn: "Done",
-      previousBtn: "Previous",
-      step2bHeadline: "Let's make this right. What went wrong?",
-      issuePlaceholder:
-        "Please spill the details here so we can jump on this and fix it for you ASAP…",
-      issueAria: "Describe what went wrong",
-      quickTagsAria: "Quick suggestions",
-      chipSpeed: "Resolution Speed",
-      chipAgent: "Agent Understanding",
-      chipSolution: "Solution Didn't Work",
-      chipInject: {
-        speed: "The resolution took too long.",
-        agent: "The agent didn't fully understand my issue.",
-        solution: "The solution provided didn't work for me.",
-      },
-      issueError: "Please share a few words so we can help.",
+      submitBtn: "Submit",
+      step2bHeadline:
+        "We're sorry your experience did not meet expectations. Please tell us how we can improve.",
+      step2bSubhead: "What went wrong? Select one:",
+      issueOptionsAria: "Issue reasons",
+      optionSolution: "The solution didn't work",
+      optionSpeed: "It took too long to resolve",
+      optionAgent: "The agent didn't understand my problem",
+      optionOther: "Other",
+      optionalCommentsLabel: "Optional Comments",
+      optionalCommentsPlaceholder: "Share any additional details…",
+      optionalCommentsAria: "Optional comments",
+      issueError: "Please select an option to continue.",
       submitFeedback: "Submit Feedback",
       doneHeadline: "Thanks! Your feedback means a lot.",
       doneLede: "We'll use it to deliver a better noon experience.",
@@ -41,31 +35,26 @@
       pageTitle: "ملاحظات العملاء | noon",
       langSwitchAria: "اللغة",
       greeting: "هلا!",
-      step1Headline: "لقد ساعدناك مؤخراً في مشكلتك. هل تم حل كل شيء على رضاك؟",
+      step1Headline: "لقد ساعدناك مؤخراً في مشكلتك. هل تم التعامل مع مشكلتك كما ينبغي؟",
       step1ActionsAria: "حالة الحل",
-      sentimentNotFixedTitle: "لم يُحل",
-      sentimentNotFixedHelper: "اضغط لإعادة فتح طلبك",
-      sentimentAllFixedTitle: "تم الحل",
-      sentimentAllFixedHelper: "اضغط للإكمال",
-      step2aHeadline: "يسعدنا أننا تمكنا من حل مشكلتك.",
-      step2aLede: "هل هناك أي شيء آخر يمكننا فعله لتحسين تجربتك مع noon؟",
-      successPlaceholder: "شاركنا أي أفكار — نحن نستمع…",
+      sentimentNotFixedTitle: "لا، لم تُحل",
+      sentimentAllFixedTitle: "نعم، تم حلها",
+      step2aHeadline: "شكراً على ملاحظاتك. يسعدنا أننا تمكنا من مساعدتك.",
+      successPlaceholder: "نود أن نسمع المزيد.",
       successAria: "ملاحظات اختيارية",
-      doneBtn: "تم",
-      previousBtn: "السابق",
-      step2bHeadline: "دعنا نصلح هذا. ما الذي حدث؟",
-      issuePlaceholder: "شاركنا التفاصيل حتى نتمكن من التدخل وإصلاح الأمر في أسرع وقت…",
-      issueAria: "صف ما حدث",
-      quickTagsAria: "اقتراحات سريعة",
-      chipSpeed: "سرعة الحل",
-      chipAgent: "فهم الموظف",
-      chipSolution: "الحل لم ينجح",
-      chipInject: {
-        speed: "استغرق الحل وقتاً طويلاً.",
-        agent: "لم يفهم الموظف مشكلتي بالكامل.",
-        solution: "الحل المقدم لم ينجح معي.",
-      },
-      issueError: "يرجى كتابة بضع كلمات حتى نتمكن من المساعدة.",
+      submitBtn: "إرسال",
+      step2bHeadline:
+        "نأسف لأن تجربتك لم تكن كما توقعت. يرجى إخبارنا كيف يمكننا التحسين.",
+      step2bSubhead: "ما الذي حدث؟ اختر واحداً:",
+      issueOptionsAria: "أسباب المشكلة",
+      optionSolution: "الحل لم ينجح",
+      optionSpeed: "استغرق الحل وقتاً طويلاً",
+      optionAgent: "لم يفهم الموظف مشكلتي",
+      optionOther: "أخرى",
+      optionalCommentsLabel: "تعليقات اختيارية",
+      optionalCommentsPlaceholder: "شارك أي تفاصيل إضافية…",
+      optionalCommentsAria: "تعليقات اختيارية",
+      issueError: "يرجى اختيار خيار للمتابعة.",
       submitFeedback: "إرسال الملاحظات",
       doneHeadline: "شكراً! ملاحظاتك تهمنا كثيراً.",
       doneLede: "سنستخدمها لتقديم تجربة noon أفضل.",
@@ -81,6 +70,7 @@
 
   var currentStep = "1";
   var currentLang = "en";
+  var otherPanel = document.getElementById("other-panel");
 
   function getStoredLang() {
     try {
@@ -132,17 +122,25 @@
     }
   }
 
-  function getChipPhrase(chip) {
-    var key = chip.getAttribute("data-chip");
-    return translations[currentLang].chipInject[key];
+  function toggleOtherPanel(show) {
+    if (!otherPanel) return;
+    otherPanel.classList.toggle("panel--open", show);
+  }
+
+  function resetStep2b() {
+    var form = document.getElementById("form-2b");
+    if (form) form.reset();
+    toggleOtherPanel(false);
+    document.getElementById("issue-error").hidden = true;
   }
 
   function getFocusTarget(stepEl) {
     return (
       stepEl.querySelector(".slate__input") ||
+      stepEl.querySelector(".option-item__input") ||
       stepEl.querySelector(".sentiment-card") ||
       stepEl.querySelector(".btn--primary") ||
-      stepEl.querySelector(".btn--link")
+      stepEl.querySelector(".btn--secondary")
     );
   }
 
@@ -151,6 +149,8 @@
     var incoming = steps[nextStep];
 
     if (!incoming || nextStep === currentStep) return;
+
+    if (nextStep === "2b") resetStep2b();
 
     if (outgoing) {
       outgoing.classList.add("step--exit");
@@ -191,31 +191,18 @@
     });
   });
 
-  document.querySelectorAll(".chip[data-chip]").forEach(function (chip) {
-    chip.addEventListener("click", function () {
-      var textarea = document.getElementById("issue-feedback");
-      var phrase = getChipPhrase(chip);
-      if (!textarea || !phrase) return;
-
-      var current = textarea.value.trim();
-      textarea.value = current ? current + " " + phrase : phrase;
-      textarea.focus();
-
-      chip.classList.add("chip--used");
-      setTimeout(function () {
-        chip.classList.remove("chip--used");
-      }, 400);
-
+  document.querySelectorAll('input[name="issue-reason"]').forEach(function (radio) {
+    radio.addEventListener("change", function () {
+      toggleOtherPanel(radio.value === "other" && radio.checked);
       document.getElementById("issue-error").hidden = true;
     });
   });
 
   document.getElementById("form-2b").addEventListener("submit", function (e) {
     e.preventDefault();
-    var textarea = document.getElementById("issue-feedback");
-    if (!textarea.value.trim()) {
+    var selected = document.querySelector('input[name="issue-reason"]:checked');
+    if (!selected) {
       document.getElementById("issue-error").hidden = false;
-      textarea.focus();
       return;
     }
     showStep("done");

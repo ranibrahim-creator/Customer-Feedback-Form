@@ -32,9 +32,31 @@
             We recently assisted you with your concern. Was everything sorted out to your satisfaction?
           </h2>
         </div>
-        <div class="step__actions" role="group" data-i18n-aria="step1ActionsAria" aria-label="Resolution status">
-          <button type="button" class="btn btn--primary" data-goto="2a" data-i18n="yesFixed">Yes, All Fixed!</button>
-          <button type="button" class="btn btn--link" data-goto="2b" data-i18n="noHelp">No, Still Need Help</button>
+        <div class="sentiment-row" role="group" data-i18n-aria="step1ActionsAria" aria-label="Resolution status">
+          <button type="button" class="sentiment-card sentiment-card--not-fixed" data-goto="2b">
+            <span class="sentiment-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="9" cy="10" r="1" fill="currentColor"/>
+                <circle cx="15" cy="10" r="1" fill="currentColor"/>
+                <path d="M8.5 15.5c.9 1.2 2.1 1.8 3.5 1.8s2.6-.6 3.5-1.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="sentiment-card__title" data-i18n="sentimentNotFixedTitle">NOT FIXED</span>
+            <span class="sentiment-card__helper" data-i18n="sentimentNotFixedHelper">Tap to reopen your request</span>
+          </button>
+          <button type="button" class="sentiment-card sentiment-card--all-fixed" data-goto="2a">
+            <span class="sentiment-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="9" cy="10" r="1" fill="currentColor"/>
+                <circle cx="15" cy="10" r="1" fill="currentColor"/>
+                <path d="M8.5 14c.9 1.2 2.1 1.8 3.5 1.8s2.6-.6 3.5-1.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="sentiment-card__title" data-i18n="sentimentAllFixedTitle">ALL FIXED</span>
+            <span class="sentiment-card__helper" data-i18n="sentimentAllFixedHelper">Tap to complete</span>
+          </button>
         </div>
       </section>
 

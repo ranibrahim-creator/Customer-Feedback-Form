@@ -9,8 +9,10 @@
       step1Headline:
         "We recently assisted you with your concern. Was everything sorted out to your satisfaction?",
       step1ActionsAria: "Resolution status",
-      yesFixed: "Yes, All Fixed!",
-      noHelp: "No, Still Need Help",
+      sentimentNotFixedTitle: "NOT FIXED",
+      sentimentNotFixedHelper: "Tap to reopen your request",
+      sentimentAllFixedTitle: "ALL FIXED",
+      sentimentAllFixedHelper: "Tap to complete",
       step2aHeadline: "We're so glad we could get that sorted for you.",
       step2aLede: "Is there anything else we can do to make your noon experience even better?",
       successPlaceholder: "Share anything on your mind — we're all ears…",
@@ -41,8 +43,10 @@
       greeting: "هلا!",
       step1Headline: "لقد ساعدناك مؤخراً في مشكلتك. هل تم حل كل شيء على رضاك؟",
       step1ActionsAria: "حالة الحل",
-      yesFixed: "نعم، تم حل كل شيء!",
-      noHelp: "لا، ما زلت بحاجة للمساعدة",
+      sentimentNotFixedTitle: "لم يُحل",
+      sentimentNotFixedHelper: "اضغط لإعادة فتح طلبك",
+      sentimentAllFixedTitle: "تم الحل",
+      sentimentAllFixedHelper: "اضغط للإكمال",
       step2aHeadline: "يسعدنا أننا تمكنا من حل مشكلتك.",
       step2aLede: "هل هناك أي شيء آخر يمكننا فعله لتحسين تجربتك مع noon؟",
       successPlaceholder: "شاركنا أي أفكار — نحن نستمع…",
@@ -136,6 +140,7 @@
   function getFocusTarget(stepEl) {
     return (
       stepEl.querySelector(".slate__input") ||
+      stepEl.querySelector(".sentiment-card") ||
       stepEl.querySelector(".btn--primary") ||
       stepEl.querySelector(".btn--link")
     );

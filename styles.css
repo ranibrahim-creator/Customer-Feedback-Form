@@ -80,8 +80,10 @@ body {
   gap: var(--spacing-xs);
   margin: 0;
   padding: var(--spacing-xs);
-  background: var(--color-bg-muted);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-gray-300);
   border-radius: var(--radius-full);
+  box-shadow: var(--shadow-xs);
   pointer-events: auto;
 }
 
@@ -333,7 +335,7 @@ html[dir="rtl"] .sentiment-card__title {
   gap: var(--spacing-lg);
   padding: var(--spacing-lg) var(--spacing-xl);
   background: var(--color-bg-surface);
-  border: 1px solid var(--color-gray-400);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-lg);
   cursor: pointer;
   transition: border-color var(--transition-base), box-shadow var(--transition-base),
@@ -341,15 +343,15 @@ html[dir="rtl"] .sentiment-card__title {
 }
 
 .option-item:hover {
-  border-color: var(--color-gray-700);
+  border-color: var(--color-gray-500);
   background: var(--color-bg-muted);
-  box-shadow: var(--shadow-xs);
+  box-shadow: none;
 }
 
 .option-item:has(.option-item__input:checked) {
   border-color: var(--color-gray-950);
   background: var(--color-bg-surface);
-  box-shadow: var(--shadow-xs);
+  box-shadow: none;
 }
 
 .option-item__input {

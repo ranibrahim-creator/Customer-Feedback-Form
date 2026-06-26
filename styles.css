@@ -333,7 +333,7 @@ html[dir="rtl"] .sentiment-card__title {
   gap: var(--spacing-lg);
   padding: var(--spacing-lg) var(--spacing-xl);
   background: var(--color-bg-surface);
-  border: 1px solid var(--color-gray-800);
+  border: 1px solid var(--color-gray-400);
   border-radius: var(--radius-lg);
   cursor: pointer;
   transition: border-color var(--transition-base), box-shadow var(--transition-base),
@@ -341,15 +341,15 @@ html[dir="rtl"] .sentiment-card__title {
 }
 
 .option-item:hover {
-  border-color: var(--color-gray-950);
+  border-color: var(--color-gray-700);
   background: var(--color-bg-muted);
-  box-shadow: 0 0 0 1px var(--color-gray-950), var(--shadow-xs);
+  box-shadow: var(--shadow-xs);
 }
 
 .option-item:has(.option-item__input:checked) {
   border-color: var(--color-gray-950);
-  background: var(--color-bg-muted);
-  box-shadow: 0 0 0 1px var(--color-gray-950), var(--shadow-xs);
+  background: var(--color-bg-surface);
+  box-shadow: var(--shadow-xs);
 }
 
 .option-item__input {
@@ -367,10 +367,6 @@ html[dir="rtl"] .sentiment-card__title {
   line-height: var(--line-height-body-sm);
   color: var(--color-gray-950);
   text-align: start;
-}
-
-.option-item:has(.option-item__input:checked) .option-item__label {
-  font-weight: var(--font-weight-bold);
 }
 
 /* Progressive disclosure panel */

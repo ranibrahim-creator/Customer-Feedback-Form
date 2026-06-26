@@ -17,7 +17,7 @@
       submitBtn: "Submit",
       step2bHeadline:
         "We're sorry your experience did not meet expectations. Please tell us how we can improve.",
-      step2bSubhead: "What went wrong? Select one:",
+      step2bSubhead: "What went wrong?",
       issueOptionsAria: "Issue reasons",
       optionSolution: "The solution didn't work",
       optionSpeed: "It took too long to resolve",
@@ -44,7 +44,7 @@
       submitBtn: "إرسال",
       step2bHeadline:
         "نأسف لأن تجربتك لم تكن كما توقعت. يرجى إخبارنا كيف يمكننا التحسين.",
-      step2bSubhead: "ما الذي حدث؟ اختر واحداً:",
+      step2bSubhead: "ما الذي حدث؟",
       issueOptionsAria: "أسباب المشكلة",
       optionSolution: "الحل لم ينجح",
       optionSpeed: "استغرق الحل وقتاً طويلاً",

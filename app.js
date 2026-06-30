@@ -23,7 +23,10 @@
       optionSpeed: "It took too long to resolve",
       optionAgent: "The agent didn't understand my problem",
       optionOther: "Other",
-      step2cHeadline: "Could you share more details?",
+      step2cHeadlineDefault: "Could you share more details about this issue? (Optional)",
+      step2cHeadlineTemplate: 'Could you share more details about "{reason}"? {optional}',
+      step2cReasonFallback: "this issue",
+      step2cOptional: "(Optional)",
       step2cPlaceholder: "Share any additional details…",
       step2cAria: "Additional details",
       optionalCommentsPlaceholder: "Share any additional details…",
@@ -53,7 +56,10 @@
       optionSpeed: "استغرق الحل وقتاً طويلاً",
       optionAgent: "لم يفهم الموظف مشكلتي",
       optionOther: "أخرى",
-      step2cHeadline: "هل يمكنك مشاركة المزيد من التفاصيل؟",
+      step2cHeadlineDefault: "هل يمكنك مشاركة المزيد من التفاصيل حول هذه المشكلة؟ (اختياري)",
+      step2cHeadlineTemplate: 'هل يمكنك مشاركة المزيد من التفاصيل حول "{reason}"؟ {optional}',
+      step2cReasonFallback: "هذه المشكلة",
+      step2cOptional: "(اختياري)",
       step2cPlaceholder: "شارك أي تفاصيل إضافية…",
       step2cAria: "تفاصيل إضافية",
       optionalCommentsPlaceholder: "شارك أي تفاصيل إضافية…",
@@ -75,6 +81,7 @@
 
   var currentStep = "1";
   var currentLang = "en";
+  var selectedIssueReason = null;
   var otherPanel = document.getElementById("other-panel");
 
   function getStoredLang() {
@@ -125,6 +132,26 @@
     } catch (e) {
       /* ignore */
     }
+
+    updateStep2cHeadline();
+  }
+
+  function getReasonLabel(reasonValue, copy) {
+    if (!reasonValue) return copy.step2cReasonFallback;
+    if (reasonValue === "solution") return copy.optionSolution;
+    if (reasonValue === "speed") return copy.optionSpeed;
+    if (reasonValue === "agent") return copy.optionAgent;
+    return copy.step2cReasonFallback;
+  }
+
+  function updateStep2cHeadline() {
+    var headline = document.getElementById("step-2c-headline");
+    if (!headline) return;
+    var copy = translations[currentLang];
+    var reasonLabel = getReasonLabel(selectedIssueReason, copy);
+    headline.textContent = copy.step2cHeadlineTemplate
+      .replace("{reason}", reasonLabel)
+      .replace("{optional}", copy.step2cOptional);
   }
 
   function toggleOtherPanel(show) {
@@ -135,6 +162,7 @@
   function resetStep2b() {
     var form = document.getElementById("form-2b");
     if (form) form.reset();
+    selectedIssueReason = null;
     toggleOtherPanel(false);
     document.getElementById("issue-error").hidden = true;
   }
@@ -220,6 +248,8 @@
       showStep("done");
       return;
     }
+    selectedIssueReason = selected.value;
+    updateStep2cHeadline();
     showStep("2c");
   });
 

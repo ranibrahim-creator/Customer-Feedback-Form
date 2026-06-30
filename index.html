@@ -123,6 +123,30 @@
         </form>
       </section>
 
+      <!-- STEP 2C — Additional details for non-other reasons -->
+      <section class="step" id="step-2c" data-step="2c" hidden>
+        <h2 class="step__headline" data-i18n="step2cHeadline">
+          Could you share a bit more detail so we can improve your experience?
+        </h2>
+        <form class="step__form" id="form-2c">
+          <div class="slate">
+            <textarea
+              class="slate__input"
+              id="followup-comments"
+              name="followupComments"
+              rows="4"
+              data-i18n-placeholder="step2cPlaceholder"
+              data-i18n-aria="step2cAria"
+              placeholder="Share any additional details…"
+              aria-label="Additional details"
+            ></textarea>
+          </div>
+          <div class="step__actions step__actions--form">
+            <button type="submit" class="btn btn--primary" data-i18n="submitFeedback">Submit Feedback</button>
+          </div>
+        </form>
+      </section>
+
       <!-- Done state -->
       <section class="step step--center" id="step-done" data-step="done" hidden>
         <h2 class="step__headline step__headline--center" data-i18n="doneHeadline">

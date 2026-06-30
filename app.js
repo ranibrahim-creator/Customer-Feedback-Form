@@ -23,6 +23,9 @@
       optionSpeed: "It took too long to resolve",
       optionAgent: "The agent didn't understand my problem",
       optionOther: "Other",
+      step2cHeadline: "Could you share a bit more detail so we can improve your experience?",
+      step2cPlaceholder: "Share any additional details…",
+      step2cAria: "Additional details",
       optionalCommentsPlaceholder: "Share any additional details…",
       optionalCommentsAria: "Optional comments",
       issueError: "Please select an option to continue.",
@@ -50,6 +53,9 @@
       optionSpeed: "استغرق الحل وقتاً طويلاً",
       optionAgent: "لم يفهم الموظف مشكلتي",
       optionOther: "أخرى",
+      step2cHeadline: "هل يمكنك مشاركة المزيد من التفاصيل حتى نتمكن من تحسين تجربتك؟",
+      step2cPlaceholder: "شارك أي تفاصيل إضافية…",
+      step2cAria: "تفاصيل إضافية",
       optionalCommentsPlaceholder: "شارك أي تفاصيل إضافية…",
       optionalCommentsAria: "تعليقات اختيارية",
       issueError: "يرجى اختيار خيار للمتابعة.",
@@ -63,6 +69,7 @@
     1: document.getElementById("step-1"),
     "2a": document.getElementById("step-2a"),
     "2b": document.getElementById("step-2b"),
+    "2c": document.getElementById("step-2c"),
     done: document.getElementById("step-done"),
   };
 
@@ -132,6 +139,11 @@
     document.getElementById("issue-error").hidden = true;
   }
 
+  function resetStep2c() {
+    var form = document.getElementById("form-2c");
+    if (form) form.reset();
+  }
+
   function getFocusTarget(stepEl) {
     return (
       stepEl.querySelector(".slate__input") ||
@@ -149,6 +161,7 @@
     if (!incoming || nextStep === currentStep) return;
 
     if (nextStep === "2b") resetStep2b();
+    if (nextStep === "2c") resetStep2c();
 
     if (outgoing) {
       outgoing.classList.add("step--exit");
@@ -203,10 +216,19 @@
       document.getElementById("issue-error").hidden = false;
       return;
     }
-    showStep("done");
+    if (selected.value === "other") {
+      showStep("done");
+      return;
+    }
+    showStep("2c");
   });
 
   document.getElementById("form-2a").addEventListener("submit", function (e) {
+    e.preventDefault();
+    showStep("done");
+  });
+
+  document.getElementById("form-2c").addEventListener("submit", function (e) {
     e.preventDefault();
     showStep("done");
   });

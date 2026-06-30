@@ -149,9 +149,11 @@
     if (!headline) return;
     var copy = translations[currentLang];
     var reasonLabel = getReasonLabel(selectedIssueReason, copy);
-    headline.textContent = copy.step2cHeadlineTemplate
+    var mainText = copy.step2cHeadlineTemplate
       .replace("{reason}", reasonLabel)
-      .replace("{optional}", copy.step2cOptional);
+      .replace(/\s*\{optional\}\s*/g, "")
+      .trim();
+    headline.innerHTML = mainText + ' <span class="step__optional">' + copy.step2cOptional + "</span>";
   }
 
   function toggleOtherPanel(show) {

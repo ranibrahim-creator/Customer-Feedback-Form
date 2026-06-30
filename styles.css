@@ -180,6 +180,11 @@ html[dir="rtl"] .slate__input {
   text-align: center;
 }
 
+.step__optional {
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+}
+
 .step__intro .step__headline {
   font-size: var(--font-size-body-md);
   font-weight: var(--font-weight-regular);

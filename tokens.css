@@ -1,0 +1,111 @@
+/**
+ * Weaver Design System — Gray Theme tokens
+ * Source: noon Weaver Design System (Foundations)
+ */
+:root {
+  /* Gray scale (Light) */
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #f0f0f0;
+  --color-gray-300: #ebebeb;
+  --color-gray-400: #dbdbdb;
+  --color-gray-500: #adadad;
+  --color-gray-600: #8c8c8c;
+  --color-gray-700: #595959;
+  --color-gray-800: #2e2e2e;
+  --color-gray-900: #2e2e2e;
+  --color-gray-950: #1a1a1a;
+
+  /* Brand */
+  --color-noon-yellow: #feee00;
+  --color-noon-yellow-hover: #f7df00;
+  --color-noon-yellow-tint: #fffce6;
+  --color-noon-yellow-ring: rgba(254, 238, 0, 0.38);
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-sentiment-coral: #e07a52;
+  --color-sentiment-green: #3d9b6a;
+
+  /* App chrome */
+  --color-skyline: #d4d4d4;
+
+  /* Semantic aliases */
+  --color-bg-page: var(--color-gray-50);
+  --color-bg-surface: var(--color-white);
+  --color-bg-muted: var(--color-gray-100);
+  --color-bg-slate: var(--color-white);
+  --color-text-primary: var(--color-gray-950);
+  --color-text-secondary: var(--color-gray-600);
+  --color-text-placeholder: var(--color-gray-500);
+  --color-text-link: var(--color-gray-600);
+  --color-text-link-hover: var(--color-gray-800);
+  --color-border-default: var(--color-gray-300);
+  --color-border-subtle: #e0e0e0;
+  --color-border-input: #e0e0e0;
+  --color-border-input-idle: #e0e0e0;
+  --color-cta-bg: var(--color-gray-950);
+  --color-cta-bg-hover: var(--color-gray-800);
+  --color-cta-text: var(--color-white);
+  --color-cta-opacity-hover: 0.88;
+  --color-focus-ring-neutral: rgba(26, 26, 26, 0.14);
+
+  /* Typography — Inter */
+  --font-family-base: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-family-ar: "Cairo", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-size-body-md: 0.9375rem;   /* 15px */
+  --font-size-body-sm: 0.875rem;    /* 14px */
+  --font-size-body-xs: 0.8125rem;   /* 13px */
+  --font-size-heading: 1.0625rem;   /* 17px */
+  --font-size-greeting: 1.75rem;    /* 28px */
+  --logo-mark-width: 220px;
+  --font-size-slate-placeholder: 0.9375rem;
+  --line-height-body-md: 1.65;
+  --line-height-body-sm: 1.5;
+  --line-height-heading: 1.55;
+  --line-height-greeting: 1.2;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --letter-spacing-heading: -0.015em;
+  --letter-spacing-greeting: -0.025em;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 6px;
+  --spacing-md: 8px;
+  --spacing-lg: 12px;
+  --spacing-xl: 16px;
+  --spacing-2xl: 20px;
+  --spacing-3xl: 24px;
+  --spacing-4xl: 32px;
+  --spacing-5xl: 40px;
+  --spacing-6xl: 48px;
+  --spacing-7xl: 64px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(15, 17, 20, 0.04);
+  --shadow-component: 0 1px 2px rgba(15, 17, 20, 0.04);
+  --shadow-lg: 0 8px 24px rgba(15, 17, 20, 0.05), 0 2px 6px rgba(15, 17, 20, 0.03);
+  --shadow-card: var(--shadow-lg);
+  --shadow-slate: none;
+
+  /* Layout */
+  --card-max-width: 480px;
+  --logo-gap: 64px;
+  --footer-height: 72px;
+  --lang-switch-inset: var(--spacing-4xl);
+  --button-height-lg: 46px;
+  --slate-min-height: 156px;
+  --transition-base: 0.2s ease;
+  --transition-step: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}

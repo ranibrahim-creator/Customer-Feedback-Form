@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Feedback | noon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <nav class="lang-switch" aria-label="Language">
+      <button type="button" class="lang-switch__btn is-active" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" class="lang-switch__btn" data-lang="ar" aria-pressed="false">AR</button>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="page__brand">
+      <img class="logo-mark" src="assets/noon-logo.svg" width="303" height="88" alt="noon" />
+    </div>
+
+    <div class="card">
+      <!-- STEP 1 -->
+      <section class="step" id="step-1" data-step="1">
+        <div class="step__intro">
+          <p class="step__greeting" data-i18n="greeting">Hala!</p>
+          <h2 class="step__headline" data-i18n="step1Headline">
+            We recently assisted you with your concern. Was your concern handled as needed?
+          </h2>
+        </div>
+        <div class="sentiment-row" role="group" data-i18n-aria="step1ActionsAria" aria-label="Resolution status">
+          <button type="button" class="sentiment-card sentiment-card--not-fixed" data-goto="2b">
+            <span class="sentiment-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.4002 16.0006L3 16.0006C1.8954 16.0006 1 15.1052 1 14.0007V11.8963C1 11.6351 1.0512 11.3764 1.1506 11.1348L4.245 3.61988C4.3993 3.24518 4.7645 3.00068 5.1697 3.00068L22 3.00068C22.5523 3.00068 23 3.44838 23 4.00068L23 14.0007C23 14.5529 22.5523 15.0006 22 15.0006L18.5182 15.0006C18.1932 15.0006 17.8886 15.1585 17.7012 15.424L12.2478 23.1496C12.1053 23.3515 11.8367 23.419 11.6157 23.3085L9.8016 22.4015C8.75 21.8756 8.2069 20.6881 8.4969 19.5486L9.4002 16.0006ZM17 13.4132L17 5.00068L5.8394 5.00068L3 11.8963V14.0007L9.4002 14.0007C10.7049 14.0007 11.6602 15.2297 11.3384 16.4941L10.4351 20.042C10.3771 20.2699 10.4857 20.5074 10.6961 20.6126L11.3572 20.9432L16.0672 14.2706C16.3171 13.9166 16.6366 13.6264 17 13.4132ZM19 13.0007L21 13.0007L21 5.00068H19L19 13.0007Z" fill="currentColor"/>
+              </svg>
+            </span>
+            <span class="sentiment-card__title" data-i18n="sentimentNotFixedTitle">No, it's not fixed</span>
+          </button>
+          <button type="button" class="sentiment-card sentiment-card--all-fixed" data-goto="2a">
+            <span class="sentiment-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14.5998 7.99935H21C22.1046 7.99935 23 8.89478 23 9.99932V12.1037C23 12.3649 22.9488 12.6236 22.8494 12.8652L19.755 20.3801C19.6007 20.7548 19.2355 20.9993 18.8303 20.9993H2C1.44772 20.9993 1 20.5516 1 19.9993V9.99932C1 9.44706 1.44772 8.99935 2 8.99935H5.48184C5.80677 8.99935 6.11143 8.84148 6.29881 8.57603L11.7522 0.850378C11.8947 0.648509 12.1633 0.581001 12.3843 0.691506L14.1984 1.59853C15.25 2.12436 15.7931 3.31194 15.5031 4.45137L14.5998 7.99935ZM7 10.5868V18.9993H18.1606L21 12.1037V9.99932H14.5998C13.2951 9.99932 12.3398 8.7703 12.6616 7.50593L13.5649 3.95796C13.6229 3.73007 13.5143 3.49255 13.3039 3.38739L12.6428 3.05682L7.93275 9.7294C7.68285 10.0834 7.36341 10.3736 7 10.5868ZM5 10.9993H3V18.9993H5V10.9993Z" fill="currentColor"/>
+              </svg>
+            </span>
+            <span class="sentiment-card__title" data-i18n="sentimentAllFixedTitle">Yes, it's fixed</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- STEP 2A — Success path -->
+      <section class="step" id="step-2a" data-step="2a" hidden>
+        <h2 class="step__headline" data-i18n="step2aHeadline">
+          Thank you for your feedback. We're glad we could help.
+        </h2>
+        <form class="step__form" id="form-2a">
+          <div class="slate">
+            <textarea
+              class="slate__input"
+              id="success-feedback"
+              name="successFeedback"
+              rows="4"
+              data-i18n-placeholder="successPlaceholder"
+              data-i18n-aria="successAria"
+              placeholder="We'd love to hear more."
+              aria-label="Optional feedback"
+            ></textarea>
+          </div>
+          <div class="step__actions step__actions--form">
+            <button type="submit" class="btn btn--primary" data-i18n="submitBtn">Submit</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- STEP 2B — Resolution fail path -->
+      <section class="step" id="step-2b" data-step="2b" hidden>
+        <h2 class="step__headline" data-i18n="step2bHeadline">
+          We're sorry your experience did not meet expectations. Please tell us how we can improve.
+        </h2>
+        <p class="step__lede step__lede--sub" data-i18n="step2bSubhead">What went wrong?</p>
+        <form class="step__form" id="form-2b">
+          <fieldset class="option-list" data-i18n-aria="issueOptionsAria">
+            <legend class="visually-hidden" data-i18n="step2bSubhead">What went wrong?</legend>
+            <label class="option-item">
+              <input type="radio" name="issue-reason" value="solution" class="option-item__input" />
+              <span class="option-item__label" data-i18n="optionSolution">The solution didn't work</span>
+            </label>
+            <label class="option-item">
+              <input type="radio" name="issue-reason" value="speed" class="option-item__input" />
+              <span class="option-item__label" data-i18n="optionSpeed">It took too long to resolve</span>
+            </label>
+            <label class="option-item">
+              <input type="radio" name="issue-reason" value="agent" class="option-item__input" />
+              <span class="option-item__label" data-i18n="optionAgent">The agent didn't understand my problem</span>
+            </label>
+            <label class="option-item">
+              <input type="radio" name="issue-reason" value="other" class="option-item__input" />
+              <span class="option-item__label" data-i18n="optionOther">Other</span>
+            </label>
+          </fieldset>
+          <div class="panel--slide" id="details-panel">
+            <label class="field__label" for="additional-details">
+              <span data-i18n="additionalDetailsLabel">Additional details</span>
+              <span class="step__optional" data-i18n="optionalTag">(Optional)</span>
+            </label>
+            <div class="slate">
+              <textarea
+                class="slate__input"
+                id="additional-details"
+                name="additionalDetails"
+                rows="3"
+                data-i18n-placeholder="additionalDetailsPlaceholder"
+                data-i18n-aria="additionalDetailsAria"
+                placeholder="Share any additional details…"
+                aria-label="Additional details"
+              ></textarea>
+            </div>
+          </div>
+          <p class="field__error" id="issue-error" hidden data-i18n="issueError">Please select an option to continue.</p>
+          <div class="step__actions step__actions--form">
+            <button type="submit" class="btn btn--primary" data-i18n="submitFeedback">Submit Feedback</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Done state -->
+      <section class="step step--center" id="step-done" data-step="done" hidden>
+        <h2 class="step__headline step__headline--center" data-i18n="doneHeadline">
+          Thanks! Your feedback means a lot.
+        </h2>
+        <p class="step__lede step__lede--center" data-i18n="doneLede">We'll use it to deliver a better noon experience.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="page-footer" aria-hidden="true"></footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

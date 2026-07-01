@@ -23,14 +23,10 @@
       optionSpeed: "It took too long to resolve",
       optionAgent: "The agent didn't understand my problem",
       optionOther: "Other",
-      step2cHeadlineDefault: "Could you share more details about this issue? (Optional)",
-      step2cHeadlineTemplate: 'Could you share more details about "{reason}"? {optional}',
-      step2cReasonFallback: "this issue",
-      step2cOptional: "(Optional)",
-      step2cPlaceholder: "Share any additional details…",
-      step2cAria: "Additional details",
-      optionalCommentsPlaceholder: "Share any additional details…",
-      optionalCommentsAria: "Optional comments",
+      additionalDetailsLabel: "Additional details",
+      optionalTag: "(Optional)",
+      additionalDetailsPlaceholder: "Share any additional details…",
+      additionalDetailsAria: "Additional details",
       issueError: "Please select an option to continue.",
       submitFeedback: "Submit Feedback",
       doneHeadline: "Thanks! Your feedback means a lot.",
@@ -56,14 +52,10 @@
       optionSpeed: "استغرق الحل وقتاً طويلاً",
       optionAgent: "لم يفهم الموظف مشكلتي",
       optionOther: "أخرى",
-      step2cHeadlineDefault: "هل يمكنك مشاركة المزيد من التفاصيل حول هذه المشكلة؟ (اختياري)",
-      step2cHeadlineTemplate: 'هل يمكنك مشاركة المزيد من التفاصيل حول "{reason}"؟ {optional}',
-      step2cReasonFallback: "هذه المشكلة",
-      step2cOptional: "(اختياري)",
-      step2cPlaceholder: "شارك أي تفاصيل إضافية…",
-      step2cAria: "تفاصيل إضافية",
-      optionalCommentsPlaceholder: "شارك أي تفاصيل إضافية…",
-      optionalCommentsAria: "تعليقات اختيارية",
+      additionalDetailsLabel: "تفاصيل إضافية",
+      optionalTag: "(اختياري)",
+      additionalDetailsPlaceholder: "شارك أي تفاصيل إضافية…",
+      additionalDetailsAria: "تفاصيل إضافية",
       issueError: "يرجى اختيار خيار للمتابعة.",
       submitFeedback: "إرسال الملاحظات",
       doneHeadline: "شكراً! ملاحظاتك تهمنا كثيراً.",
@@ -75,14 +67,12 @@
     1: document.getElementById("step-1"),
     "2a": document.getElementById("step-2a"),
     "2b": document.getElementById("step-2b"),
-    "2c": document.getElementById("step-2c"),
     done: document.getElementById("step-done"),
   };
 
   var currentStep = "1";
   var currentLang = "en";
-  var selectedIssueReason = null;
-  var otherPanel = document.getElementById("other-panel");
+  var detailsPanel = document.getElementById("details-panel");
 
   function getStoredLang() {
     try {
@@ -133,45 +123,18 @@
       /* ignore */
     }
 
-    updateStep2cHeadline();
   }
 
-  function getReasonLabel(reasonValue, copy) {
-    if (!reasonValue) return copy.step2cReasonFallback;
-    if (reasonValue === "solution") return copy.optionSolution;
-    if (reasonValue === "speed") return copy.optionSpeed;
-    if (reasonValue === "agent") return copy.optionAgent;
-    return copy.step2cReasonFallback;
-  }
-
-  function updateStep2cHeadline() {
-    var headline = document.getElementById("step-2c-headline");
-    if (!headline) return;
-    var copy = translations[currentLang];
-    var reasonLabel = getReasonLabel(selectedIssueReason, copy);
-    var mainText = copy.step2cHeadlineTemplate
-      .replace("{reason}", reasonLabel)
-      .replace(/\s*\{optional\}\s*/g, "")
-      .trim();
-    headline.innerHTML = mainText + ' <span class="step__optional">' + copy.step2cOptional + "</span>";
-  }
-
-  function toggleOtherPanel(show) {
-    if (!otherPanel) return;
-    otherPanel.classList.toggle("panel--open", show);
+  function toggleDetailsPanel(show) {
+    if (!detailsPanel) return;
+    detailsPanel.classList.toggle("panel--open", show);
   }
 
   function resetStep2b() {
     var form = document.getElementById("form-2b");
     if (form) form.reset();
-    selectedIssueReason = null;
-    toggleOtherPanel(false);
+    toggleDetailsPanel(false);
     document.getElementById("issue-error").hidden = true;
-  }
-
-  function resetStep2c() {
-    var form = document.getElementById("form-2c");
-    if (form) form.reset();
   }
 
   function getFocusTarget(stepEl) {
@@ -191,7 +154,6 @@
     if (!incoming || nextStep === currentStep) return;
 
     if (nextStep === "2b") resetStep2b();
-    if (nextStep === "2c") resetStep2c();
 
     if (outgoing) {
       outgoing.classList.add("step--exit");
@@ -234,7 +196,12 @@
 
   document.querySelectorAll('input[name="issue-reason"]').forEach(function (radio) {
     radio.addEventListener("change", function () {
-      toggleOtherPanel(radio.value === "other" && radio.checked);
+      var shouldShowDetails = radio.checked && radio.value !== "other";
+      toggleDetailsPanel(shouldShowDetails);
+      if (!shouldShowDetails) {
+        var detailsInput = document.getElementById("additional-details");
+        if (detailsInput) detailsInput.value = "";
+      }
       document.getElementById("issue-error").hidden = true;
     });
   });
@@ -246,21 +213,10 @@
       document.getElementById("issue-error").hidden = false;
       return;
     }
-    if (selected.value === "other") {
-      showStep("done");
-      return;
-    }
-    selectedIssueReason = selected.value;
-    updateStep2cHeadline();
-    showStep("2c");
-  });
-
-  document.getElementById("form-2a").addEventListener("submit", function (e) {
-    e.preventDefault();
     showStep("done");
   });
 
-  document.getElementById("form-2c").addEventListener("submit", function (e) {
+  document.getElementById("form-2a").addEventListener("submit", function (e) {
     e.preventDefault();
     showStep("done");
   });

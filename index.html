@@ -102,45 +102,25 @@
               <span class="option-item__label" data-i18n="optionOther">Other</span>
             </label>
           </fieldset>
-          <div class="panel--slide" id="other-panel">
+          <div class="panel--slide" id="details-panel">
+            <label class="field__label" for="additional-details">
+              <span data-i18n="additionalDetailsLabel">Additional details</span>
+              <span class="step__optional" data-i18n="optionalTag">(Optional)</span>
+            </label>
             <div class="slate">
               <textarea
                 class="slate__input"
-                id="other-comments"
-                name="otherComments"
+                id="additional-details"
+                name="additionalDetails"
                 rows="3"
-                data-i18n-placeholder="optionalCommentsPlaceholder"
-                data-i18n-aria="optionalCommentsAria"
+                data-i18n-placeholder="additionalDetailsPlaceholder"
+                data-i18n-aria="additionalDetailsAria"
                 placeholder="Share any additional details…"
-                aria-label="Optional comments"
+                aria-label="Additional details"
               ></textarea>
             </div>
           </div>
           <p class="field__error" id="issue-error" hidden data-i18n="issueError">Please select an option to continue.</p>
-          <div class="step__actions step__actions--form">
-            <button type="submit" class="btn btn--primary" data-i18n="submitFeedback">Submit Feedback</button>
-          </div>
-        </form>
-      </section>
-
-      <!-- STEP 2C — Additional details for non-other reasons -->
-      <section class="step" id="step-2c" data-step="2c" hidden>
-        <h2 class="step__headline" id="step-2c-headline" data-i18n="step2cHeadlineDefault">
-          Could you share more details about this issue? <span class="step__optional">(Optional)</span>
-        </h2>
-        <form class="step__form" id="form-2c">
-          <div class="slate">
-            <textarea
-              class="slate__input"
-              id="followup-comments"
-              name="followupComments"
-              rows="4"
-              data-i18n-placeholder="step2cPlaceholder"
-              data-i18n-aria="step2cAria"
-              placeholder="Share any additional details…"
-              aria-label="Additional details"
-            ></textarea>
-          </div>
           <div class="step__actions step__actions--form">
             <button type="submit" class="btn btn--primary" data-i18n="submitFeedback">Submit Feedback</button>
           </div>

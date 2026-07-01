@@ -388,7 +388,7 @@ html[dir="rtl"] .sentiment-card__title {
 }
 
 .panel--slide.panel--open {
-  max-height: 200px;
+  max-height: 320px;
   opacity: 1;
   margin-top: 0;
 }

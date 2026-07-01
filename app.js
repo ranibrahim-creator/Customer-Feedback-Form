@@ -197,12 +197,8 @@
   document.querySelectorAll('input[name="issue-reason"]').forEach(function (radio) {
     radio.addEventListener("change", function () {
       var selectedReason = document.querySelector('input[name="issue-reason"]:checked');
-      var shouldShowDetails = selectedReason && selectedReason.value !== "other";
+      var shouldShowDetails = Boolean(selectedReason);
       toggleDetailsPanel(shouldShowDetails);
-      if (!shouldShowDetails) {
-        var detailsInput = document.getElementById("additional-details");
-        if (detailsInput) detailsInput.value = "";
-      }
       document.getElementById("issue-error").hidden = true;
     });
   });

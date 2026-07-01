@@ -196,7 +196,8 @@
 
   document.querySelectorAll('input[name="issue-reason"]').forEach(function (radio) {
     radio.addEventListener("change", function () {
-      var shouldShowDetails = radio.checked && radio.value !== "other";
+      var selectedReason = document.querySelector('input[name="issue-reason"]:checked');
+      var shouldShowDetails = selectedReason && selectedReason.value !== "other";
       toggleDetailsPanel(shouldShowDetails);
       if (!shouldShowDetails) {
         var detailsInput = document.getElementById("additional-details");

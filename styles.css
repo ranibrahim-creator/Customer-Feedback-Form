@@ -552,6 +552,10 @@ html[dir="rtl"] .sentiment-card__title {
     top: var(--spacing-3xl);
     right: var(--spacing-3xl);
   }
+
+  .page__brand {
+    margin-bottom: var(--spacing-3xl);
+  }
 }
 
 /* Responsive */
@@ -568,7 +572,7 @@ html[dir="rtl"] .sentiment-card__title {
   }
 
   .page__brand {
-    margin-bottom: var(--spacing-4xl);
+    margin-bottom: var(--spacing-2xl);
   }
 
   .logo-mark {

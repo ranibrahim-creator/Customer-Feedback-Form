@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Customer Ticket Tracking</title>
+  <style>
+    body {
+      margin: 0;
+      font: 15px/1.45 sans-serif;
+      color: #111;
+      background: #fff;
+    }
+    .page { max-width: 980px; margin: 0 auto; padding: 28px 16px 56px; }
+    h1 { font-size: 22px; font-weight: 700; margin: 0 0 6px; }
+    h2 { font-size: 17px; font-weight: 700; margin: 0 0 4px; }
+    p { margin: 0; color: #333; }
+    .intro { margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid #ccc; }
+    .intro p { margin-top: 6px; }
+    .toc { margin-top: 10px; }
+    .toc a { display: block; width: fit-content; color: #111; margin: 2px 0; }
+    .flow { margin-top: 28px; padding-top: 18px; border-top: 1px solid #ccc; }
+    .src { font-size: 12px; color: #555; margin-bottom: 4px; }
+    .rail { display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; align-items: stretch; }
+    .step { flex: 0 0 200px; border: 1px solid #bbb; background: #fff; }
+    .step-h { padding: 8px; border-bottom: 1px solid #ddd; background: #f5f5f5; font-size: 12px; }
+    .step-h b { display: block; font-size: 13px; margin-top: 2px; }
+    .screen { padding: 10px; font-size: 12px; min-height: 210px; }
+    .screen .line { margin: 0 0 6px; }
+    .screen .box { border: 1px solid #ccc; padding: 6px; margin: 0 0 6px; background: #fafafa; }
+    .screen .btn { border: 1px solid #111; background: #111; color: #fff; padding: 6px; text-align: center; margin-top: 8px; }
+    .screen .btn.alt { background: #fff; color: #111; }
+    .screen ul { margin: 0; padding-left: 16px; }
+    .screen li { margin: 3px 0; }
+    .screen li.active { font-weight: 700; }
+    .arrow { flex: 0 0 28px; display: flex; align-items: center; justify-content: center; color: #666; font-size: 18px; }
+    .note { margin-top: 8px; font-size: 13px; color: #444; }
+    footer { margin-top: 36px; padding-top: 12px; border-top: 1px solid #ccc; font-size: 12px; color: #555; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="intro">
+      <h1>Customer Ticket Tracking</h1>
+      <p>Proposed status screens after noon’s current opening menus. Goal: customers check progress instead of sending follow-ups.</p>
+      <div class="toc">
+        <a href="#f1">1. Never received shipment</a>
+        <a href="#f2">2. Damaged / wrong item</a>
+        <a href="#f3">3. Refund tracking</a>
+        <a href="#f4">4. Request a refund</a>
+        <a href="#f5">5. Wrong refund amount</a>
+        <a href="#f6">6. Return pickup management</a>
+        <a href="#f7">7. My Requests hub</a>
+        <a href="#f8">8. Waiting on customer</a>
+      </div>
+    </header>
+
+    <section class="flow" id="f1">
+      <div class="src">Orders support</div>
+      <h2>1. I never received my shipment</h2>
+      <p>Open request → investigate courier → reship/refund.</p>
+      <div class="rail">
+        <div class="step">
+          <div class="step-h">Step 1<b>Orders support</b></div>
+          <div class="screen">
+            <div class="line">Product: CeraVe gel-cream</div>
+            <ul>
+              <li>I received the wrong item</li>
+              <li>I received a fake item</li>
+              <li>I received a damaged item</li>
+              <li>My item is not working properly</li>
+              <li>My shipment is missing an item</li>
+              <li class="active">I never received my shipment</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 2<b>Submit</b></div>
+          <div class="screen">
+            <div class="box">Preferred fix: Reship or refund</div>
+            <div class="box">+ Photo (optional)</div>
+            <div class="btn">Submit request</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 3<b>Status</b></div>
+          <div class="screen">
+            <div class="line"><b>SR-109384</b> · Investigating</div>
+            <ul>
+              <li>Request received</li>
+              <li class="active">Checking with courier</li>
+              <li>Decision pending</li>
+              <li>Resolved</li>
+            </ul>
+            <div class="box">We’ll notify you. No need to follow up.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 4<b>Resolved</b></div>
+          <div class="screen">
+            <div class="line"><b>Resolved</b></div>
+            <div class="box">Replacement #N-99014 · ships today</div>
+            <div class="btn alt">This didn’t fix it</div>
+          </div>
+        </div>
+      </div>
+      <div class="note">Cuts: “Any update on my missing order?”</div>
+    </section>
+
+    <section class="flow" id="f2">
+      <div class="src">Orders support</div>
+      <h2>2. Damaged / wrong / fake / not working</h2>
+      <p>Same Orders list → evidence → decision.</p>
+      <div class="rail">
+        <div class="step">
+          <div class="step-h">Step 1<b>Pick issue</b></div>
+          <div class="screen">
+            <ul>
+              <li>I received the wrong item</li>
+              <li>I received a fake item</li>
+              <li class="active">I received a damaged item</li>
+              <li>My item is not working properly</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 2<b>Upload proof</b></div>
+          <div class="screen">
+            <div class="box">What happened?</div>
+            <div class="box">+ Photo required</div>
+            <div class="btn">Submit request</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 3<b>Under review</b></div>
+          <div class="screen">
+            <div class="line"><b>SR-109700</b> · Under review</div>
+            <ul>
+              <li>Request received</li>
+              <li class="active">Reviewing evidence</li>
+              <li>Decision</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 4<b>Decision</b></div>
+          <div class="screen">
+            <div class="line"><b>Resolved</b></div>
+            <div class="box">Full refund AED 89 · 3–5 days</div>
+            <div class="btn alt">This didn’t fix it</div>
+          </div>
+        </div>
+      </div>
+      <div class="note">Cuts: “Did you see my photos?” / “Any update?”</div>
+    </section>
+
+    <section class="flow" id="f3">
+      <div class="src">Refunds support</div>
+      <h2>3. Refund tracking</h2>
+      <p>“How long will my refund take?” → live refund status.</p>
+      <div class="rail">
+        <div class="step">
+          <div class="step-h">Step 1<b>Refunds support</b></div>
+          <div class="screen">
+            <ul>
+              <li class="active">Refund tracking<br>How long will my refund take?</li>
+              <li>Returnless refunds</li>
+              <li>Refund amount</li>
+              <li>Request a refund</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 2<b>Your refunds</b></div>
+          <div class="screen">
+            <div class="box">
+              <b>RF-55218</b><br>
+              AED 189 · Visa ••4242<br>
+              Bank processing · ETA 3–5 days
+            </div>
+            <div class="btn">View status</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 3<b>Timeline</b></div>
+          <div class="screen">
+            <ul>
+              <li>Refund approved</li>
+              <li class="active">Sent to bank</li>
+              <li>In your account</li>
+            </ul>
+            <div class="box">No action needed.</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 4<b>Completed</b></div>
+          <div class="screen">
+            <div class="line"><b>Completed</b></div>
+            <div class="box">AED 189 returned · Mar 12</div>
+            <div class="btn alt">Wrong amount? Report it</div>
+          </div>
+        </div>
+      </div>
+      <div class="note">Cuts: “Was I refunded?” / “How long will it take?”</div>
+    </section>
+
+    <section class="flow" id="f4">
+      <div class="src">Refunds support</div>
+      <h2>4. Request a refund</h2>
+      <p>Create refund → land on same tracker as #3.</p>
+      <div class="rail">
+        <div class="step">
+          <div class="step-h">Step 1<b>Start</b></div>
+          <div class="screen">
+            <ul>
+              <li>Refund tracking</li>
+              <li class="active">Request a refund<br>I want to request for a refund</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 2<b>Form</b></div>
+          <div class="screen">
+            <div class="box">Reason</div>
+            <div class="box">Refund to: original payment</div>
+            <div class="box">+ Photos</div>
+            <div class="btn">Submit</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 3<b>Under review</b></div>
+          <div class="screen">
+            <div class="line"><b>RF-55290</b></div>
+            <ul>
+              <li>Request received</li>
+              <li class="active">Reviewing</li>
+              <li>Approved / declined</li>
+              <li>Money returned</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 4<b>Approved</b></div>
+          <div class="screen">
+            <div class="box">AED 189 to Visa ••4242<br>Bank processing · 3–5 days</div>
+            <div class="btn alt">View in Refund tracking</div>
+          </div>
+        </div>
+      </div>
+      <div class="note">One refund object shared by “Request a refund” and “Refund tracking”.</div>
+    </section>
+
+    <section class="flow" id="f5">
+      <div class="src">Refunds support</div>
+      <h2>5. Wrong refund amount</h2>
+      <p>Dispute completed refund → new request linked to original RF.</p>
+      <div class="rail">
+        <div class="step">
+          <div class="step-h">Step 1<b>Entry</b></div>
+          <div class="screen">
+            <ul>
+              <li class="active">Refund amount<br>I received the wrong refund amount</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 2<b>Select refund</b></div>
+          <div class="screen">
+            <div class="box">RF-55218 · AED 189 received<br>Expected: AED 220</div>
+            <div class="btn">Report wrong amount</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 3<b>Review</b></div>
+          <div class="screen">
+            <div class="line"><b>SR-110012</b> linked to RF-55218</div>
+            <ul>
+              <li>Dispute received</li>
+              <li class="active">Finance reviewing</li>
+              <li>Decision</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 4<b>Outcome</b></div>
+          <div class="screen">
+            <div class="box">Extra AED 31 approved<br>Sent to same card</div>
+            <div class="btn alt">Track payout</div>
+          </div>
+        </div>
+      </div>
+      <div class="note">Cuts: repeat chats about partial refunds.</div>
+    </section>
+
+    <section class="flow" id="f6">
+      <div class="src">Returns support</div>
+      <h2>6. Return pickup management</h2>
+      <p>Replace FAQ-only cancel / reschedule / change address with one return status page.</p>
+      <div class="rail">
+        <div class="step">
+          <div class="step-h">Step 1<b>Returns support</b></div>
+          <div class="screen">
+            <ul>
+              <li>Return policy</li>
+              <li>Cancelling a return request</li>
+              <li>Changing a pickup address</li>
+              <li class="active">Rescheduling a pickup</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 2<b>Return status</b></div>
+          <div class="screen">
+            <div class="line"><b>RT-22011</b> · Pickup scheduled</div>
+            <div class="box">Thu 4–6 PM · Marina Gate</div>
+            <ul>
+              <li>Return approved</li>
+              <li class="active">Pickup scheduled</li>
+              <li>Picked up</li>
+              <li>Refund started</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 3<b>Manage</b></div>
+          <div class="screen">
+            <ul>
+              <li class="active">Reschedule pickup</li>
+              <li>Change pickup address</li>
+              <li>Cancel return request</li>
+            </ul>
+            <div class="btn">Save change</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 4<b>Updated</b></div>
+          <div class="screen">
+            <div class="box">Sat 2–4 PM · Marina Gate<br>Confirmed just now</div>
+            <div class="line">Status page refreshes immediately.</div>
+          </div>
+        </div>
+      </div>
+      <div class="note">Cuts: “Did you reschedule?” / “When is pickup?”</div>
+    </section>
+
+    <section class="flow" id="f7">
+      <div class="src">Account hub</div>
+      <h2>7. My Requests</h2>
+      <p>All open requests from Orders / Refunds / Returns in one list.</p>
+      <div class="rail">
+        <div class="step">
+          <div class="step-h">Step 1<b>List</b></div>
+          <div class="screen">
+            <div class="box">SR-109384 · Never received · Active · 2h ago</div>
+            <div class="box">RF-55218 · Refund · Active · today</div>
+            <div class="box">RT-22011 · Return · Resolved · Mar 10</div>
+            <div class="btn">New request</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 2<b>Notification</b></div>
+          <div class="screen">
+            <div class="box">Update on SR-109384<br>Checking with courier</div>
+            <div class="box">Update on RF-55218<br>Sent to your bank</div>
+            <div class="btn">Open request</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 3<b>Open request</b></div>
+          <div class="screen">
+            <div class="line"><b>SR-109384</b></div>
+            <ul>
+              <li>Request received</li>
+              <li class="active">Checking with courier</li>
+              <li>Resolved</li>
+            </ul>
+            <div class="btn alt">Add more details</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 4<b>Reply on same ID</b></div>
+          <div class="screen">
+            <div class="box">Agent: neighbor receive it?</div>
+            <div class="box">Customer: no one has it</div>
+            <div class="btn">Send update</div>
+          </div>
+        </div>
+      </div>
+      <div class="note">Cuts: “Just checking in…” and duplicate tickets.</div>
+    </section>
+
+    <section class="flow" id="f8">
+      <div class="src">Any open request</div>
+      <h2>8. Waiting on customer</h2>
+      <p>When support needs info, status shows Action needed so the customer knows why it’s stuck.</p>
+      <div class="rail">
+        <div class="step">
+          <div class="step-h">Step 1<b>Action needed</b></div>
+          <div class="screen">
+            <div class="line"><b>SR-109700</b> · Action needed</div>
+            <div class="box">Upload a clear photo of the damage to continue.</div>
+            <div class="btn">Upload photo</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 2<b>Customer replies</b></div>
+          <div class="screen">
+            <div class="box">damage.jpg selected</div>
+            <div class="box">Note: corner crushed</div>
+            <div class="btn">Send &amp; continue</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 3<b>Resumes</b></div>
+          <div class="screen">
+            <div class="line">Status flips to Under review</div>
+            <ul>
+              <li>Photo received</li>
+              <li class="active">Specialist reviewing</li>
+              <li>Resolved</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 4<b>Resolved</b></div>
+          <div class="screen">
+            <div class="box">Refund approved · AED 89</div>
+            <div class="btn alt">This didn’t fix it</div>
+          </div>
+        </div>
+      </div>
+      <div class="note">Cuts: “Why is nothing happening?” when case is waiting on the customer.</div>
+    </section>
+
+    <footer>
+      Customer Ticket Tracking — plain proposed flows from noon Orders / Refunds / Returns menus.
+    </footer>
+  </div>
+</body>
+</html>

@@ -4,957 +4,460 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Customer Ticket Tracking</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --text: #111;
-      --muted: #555;
-      --line: #ddd;
-      --bg: #fff;
-      --soft: #f7f7f7;
-      --ok: #1a7f37;
-      --warn: #9a6700;
-      --blue: #0969da;
-    }
-
-    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "IBM Plex Sans", sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.5;
-      font-size: 15px;
-    }
-
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 20px 72px;
-    }
-
-    h1 {
-      margin: 0 0 8px;
-      font-size: 1.75rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-
-    h2 {
-      margin: 0 0 6px;
-      font-size: 1.05rem;
-      font-weight: 600;
-    }
-
-    p { margin: 0; color: var(--muted); }
-
-    .intro {
-      max-width: 62ch;
-      margin-bottom: 32px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .intro p { margin-top: 8px; }
-
-    .toc {
-      margin-top: 14px;
-      display: grid;
-      gap: 4px;
-      font-size: 0.9rem;
-    }
-
-    .toc a {
-      color: var(--text);
-      text-decoration: none;
-      border-bottom: 1px solid var(--line);
-      width: fit-content;
-    }
-
-    .flow {
-      margin-top: 40px;
-      padding-top: 28px;
-      border-top: 1px solid var(--line);
-    }
-
-    .flow-head {
-      margin-bottom: 16px;
-      max-width: 70ch;
-    }
-
-    .flow-head p { margin-top: 4px; }
-
-    .src {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--muted);
-      border: 1px solid var(--line);
-      padding: 2px 6px;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .phone {
-      width: 100%;
-      max-width: 240px;
-      border: 1px solid #bbb;
-      border-radius: 18px;
-      background: #111;
-      padding: 8px;
-    }
-
-    .phone-inner {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      min-height: 420px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .status-bar {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 10px 4px;
-      font-size: 10px;
-      color: #666;
-      font-weight: 500;
-    }
-
-    .nav {
-      display: grid;
-      grid-template-columns: 24px 1fr 24px;
-      align-items: center;
-      padding: 8px 12px 10px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav .title {
-      text-align: center;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    .nav .icon { color: #333; font-size: 1.05rem; line-height: 1; }
-    .nav .icon.right { text-align: right; }
-
-    .product {
-      display: grid;
-      grid-template-columns: 40px 1fr;
-      gap: 10px;
-      align-items: center;
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .product .thumb {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--soft);
-      border: 1px solid var(--line);
-      display: grid;
-      place-items: center;
-      font-size: 0.62rem;
-      font-weight: 600;
-      color: #888;
-    }
-
-    .product .brand {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    .product .name {
-      font-size: 0.8rem;
-      font-weight: 500;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .list { display: grid; }
-
-    .list-item {
-      display: grid;
-      grid-template-columns: 20px 1fr;
-      gap: 10px;
-      align-items: start;
-      padding: 13px 12px;
-      border-bottom: 1px solid var(--line);
-      font-size: 0.86rem;
-    }
-
-    .list-item .doc { color: #888; margin-top: 1px; }
-    .list-item .label { font-weight: 600; color: #222; }
-    .list-item .hint {
-      margin-top: 2px;
-      font-size: 0.76rem;
-      color: var(--muted);
-      font-weight: 400;
-    }
-
-    .list-item.active { background: var(--soft); }
-
-    .screen-body {
-      padding: 12px;
-      display: grid;
-      gap: 8px;
-      flex: 1;
-    }
-
-    .cta {
-      margin-top: auto;
-      border: 0;
-      background: #111;
-      color: #fff;
-      font: inherit;
-      font-weight: 500;
-      font-size: 0.82rem;
-      padding: 11px;
-      text-align: center;
-    }
-
-    .cta.secondary {
-      background: #fff;
+      font: 15px/1.45 sans-serif;
       color: #111;
-      border: 1px solid #111;
-    }
-
-    .request-card {
-      border: 1px solid var(--line);
-      padding: 10px;
-      display: grid;
-      gap: 6px;
       background: #fff;
     }
-
-    .request-id {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .request-title {
-      font-weight: 600;
-      font-size: 0.88rem;
-    }
-
-    .pill {
-      display: inline-flex;
-      width: fit-content;
-      padding: 2px 7px;
-      font-size: 0.68rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      border: 1px solid var(--line);
-      background: var(--soft);
-      color: var(--muted);
-    }
-
-    .pill.open { color: var(--warn); border-color: #e5d4a1; background: #fff8e8; }
-    .pill.progress { color: var(--blue); border-color: #b6d4fe; background: #eff6ff; }
-    .pill.done { color: var(--ok); border-color: #b7e0c2; background: #eefbf1; }
-
-    .timeline { display: grid; }
-
-    .tl-item {
-      display: grid;
-      grid-template-columns: 14px 1fr;
-      gap: 8px;
-      position: relative;
-      padding-bottom: 12px;
-    }
-
-    .tl-item:last-child { padding-bottom: 0; }
-
-    .tl-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      margin-top: 3px;
-      background: #ccc;
-      z-index: 1;
-    }
-
-    .tl-item.done .tl-dot { background: var(--ok); }
-    .tl-item.current .tl-dot { background: #111; }
-
-    .tl-item::before {
-      content: "";
-      position: absolute;
-      left: 4px;
-      top: 13px;
-      bottom: 0;
-      width: 1px;
-      background: var(--line);
-    }
-
-    .tl-item:last-child::before { display: none; }
-
-    .tl-text strong {
-      display: block;
-      font-size: 0.78rem;
-      font-weight: 500;
-    }
-
-    .tl-text span {
-      font-size: 0.7rem;
-      color: var(--muted);
-    }
-
-    .notif {
-      border: 1px solid var(--line);
-      background: var(--soft);
-      padding: 9px 10px;
-      font-size: 0.75rem;
-      display: grid;
-      gap: 3px;
-    }
-
-    .notif strong {
-      font-size: 0.72rem;
-      font-weight: 600;
-    }
-
-    .mini-meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.7rem;
-      color: var(--muted);
-    }
-
-    .form-field { display: grid; gap: 3px; font-size: 0.76rem; }
-    .form-field label { color: var(--muted); }
-
-    .form-field .box {
-      border: 1px solid var(--line);
-      padding: 8px;
-      background: #fff;
-      min-height: 32px;
-    }
-
-    .form-field .box.tall { min-height: 56px; }
-
-    .upload {
-      border: 1px dashed #bbb;
-      padding: 12px;
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--muted);
-      background: var(--soft);
-    }
-
-    .bubble {
-      padding: 9px 10px;
-      font-size: 0.78rem;
-      border: 1px solid var(--line);
-      background: var(--soft);
-    }
-
-    .home-list { display: grid; gap: 7px; }
-
-    .home-item {
-      border: 1px solid var(--line);
-      padding: 9px;
-      display: grid;
-      gap: 3px;
-      background: #fff;
-    }
-
-    .home-item .row {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .rail {
-      display: flex;
-      align-items: stretch;
-      overflow-x: auto;
-      padding: 4px 0 12px;
-    }
-
-    .step {
-      flex: 0 0 auto;
-      width: 240px;
-      display: grid;
-      gap: 8px;
-    }
-
-    .step-label {
-      display: grid;
-      gap: 2px;
-      min-height: 48px;
-    }
-
-    .step-num {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .step-title {
-      font-weight: 600;
-      font-size: 0.88rem;
-    }
-
-    .arrow {
-      flex: 0 0 auto;
-      width: 44px;
-      display: grid;
-      place-items: center;
-      align-self: center;
-      margin-top: 62px;
-      position: relative;
-    }
-
-    .arrow svg { width: 36px; height: 20px; }
-
-    .arrow .tag {
-      position: absolute;
-      top: -16px;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--muted);
-      background: #fff;
-      border: 1px solid var(--line);
-      padding: 2px 5px;
-    }
-
-    .note {
-      margin-top: 12px;
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      background: var(--soft);
-      font-size: 0.88rem;
-      color: var(--muted);
-      max-width: 72ch;
-    }
-
-    footer {
-      margin-top: 48px;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.82rem;
-    }
+    .page { max-width: 980px; margin: 0 auto; padding: 28px 16px 56px; }
+    h1 { font-size: 22px; font-weight: 700; margin: 0 0 6px; }
+    h2 { font-size: 17px; font-weight: 700; margin: 0 0 4px; }
+    p { margin: 0; color: #333; }
+    .intro { margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid #ccc; }
+    .intro p { margin-top: 6px; }
+    .toc { margin-top: 10px; }
+    .toc a { display: block; width: fit-content; color: #111; margin: 2px 0; }
+    .flow { margin-top: 28px; padding-top: 18px; border-top: 1px solid #ccc; }
+    .src { font-size: 12px; color: #555; margin-bottom: 4px; }
+    .rail { display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; align-items: stretch; }
+    .step { flex: 0 0 200px; border: 1px solid #bbb; background: #fff; }
+    .step-h { padding: 8px; border-bottom: 1px solid #ddd; background: #f5f5f5; font-size: 12px; }
+    .step-h b { display: block; font-size: 13px; margin-top: 2px; }
+    .screen { padding: 10px; font-size: 12px; min-height: 210px; }
+    .screen .line { margin: 0 0 6px; }
+    .screen .box { border: 1px solid #ccc; padding: 6px; margin: 0 0 6px; background: #fafafa; }
+    .screen .btn { border: 1px solid #111; background: #111; color: #fff; padding: 6px; text-align: center; margin-top: 8px; }
+    .screen .btn.alt { background: #fff; color: #111; }
+    .screen ul { margin: 0; padding-left: 16px; }
+    .screen li { margin: 3px 0; }
+    .screen li.active { font-weight: 700; }
+    .arrow { flex: 0 0 28px; display: flex; align-items: center; justify-content: center; color: #666; font-size: 18px; }
+    .note { margin-top: 8px; font-size: 13px; color: #444; }
+    footer { margin-top: 36px; padding-top: 12px; border-top: 1px solid #ccc; font-size: 12px; color: #555; }
   </style>
 </head>
 <body>
   <div class="page">
     <header class="intro">
       <h1>Customer Ticket Tracking</h1>
-      <p>
-        Proposed tracking screens after noon’s current opening menus:
-        Orders support, Refunds support, Returns support.
-      </p>
+      <p>Proposed status screens after noon’s current opening menus. Goal: customers check progress instead of sending follow-ups.</p>
       <div class="toc">
-        <a href="#flow-a">1. Orders → Never received shipment</a>
-        <a href="#flow-b">2. Refunds → Refund tracking</a>
-        <a href="#flow-c">3. My Requests hub</a>
+        <a href="#f1">1. Never received shipment</a>
+        <a href="#f2">2. Damaged / wrong item</a>
+        <a href="#f3">3. Refund tracking</a>
+        <a href="#f4">4. Request a refund</a>
+        <a href="#f5">5. Wrong refund amount</a>
+        <a href="#f6">6. Return pickup management</a>
+        <a href="#f7">7. My Requests hub</a>
+        <a href="#f8">8. Waiting on customer</a>
       </div>
     </header>
 
-    <!-- FLOW 1 -->
-    <section class="flow" id="flow-a">
-      <div class="flow-head">
-        <div class="src">From: Orders support</div>
-        <h2>1. I never received my shipment</h2>
-        <p>Same opening list as today → create request → status timeline.</p>
-      </div>
-
+    <section class="flow" id="f1">
+      <div class="src">Orders support</div>
+      <h2>1. I never received my shipment</h2>
+      <p>Open request → investigate courier → reship/refund.</p>
       <div class="rail">
         <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 1</div>
-            <div class="step-title">Orders support</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Orders support</div>
-                <div class="icon right">×</div>
-              </div>
-              <div class="product">
-                <div class="thumb">CV</div>
-                <div>
-                  <div class="brand">CeraVe</div>
-                  <div class="name">Oil Control Moisturising Gel-Cream…</div>
-                </div>
-              </div>
-              <div class="list">
-                <div class="list-item"><span class="doc">▤</span><div class="label">I received the wrong item</div></div>
-                <div class="list-item"><span class="doc">▤</span><div class="label">I received a fake item</div></div>
-                <div class="list-item"><span class="doc">▤</span><div class="label">I received a damaged item</div></div>
-                <div class="list-item"><span class="doc">▤</span><div class="label">My item is not working properly</div></div>
-                <div class="list-item"><span class="doc">▤</span><div class="label">My shipment is missing an item</div></div>
-                <div class="list-item active"><span class="doc">▤</span><div class="label">I never received my shipment</div></div>
-              </div>
-            </div>
+          <div class="step-h">Step 1<b>Orders support</b></div>
+          <div class="screen">
+            <div class="line">Product: CeraVe gel-cream</div>
+            <ul>
+              <li>I received the wrong item</li>
+              <li>I received a fake item</li>
+              <li>I received a damaged item</li>
+              <li>My item is not working properly</li>
+              <li>My shipment is missing an item</li>
+              <li class="active">I never received my shipment</li>
+            </ul>
           </div>
         </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Next</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
+        <div class="arrow">→</div>
         <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 2</div>
-            <div class="step-title">Submit request</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Never received</div>
-                <div class="icon right">×</div>
-              </div>
-              <div class="product">
-                <div class="thumb">CV</div>
-                <div>
-                  <div class="brand">Order #N-48291</div>
-                  <div class="name">Marked delivered · not received</div>
-                </div>
-              </div>
-              <div class="screen-body">
-                <div class="form-field">
-                  <label>Preferred fix</label>
-                  <div class="box">Reship or refund</div>
-                </div>
-                <div class="upload">+ Add photo (optional)</div>
-                <div class="cta">Submit request</div>
-              </div>
-            </div>
+          <div class="step-h">Step 2<b>Submit</b></div>
+          <div class="screen">
+            <div class="box">Preferred fix: Reship or refund</div>
+            <div class="box">+ Photo (optional)</div>
+            <div class="btn">Submit request</div>
           </div>
         </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Track</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
+        <div class="arrow">→</div>
         <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 3</div>
-            <div class="step-title">Request status</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">SR-109384</div>
-                <div class="icon right">×</div>
-              </div>
-              <div class="screen-body">
-                <span class="pill progress">Investigating delivery</span>
-                <div class="timeline">
-                  <div class="tl-item done">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Request received</strong><span>Today, 9:41 AM</span></div>
-                  </div>
-                  <div class="tl-item current">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Checking with courier</strong><span>Updated 11:05 AM</span></div>
-                  </div>
-                  <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Reship or refund</strong><span>Pending</span></div>
-                  </div>
-                  <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Resolved</strong><span>Pending</span></div>
-                  </div>
-                </div>
-                <div class="notif"><strong>Updates on</strong>We’ll notify you — no need to follow up.</div>
-              </div>
-            </div>
+          <div class="step-h">Step 3<b>Status</b></div>
+          <div class="screen">
+            <div class="line"><b>SR-109384</b> · Investigating</div>
+            <ul>
+              <li>Request received</li>
+              <li class="active">Checking with courier</li>
+              <li>Decision pending</li>
+              <li>Resolved</li>
+            </ul>
+            <div class="box">We’ll notify you. No need to follow up.</div>
           </div>
         </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Done</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
+        <div class="arrow">→</div>
         <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 4</div>
-            <div class="step-title">Resolved</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">SR-109384</div>
-                <div class="icon right">×</div>
-              </div>
-              <div class="screen-body">
-                <span class="pill done">Resolved</span>
-                <div class="request-card">
-                  <div class="request-title">Replacement #N-99014</div>
-                  <div class="mini-meta"><span>Ships today</span><span>Track in Orders</span></div>
-                </div>
-                <div class="bubble">Courier confirmed a delivery exception. Replacement arranged.</div>
-                <div class="cta secondary">This didn’t fix it</div>
-              </div>
-            </div>
+          <div class="step-h">Step 4<b>Resolved</b></div>
+          <div class="screen">
+            <div class="line"><b>Resolved</b></div>
+            <div class="box">Replacement #N-99014 · ships today</div>
+            <div class="btn alt">This didn’t fix it</div>
           </div>
         </div>
       </div>
-      <div class="note">Same pattern for damaged / wrong / missing item from the Orders support list.</div>
+      <div class="note">Cuts: “Any update on my missing order?”</div>
     </section>
 
-    <!-- FLOW 2 -->
-    <section class="flow" id="flow-b">
-      <div class="flow-head">
-        <div class="src">From: Refunds support</div>
-        <h2>2. Refund tracking</h2>
-        <p>Current “How long will my refund take?” → open live refund status instead of FAQ-only.</p>
-      </div>
-
+    <section class="flow" id="f2">
+      <div class="src">Orders support</div>
+      <h2>2. Damaged / wrong / fake / not working</h2>
+      <p>Same Orders list → evidence → decision.</p>
       <div class="rail">
         <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 1</div>
-            <div class="step-title">Refunds support</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Refunds support</div>
-                <div class="icon right">×</div>
-              </div>
-              <div class="product">
-                <div class="thumb">CV</div>
-                <div>
-                  <div class="brand">CeraVe</div>
-                  <div class="name">Oil Control Moisturising Gel-Cream…</div>
-                </div>
-              </div>
-              <div class="list">
-                <div class="list-item active">
-                  <span class="doc">▤</span>
-                  <div>
-                    <div class="label">Refund tracking</div>
-                    <div class="hint">How long will my refund take?</div>
-                  </div>
-                </div>
-                <div class="list-item">
-                  <span class="doc">▤</span>
-                  <div>
-                    <div class="label">Returnless refunds</div>
-                    <div class="hint">Refunds without returning an item</div>
-                  </div>
-                </div>
-                <div class="list-item">
-                  <span class="doc">▤</span>
-                  <div>
-                    <div class="label">Refund amount</div>
-                    <div class="hint">I received the wrong refund amount</div>
-                  </div>
-                </div>
-                <div class="list-item">
-                  <span class="doc">▤</span>
-                  <div>
-                    <div class="label">Request a refund</div>
-                    <div class="hint">I want to request for a refund</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="step-h">Step 1<b>Pick issue</b></div>
+          <div class="screen">
+            <ul>
+              <li>I received the wrong item</li>
+              <li>I received a fake item</li>
+              <li class="active">I received a damaged item</li>
+              <li>My item is not working properly</li>
+            </ul>
           </div>
         </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Open</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
+        <div class="arrow">→</div>
         <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 2</div>
-            <div class="step-title">Active refunds</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Your refunds</div>
-                <div class="icon right">×</div>
-              </div>
-              <div class="screen-body">
-                <div class="request-card">
-                  <div class="request-id">Refund · RF-55218</div>
-                  <div class="request-title">AED 189 · Visa ••4242</div>
-                  <span class="pill progress">Bank processing</span>
-                  <div class="mini-meta"><span>ETA 3–5 days</span><span>Updated today</span></div>
-                </div>
-                <div class="cta">View refund status</div>
-              </div>
-            </div>
+          <div class="step-h">Step 2<b>Upload proof</b></div>
+          <div class="screen">
+            <div class="box">What happened?</div>
+            <div class="box">+ Photo required</div>
+            <div class="btn">Submit request</div>
           </div>
         </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Track</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
+        <div class="arrow">→</div>
         <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 3</div>
-            <div class="step-title">Refund status</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">RF-55218</div>
-                <div class="icon right">×</div>
-              </div>
-              <div class="screen-body">
-                <span class="pill progress">Bank processing</span>
-                <div class="timeline">
-                  <div class="tl-item done">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Refund approved</strong><span>Mon, 1:20 PM</span></div>
-                  </div>
-                  <div class="tl-item current">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Sent to your bank</strong><span>Tue, 10:02 AM</span></div>
-                  </div>
-                  <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>In your account</strong><span>Usually 3–5 days</span></div>
-                  </div>
-                </div>
-                <div class="notif"><strong>No action needed</strong>We’ll notify you when it’s completed.</div>
-              </div>
-            </div>
+          <div class="step-h">Step 3<b>Under review</b></div>
+          <div class="screen">
+            <div class="line"><b>SR-109700</b> · Under review</div>
+            <ul>
+              <li>Request received</li>
+              <li class="active">Reviewing evidence</li>
+              <li>Decision</li>
+            </ul>
           </div>
         </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Done</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
+        <div class="arrow">→</div>
         <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 4</div>
-            <div class="step-title">Completed</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">RF-55218</div>
-                <div class="icon right">×</div>
-              </div>
-              <div class="screen-body">
-                <span class="pill done">Completed</span>
-                <div class="request-card">
-                  <div class="request-title">AED 189 returned</div>
-                  <div class="mini-meta"><span>Visa ••4242</span><span>Mar 12</span></div>
-                </div>
-                <div class="cta secondary">Wrong amount? Report it</div>
-              </div>
-            </div>
+          <div class="step-h">Step 4<b>Decision</b></div>
+          <div class="screen">
+            <div class="line"><b>Resolved</b></div>
+            <div class="box">Full refund AED 89 · 3–5 days</div>
+            <div class="btn alt">This didn’t fix it</div>
           </div>
         </div>
       </div>
-      <div class="note">“Request a refund” from the same menu creates a request that lands on this same tracker.</div>
+      <div class="note">Cuts: “Did you see my photos?” / “Any update?”</div>
     </section>
 
-    <!-- FLOW 3 -->
-    <section class="flow" id="flow-c">
-      <div class="flow-head">
-        <div class="src">Account · all support requests</div>
-        <h2>3. My Requests</h2>
-        <p>Hub for every request opened from Orders / Refunds / Returns support.</p>
-      </div>
-
+    <section class="flow" id="f3">
+      <div class="src">Refunds support</div>
+      <h2>3. Refund tracking</h2>
+      <p>“How long will my refund take?” → live refund status.</p>
       <div class="rail">
         <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 1</div>
-            <div class="step-title">My Requests</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">My Requests</div>
-                <div class="icon right">×</div>
-              </div>
-              <div class="screen-body">
-                <div class="home-list">
-                  <div class="home-item">
-                    <div class="row">
-                      <strong style="font-size:0.84rem">Never received shipment</strong>
-                      <span class="pill progress">Active</span>
-                    </div>
-                    <div class="mini-meta"><span>SR-109384</span><span>Updated 2h ago</span></div>
-                  </div>
-                  <div class="home-item">
-                    <div class="row">
-                      <strong style="font-size:0.84rem">Refund tracking</strong>
-                      <span class="pill progress">Active</span>
-                    </div>
-                    <div class="mini-meta"><span>RF-55218</span><span>Updated today</span></div>
-                  </div>
-                  <div class="home-item">
-                    <div class="row">
-                      <strong style="font-size:0.84rem">Return pickup</strong>
-                      <span class="pill done">Resolved</span>
-                    </div>
-                    <div class="mini-meta"><span>RT-22011</span><span>Mar 10</span></div>
-                  </div>
-                </div>
-                <div class="cta">New request</div>
-              </div>
-            </div>
+          <div class="step-h">Step 1<b>Refunds support</b></div>
+          <div class="screen">
+            <ul>
+              <li class="active">Refund tracking<br>How long will my refund take?</li>
+              <li>Returnless refunds</li>
+              <li>Refund amount</li>
+              <li>Request a refund</li>
+            </ul>
           </div>
         </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Notify</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
+        <div class="arrow">→</div>
         <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 2</div>
-            <div class="step-title">Status notification</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Notifications</div>
-                <div class="icon right">×</div>
-              </div>
-              <div class="screen-body">
-                <div class="notif">
-                  <strong>Update on SR-109384</strong>
-                  Checking with courier — usually resolved in 24–48h.
-                </div>
-                <div class="notif">
-                  <strong>Update on RF-55218</strong>
-                  Refund sent to your bank.
-                </div>
-                <div class="cta">Open request</div>
-              </div>
+          <div class="step-h">Step 2<b>Your refunds</b></div>
+          <div class="screen">
+            <div class="box">
+              <b>RF-55218</b><br>
+              AED 189 · Visa ••4242<br>
+              Bank processing · ETA 3–5 days
             </div>
+            <div class="btn">View status</div>
           </div>
         </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Open</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
+        <div class="arrow">→</div>
         <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 3</div>
-            <div class="step-title">Request page</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">SR-109384</div>
-                <div class="icon right">×</div>
-              </div>
-              <div class="screen-body">
-                <span class="pill progress">Investigating delivery</span>
-                <div class="timeline">
-                  <div class="tl-item done">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Request received</strong><span>Today, 9:41 AM</span></div>
-                  </div>
-                  <div class="tl-item current">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Checking with courier</strong><span>Updated 11:05 AM</span></div>
-                  </div>
-                  <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Resolved</strong><span>Pending</span></div>
-                  </div>
-                </div>
-                <div class="cta secondary">Add more details</div>
-              </div>
-            </div>
+          <div class="step-h">Step 3<b>Timeline</b></div>
+          <div class="screen">
+            <ul>
+              <li>Refund approved</li>
+              <li class="active">Sent to bank</li>
+              <li>In your account</li>
+            </ul>
+            <div class="box">No action needed.</div>
           </div>
         </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Reply</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
+        <div class="arrow">→</div>
         <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 4</div>
-            <div class="step-title">Add details</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">SR-109384</div>
-                <div class="icon right">×</div>
-              </div>
-              <div class="screen-body">
-                <div class="bubble">Could a neighbor have received it?</div>
-                <div class="form-field">
-                  <label>Your reply</label>
-                  <div class="box tall">Checked neighbors — no one has it.</div>
-                </div>
-                <div class="upload">+ Attach screenshot</div>
-                <div class="cta">Send update</div>
-              </div>
-            </div>
+          <div class="step-h">Step 4<b>Completed</b></div>
+          <div class="screen">
+            <div class="line"><b>Completed</b></div>
+            <div class="box">AED 189 returned · Mar 12</div>
+            <div class="btn alt">Wrong amount? Report it</div>
           </div>
         </div>
       </div>
-      <div class="note">Also covers Returns support actions (cancel / reschedule / change address) by opening the return request from this list.</div>
+      <div class="note">Cuts: “Was I refunded?” / “How long will it take?”</div>
+    </section>
+
+    <section class="flow" id="f4">
+      <div class="src">Refunds support</div>
+      <h2>4. Request a refund</h2>
+      <p>Create refund → land on same tracker as #3.</p>
+      <div class="rail">
+        <div class="step">
+          <div class="step-h">Step 1<b>Start</b></div>
+          <div class="screen">
+            <ul>
+              <li>Refund tracking</li>
+              <li class="active">Request a refund<br>I want to request for a refund</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 2<b>Form</b></div>
+          <div class="screen">
+            <div class="box">Reason</div>
+            <div class="box">Refund to: original payment</div>
+            <div class="box">+ Photos</div>
+            <div class="btn">Submit</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 3<b>Under review</b></div>
+          <div class="screen">
+            <div class="line"><b>RF-55290</b></div>
+            <ul>
+              <li>Request received</li>
+              <li class="active">Reviewing</li>
+              <li>Approved / declined</li>
+              <li>Money returned</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 4<b>Approved</b></div>
+          <div class="screen">
+            <div class="box">AED 189 to Visa ••4242<br>Bank processing · 3–5 days</div>
+            <div class="btn alt">View in Refund tracking</div>
+          </div>
+        </div>
+      </div>
+      <div class="note">One refund object shared by “Request a refund” and “Refund tracking”.</div>
+    </section>
+
+    <section class="flow" id="f5">
+      <div class="src">Refunds support</div>
+      <h2>5. Wrong refund amount</h2>
+      <p>Dispute completed refund → new request linked to original RF.</p>
+      <div class="rail">
+        <div class="step">
+          <div class="step-h">Step 1<b>Entry</b></div>
+          <div class="screen">
+            <ul>
+              <li class="active">Refund amount<br>I received the wrong refund amount</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 2<b>Select refund</b></div>
+          <div class="screen">
+            <div class="box">RF-55218 · AED 189 received<br>Expected: AED 220</div>
+            <div class="btn">Report wrong amount</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 3<b>Review</b></div>
+          <div class="screen">
+            <div class="line"><b>SR-110012</b> linked to RF-55218</div>
+            <ul>
+              <li>Dispute received</li>
+              <li class="active">Finance reviewing</li>
+              <li>Decision</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 4<b>Outcome</b></div>
+          <div class="screen">
+            <div class="box">Extra AED 31 approved<br>Sent to same card</div>
+            <div class="btn alt">Track payout</div>
+          </div>
+        </div>
+      </div>
+      <div class="note">Cuts: repeat chats about partial refunds.</div>
+    </section>
+
+    <section class="flow" id="f6">
+      <div class="src">Returns support</div>
+      <h2>6. Return pickup management</h2>
+      <p>Replace FAQ-only cancel / reschedule / change address with one return status page.</p>
+      <div class="rail">
+        <div class="step">
+          <div class="step-h">Step 1<b>Returns support</b></div>
+          <div class="screen">
+            <ul>
+              <li>Return policy</li>
+              <li>Cancelling a return request</li>
+              <li>Changing a pickup address</li>
+              <li class="active">Rescheduling a pickup</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 2<b>Return status</b></div>
+          <div class="screen">
+            <div class="line"><b>RT-22011</b> · Pickup scheduled</div>
+            <div class="box">Thu 4–6 PM · Marina Gate</div>
+            <ul>
+              <li>Return approved</li>
+              <li class="active">Pickup scheduled</li>
+              <li>Picked up</li>
+              <li>Refund started</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 3<b>Manage</b></div>
+          <div class="screen">
+            <ul>
+              <li class="active">Reschedule pickup</li>
+              <li>Change pickup address</li>
+              <li>Cancel return request</li>
+            </ul>
+            <div class="btn">Save change</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 4<b>Updated</b></div>
+          <div class="screen">
+            <div class="box">Sat 2–4 PM · Marina Gate<br>Confirmed just now</div>
+            <div class="line">Status page refreshes immediately.</div>
+          </div>
+        </div>
+      </div>
+      <div class="note">Cuts: “Did you reschedule?” / “When is pickup?”</div>
+    </section>
+
+    <section class="flow" id="f7">
+      <div class="src">Account hub</div>
+      <h2>7. My Requests</h2>
+      <p>All open requests from Orders / Refunds / Returns in one list.</p>
+      <div class="rail">
+        <div class="step">
+          <div class="step-h">Step 1<b>List</b></div>
+          <div class="screen">
+            <div class="box">SR-109384 · Never received · Active · 2h ago</div>
+            <div class="box">RF-55218 · Refund · Active · today</div>
+            <div class="box">RT-22011 · Return · Resolved · Mar 10</div>
+            <div class="btn">New request</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 2<b>Notification</b></div>
+          <div class="screen">
+            <div class="box">Update on SR-109384<br>Checking with courier</div>
+            <div class="box">Update on RF-55218<br>Sent to your bank</div>
+            <div class="btn">Open request</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 3<b>Open request</b></div>
+          <div class="screen">
+            <div class="line"><b>SR-109384</b></div>
+            <ul>
+              <li>Request received</li>
+              <li class="active">Checking with courier</li>
+              <li>Resolved</li>
+            </ul>
+            <div class="btn alt">Add more details</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 4<b>Reply on same ID</b></div>
+          <div class="screen">
+            <div class="box">Agent: neighbor receive it?</div>
+            <div class="box">Customer: no one has it</div>
+            <div class="btn">Send update</div>
+          </div>
+        </div>
+      </div>
+      <div class="note">Cuts: “Just checking in…” and duplicate tickets.</div>
+    </section>
+
+    <section class="flow" id="f8">
+      <div class="src">Any open request</div>
+      <h2>8. Waiting on customer</h2>
+      <p>When support needs info, status shows Action needed so the customer knows why it’s stuck.</p>
+      <div class="rail">
+        <div class="step">
+          <div class="step-h">Step 1<b>Action needed</b></div>
+          <div class="screen">
+            <div class="line"><b>SR-109700</b> · Action needed</div>
+            <div class="box">Upload a clear photo of the damage to continue.</div>
+            <div class="btn">Upload photo</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 2<b>Customer replies</b></div>
+          <div class="screen">
+            <div class="box">damage.jpg selected</div>
+            <div class="box">Note: corner crushed</div>
+            <div class="btn">Send &amp; continue</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 3<b>Resumes</b></div>
+          <div class="screen">
+            <div class="line">Status flips to Under review</div>
+            <ul>
+              <li>Photo received</li>
+              <li class="active">Specialist reviewing</li>
+              <li>Resolved</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-h">Step 4<b>Resolved</b></div>
+          <div class="screen">
+            <div class="box">Refund approved · AED 89</div>
+            <div class="btn alt">This didn’t fix it</div>
+          </div>
+        </div>
+      </div>
+      <div class="note">Cuts: “Why is nothing happening?” when case is waiting on the customer.</div>
     </section>
 
     <footer>
-      Customer Ticket Tracking — minimal proposed flows from noon Orders / Refunds opening menus + My Requests.
+      Customer Ticket Tracking — plain proposed flows from noon Orders / Refunds / Returns menus.
     </footer>
   </div>
 </body>

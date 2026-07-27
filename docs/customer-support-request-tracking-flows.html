@@ -6,158 +6,112 @@
   <title>Customer Ticket Tracking</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --ink: #132033;
-      --ink-soft: #3a4a5f;
-      --paper: #f6f3ee;
-      --paper-2: #ebe6dc;
-      --panel: #ffffff;
-      --line: #d7d0c4;
-      --accent: #0f766e;
-      --accent-2: #ea580c;
-      --ok: #15803d;
-      --warn: #b45309;
-      --sky: #e8f4f2;
-      --shadow: 0 18px 40px rgba(19, 32, 51, 0.12);
+      --text: #111;
+      --muted: #555;
+      --line: #ddd;
+      --bg: #fff;
+      --soft: #f7f7f7;
+      --ok: #1a7f37;
+      --warn: #9a6700;
+      --blue: #0969da;
     }
 
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "Outfit", sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(1200px 600px at 10% -10%, #d9efe9 0%, transparent 55%),
-        radial-gradient(900px 500px at 100% 0%, #ffe7d4 0%, transparent 50%),
-        linear-gradient(180deg, #f8f5f0 0%, #efe9df 100%);
-      line-height: 1.45;
+      font-family: "IBM Plex Sans", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+      font-size: 15px;
     }
 
     .page {
-      max-width: 1180px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 48px 24px 80px;
-    }
-
-    header.hero {
-      display: grid;
-      gap: 10px;
-      margin-bottom: 36px;
-      max-width: 640px;
+      padding: 40px 20px 72px;
     }
 
     h1 {
-      font-family: "Fraunces", Georgia, serif;
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 700;
-      line-height: 1.1;
-      margin: 0;
+      margin: 0 0 8px;
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
     }
 
-    .lede {
-      margin: 0;
+    h2 {
+      margin: 0 0 6px;
       font-size: 1.05rem;
-      color: var(--ink-soft);
+      font-weight: 600;
     }
+
+    p { margin: 0; color: var(--muted); }
+
+    .intro {
+      max-width: 62ch;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .intro p { margin-top: 8px; }
 
     .toc {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 16px;
-      margin-top: 4px;
-      font-size: 0.92rem;
+      margin-top: 14px;
+      display: grid;
+      gap: 4px;
+      font-size: 0.9rem;
     }
 
     .toc a {
-      color: var(--accent);
+      color: var(--text);
       text-decoration: none;
-      font-weight: 600;
-      border-bottom: 1px solid #b7d8d3;
+      border-bottom: 1px solid var(--line);
+      width: fit-content;
     }
 
     .flow {
-      margin-top: 48px;
-      padding-top: 8px;
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
     }
 
     .flow-head {
-      display: grid;
-      gap: 6px;
-      margin-bottom: 22px;
-      max-width: 640px;
+      margin-bottom: 16px;
+      max-width: 70ch;
     }
 
-    .flow-head h2 {
-      font-family: "Fraunces", Georgia, serif;
-      font-size: 1.55rem;
-      margin: 0;
-    }
+    .flow-head p { margin-top: 4px; }
 
-    .flow-head p {
-      margin: 0;
-      color: var(--ink-soft);
-    }
-
-    .chip {
-      display: inline-flex;
-      width: fit-content;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #e8f7ee;
-      color: var(--ok);
-      font-size: 0.82rem;
+    .src {
+      display: inline-block;
+      font-size: 0.7rem;
       font-weight: 600;
-    }
-
-    .rail {
-      display: flex;
-      align-items: stretch;
-      gap: 0;
-      overflow-x: auto;
-      padding: 8px 4px 20px;
-    }
-
-    .step {
-      flex: 0 0 auto;
-      width: 240px;
-      display: grid;
-      gap: 10px;
-    }
-
-    .step-label {
-      display: grid;
-      gap: 3px;
-      min-height: 64px;
-    }
-
-    .step-num {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 2px 6px;
+      margin-bottom: 8px;
       text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .step-title {
-      font-weight: 600;
-      font-size: 0.98rem;
+      letter-spacing: 0.04em;
     }
 
     .phone {
-      width: 240px;
-      border-radius: 28px;
-      background: #101820;
-      padding: 10px;
-      box-shadow: var(--shadow);
+      width: 100%;
+      max-width: 240px;
+      border: 1px solid #bbb;
+      border-radius: 18px;
+      background: #111;
+      padding: 8px;
     }
 
     .phone-inner {
-      background: var(--panel);
-      border-radius: 20px;
+      background: #fff;
+      border-radius: 12px;
       overflow: hidden;
-      min-height: 450px;
+      min-height: 420px;
       display: flex;
       flex-direction: column;
     }
@@ -165,269 +119,253 @@
     .status-bar {
       display: flex;
       justify-content: space-between;
-      padding: 10px 14px 6px;
-      font-size: 11px;
+      padding: 8px 10px 4px;
+      font-size: 10px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .nav {
+      display: grid;
+      grid-template-columns: 24px 1fr 24px;
+      align-items: center;
+      padding: 8px 12px 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav .title {
+      text-align: center;
       font-weight: 600;
-      color: var(--ink-soft);
+      font-size: 0.9rem;
     }
 
-    .app-header {
-      padding: 6px 14px 12px;
-      border-bottom: 1px solid var(--paper-2);
-    }
-
-    .app-header .brand {
-      font-family: "Fraunces", Georgia, serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
-
-    .app-header .sub {
-      font-size: 0.78rem;
-      color: var(--ink-soft);
-      margin-top: 2px;
-    }
+    .nav .icon { color: #333; font-size: 1.05rem; line-height: 1; }
+    .nav .icon.right { text-align: right; }
 
     .product {
       display: grid;
-      grid-template-columns: 36px 1fr;
+      grid-template-columns: 40px 1fr;
       gap: 10px;
       align-items: center;
-      padding: 10px 14px;
-      border-bottom: 1px solid var(--paper-2);
-      background: #fcfbf8;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
     }
 
     .product .thumb {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      background: var(--paper-2);
+      background: var(--soft);
+      border: 1px solid var(--line);
       display: grid;
       place-items: center;
       font-size: 0.62rem;
-      font-weight: 700;
-      color: var(--ink-soft);
+      font-weight: 600;
+      color: #888;
+    }
+
+    .product .brand {
+      font-size: 0.72rem;
+      color: var(--muted);
     }
 
     .product .name {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 500;
-      color: var(--ink);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    .product .meta {
-      font-size: 0.7rem;
-      color: var(--ink-soft);
+    .list { display: grid; }
+
+    .list-item {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 13px 12px;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.86rem;
     }
+
+    .list-item .doc { color: #888; margin-top: 1px; }
+    .list-item .label { font-weight: 600; color: #222; }
+    .list-item .hint {
+      margin-top: 2px;
+      font-size: 0.76rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .list-item.active { background: var(--soft); }
 
     .screen-body {
-      padding: 14px;
+      padding: 12px;
       display: grid;
-      gap: 10px;
-      flex: 1;
-      background: linear-gradient(180deg, #fff 0%, #fbfaf7 100%);
-    }
-
-    .choice-list { display: grid; gap: 8px; }
-
-    .choice {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 11px 12px;
-      font-size: 0.84rem;
-      background: #fff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       gap: 8px;
-    }
-
-    .choice.active {
-      border-color: var(--accent);
-      background: #eef8f6;
-      box-shadow: inset 0 0 0 1px var(--accent);
-    }
-
-    .choice .hint {
-      display: block;
-      margin-top: 2px;
-      font-size: 0.72rem;
-      color: var(--ink-soft);
-      font-weight: 400;
+      flex: 1;
     }
 
     .cta {
       margin-top: auto;
       border: 0;
-      border-radius: 12px;
-      background: var(--ink);
+      background: #111;
       color: #fff;
       font: inherit;
-      font-weight: 600;
-      font-size: 0.88rem;
-      padding: 12px;
+      font-weight: 500;
+      font-size: 0.82rem;
+      padding: 11px;
       text-align: center;
     }
 
     .cta.secondary {
-      background: transparent;
-      color: var(--accent);
-      border: 1px solid #b7d8d3;
+      background: #fff;
+      color: #111;
+      border: 1px solid #111;
     }
 
     .request-card {
       border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 12px;
-      background: #fff;
+      padding: 10px;
       display: grid;
-      gap: 8px;
+      gap: 6px;
+      background: #fff;
     }
 
     .request-id {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--muted);
       text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .request-title {
       font-weight: 600;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
     }
 
     .pill {
       display: inline-flex;
       width: fit-content;
-      padding: 4px 8px;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
+      padding: 2px 7px;
+      font-size: 0.68rem;
+      font-weight: 600;
       text-transform: uppercase;
+      letter-spacing: 0.03em;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      color: var(--muted);
     }
 
-    .pill.open { background: #fff4e5; color: var(--warn); }
-    .pill.progress { background: #e7f3ff; color: #1d4ed8; }
-    .pill.done { background: #e8f7ee; color: var(--ok); }
-    .pill.wait { background: #f3e8ff; color: #6d28d9; }
+    .pill.open { color: var(--warn); border-color: #e5d4a1; background: #fff8e8; }
+    .pill.progress { color: var(--blue); border-color: #b6d4fe; background: #eff6ff; }
+    .pill.done { color: var(--ok); border-color: #b7e0c2; background: #eefbf1; }
 
-    .timeline { display: grid; gap: 0; margin-top: 4px; }
+    .timeline { display: grid; }
 
     .tl-item {
       display: grid;
-      grid-template-columns: 18px 1fr;
-      gap: 10px;
+      grid-template-columns: 14px 1fr;
+      gap: 8px;
       position: relative;
-      padding-bottom: 14px;
+      padding-bottom: 12px;
     }
 
     .tl-item:last-child { padding-bottom: 0; }
 
     .tl-dot {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       margin-top: 3px;
-      background: var(--line);
-      box-shadow: 0 0 0 3px #fff;
+      background: #ccc;
       z-index: 1;
     }
 
     .tl-item.done .tl-dot { background: var(--ok); }
-    .tl-item.current .tl-dot {
-      background: var(--accent-2);
-      box-shadow: 0 0 0 3px #ffe8d6;
-    }
+    .tl-item.current .tl-dot { background: #111; }
 
     .tl-item::before {
       content: "";
       position: absolute;
-      left: 5px;
-      top: 14px;
+      left: 4px;
+      top: 13px;
       bottom: 0;
-      width: 2px;
-      background: var(--paper-2);
+      width: 1px;
+      background: var(--line);
     }
 
     .tl-item:last-child::before { display: none; }
 
     .tl-text strong {
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
+      font-weight: 500;
     }
 
     .tl-text span {
-      font-size: 0.72rem;
-      color: var(--ink-soft);
+      font-size: 0.7rem;
+      color: var(--muted);
     }
 
     .notif {
-      border-radius: 14px;
-      background: #fff8f1;
-      border: 1px solid #f0d3b8;
-      padding: 11px 12px;
-      font-size: 0.78rem;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 9px 10px;
+      font-size: 0.75rem;
       display: grid;
-      gap: 4px;
+      gap: 3px;
     }
 
     .notif strong {
-      color: var(--accent-2);
-      font-size: 0.74rem;
+      font-size: 0.72rem;
+      font-weight: 600;
     }
 
     .mini-meta {
       display: flex;
       justify-content: space-between;
-      font-size: 0.72rem;
-      color: var(--ink-soft);
+      font-size: 0.7rem;
+      color: var(--muted);
     }
 
-    .form-field { display: grid; gap: 4px; font-size: 0.78rem; }
-    .form-field label { color: var(--ink-soft); font-weight: 500; }
+    .form-field { display: grid; gap: 3px; font-size: 0.76rem; }
+    .form-field label { color: var(--muted); }
 
     .form-field .box {
       border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 10px;
+      padding: 8px;
       background: #fff;
-      min-height: 38px;
+      min-height: 32px;
     }
 
-    .form-field .box.tall { min-height: 64px; }
+    .form-field .box.tall { min-height: 56px; }
 
     .upload {
-      border: 1.5px dashed #c9c0b2;
-      border-radius: 12px;
-      padding: 14px;
+      border: 1px dashed #bbb;
+      padding: 12px;
       text-align: center;
-      font-size: 0.78rem;
-      color: var(--ink-soft);
-      background: #fcfbf8;
+      font-size: 0.75rem;
+      color: var(--muted);
+      background: var(--soft);
     }
 
     .bubble {
-      border-radius: 16px;
-      padding: 12px 13px;
-      font-size: 0.8rem;
-      max-width: 92%;
-      background: #f1efe8;
+      padding: 9px 10px;
+      font-size: 0.78rem;
+      border: 1px solid var(--line);
+      background: var(--soft);
     }
 
-    .home-list { display: grid; gap: 8px; }
+    .home-list { display: grid; gap: 7px; }
 
     .home-item {
       border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 11px;
+      padding: 9px;
       display: grid;
-      gap: 4px;
+      gap: 3px;
       background: #fff;
     }
 
@@ -438,128 +376,166 @@
       align-items: center;
     }
 
+    .rail {
+      display: flex;
+      align-items: stretch;
+      overflow-x: auto;
+      padding: 4px 0 12px;
+    }
+
+    .step {
+      flex: 0 0 auto;
+      width: 240px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .step-label {
+      display: grid;
+      gap: 2px;
+      min-height: 48px;
+    }
+
+    .step-num {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .step-title {
+      font-weight: 600;
+      font-size: 0.88rem;
+    }
+
     .arrow {
       flex: 0 0 auto;
-      width: 52px;
+      width: 44px;
       display: grid;
       place-items: center;
       align-self: center;
-      margin-top: 78px;
-      color: var(--ink-soft);
+      margin-top: 62px;
       position: relative;
     }
 
-    .arrow svg { width: 44px; height: 26px; }
+    .arrow svg { width: 36px; height: 20px; }
 
     .arrow .tag {
       position: absolute;
-      top: -18px;
+      top: -16px;
       left: 50%;
       transform: translateX(-50%);
       white-space: nowrap;
-      font-size: 0.66rem;
-      font-weight: 700;
+      font-size: 0.62rem;
+      font-weight: 600;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: var(--accent-2);
-      background: #fff4eb;
-      border: 1px solid #f0d3b8;
-      padding: 3px 7px;
-      border-radius: 999px;
+      color: var(--muted);
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 2px 5px;
     }
 
-    .callout {
-      margin-top: 14px;
-      padding: 12px 14px;
-      border-left: 4px solid var(--ok);
-      background: rgba(255,255,255,0.7);
-      border-radius: 0 12px 12px 0;
-      max-width: 720px;
-      font-size: 0.92rem;
-      color: var(--ink-soft);
+    .note {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 72ch;
     }
-
-    .callout strong { color: var(--ok); }
 
     footer {
-      margin-top: 56px;
-      padding-top: 18px;
+      margin-top: 48px;
+      padding-top: 16px;
       border-top: 1px solid var(--line);
-      color: var(--ink-soft);
-      font-size: 0.86rem;
+      color: var(--muted);
+      font-size: 0.82rem;
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <header class="hero">
+    <header class="intro">
       <h1>Customer Ticket Tracking</h1>
-      <p class="lede">
-        Best flows for letting customers see support progress without follow-up messages.
+      <p>
+        Proposed tracking screens after noon’s current opening menus:
+        Orders support, Refunds support, Returns support.
       </p>
       <div class="toc">
-        <a href="#flow-a">1. Missing shipment</a>
-        <a href="#flow-b">2. Refund tracking</a>
-        <a href="#flow-c">3. My Requests</a>
+        <a href="#flow-a">1. Orders → Never received shipment</a>
+        <a href="#flow-b">2. Refunds → Refund tracking</a>
+        <a href="#flow-c">3. My Requests hub</a>
       </div>
     </header>
 
     <!-- FLOW 1 -->
     <section class="flow" id="flow-a">
       <div class="flow-head">
-        <div class="chip">Orders support → highest volume</div>
+        <div class="src">From: Orders support</div>
         <h2>1. I never received my shipment</h2>
-        <p>Issue select → submit → live request timeline.</p>
+        <p>Same opening list as today → create request → status timeline.</p>
       </div>
 
       <div class="rail">
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 1</div>
-            <div class="step-title">Pick issue</div>
+            <div class="step-title">Orders support</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">Orders support</div>
-                <div class="sub">What happened?</div>
+              <div class="nav">
+                <div class="icon">‹</div>
+                <div class="title">Orders support</div>
+                <div class="icon right">×</div>
               </div>
               <div class="product">
                 <div class="thumb">CV</div>
                 <div>
-                  <div class="meta">CeraVe</div>
-                  <div class="name">Oil Control Moisturising Gel-Cream</div>
+                  <div class="brand">CeraVe</div>
+                  <div class="name">Oil Control Moisturising Gel-Cream…</div>
                 </div>
               </div>
-              <div class="screen-body">
-                <div class="choice-list">
-                  <div class="choice">I received a damaged item <span>›</span></div>
-                  <div class="choice">My shipment is missing an item <span>›</span></div>
-                  <div class="choice active">I never received my shipment <span>›</span></div>
-                </div>
-                <div class="cta">Continue</div>
+              <div class="list">
+                <div class="list-item"><span class="doc">▤</span><div class="label">I received the wrong item</div></div>
+                <div class="list-item"><span class="doc">▤</span><div class="label">I received a fake item</div></div>
+                <div class="list-item"><span class="doc">▤</span><div class="label">I received a damaged item</div></div>
+                <div class="list-item"><span class="doc">▤</span><div class="label">My item is not working properly</div></div>
+                <div class="list-item"><span class="doc">▤</span><div class="label">My shipment is missing an item</div></div>
+                <div class="list-item active"><span class="doc">▤</span><div class="label">I never received my shipment</div></div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="arrow" aria-hidden="true">
-          <span class="tag">Submit</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="tag">Next</span>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 2</div>
-            <div class="step-title">Confirm details</div>
+            <div class="step-title">Submit request</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">Never received</div>
-                <div class="sub">Order #N-48291</div>
+              <div class="nav">
+                <div class="icon">‹</div>
+                <div class="title">Never received</div>
+                <div class="icon right">×</div>
+              </div>
+              <div class="product">
+                <div class="thumb">CV</div>
+                <div>
+                  <div class="brand">Order #N-48291</div>
+                  <div class="name">Marked delivered · not received</div>
+                </div>
               </div>
               <div class="screen-body">
                 <div class="form-field">
@@ -574,21 +550,22 @@
         </div>
 
         <div class="arrow" aria-hidden="true">
-          <span class="tag">Created</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="tag">Track</span>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 3</div>
-            <div class="step-title">Request timeline</div>
+            <div class="step-title">Request status</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">SR-109384</div>
-                <div class="sub">Never received shipment</div>
+              <div class="nav">
+                <div class="icon">‹</div>
+                <div class="title">SR-109384</div>
+                <div class="icon right">×</div>
               </div>
               <div class="screen-body">
                 <span class="pill progress">Investigating delivery</span>
@@ -618,7 +595,7 @@
 
         <div class="arrow" aria-hidden="true">
           <span class="tag">Done</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
@@ -629,9 +606,10 @@
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">SR-109384</div>
-                <div class="sub">Resolved</div>
+              <div class="nav">
+                <div class="icon">‹</div>
+                <div class="title">SR-109384</div>
+                <div class="icon right">×</div>
               </div>
               <div class="screen-body">
                 <span class="pill done">Resolved</span>
@@ -646,15 +624,15 @@
           </div>
         </div>
       </div>
-      <div class="callout"><strong>Cuts:</strong> “Any update on my missing order?”</div>
+      <div class="note">Same pattern for damaged / wrong / missing item from the Orders support list.</div>
     </section>
 
     <!-- FLOW 2 -->
     <section class="flow" id="flow-b">
       <div class="flow-head">
-        <div class="chip">Refunds support → most follow-ups</div>
+        <div class="src">From: Refunds support</div>
         <h2>2. Refund tracking</h2>
-        <p>Turn “How long will my refund take?” into a live refund status page.</p>
+        <p>Current “How long will my refund take?” → open live refund status instead of FAQ-only.</p>
       </div>
 
       <div class="rail">
@@ -666,30 +644,45 @@
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">Refunds support</div>
-                <div class="sub">Choose an option</div>
+              <div class="nav">
+                <div class="icon">‹</div>
+                <div class="title">Refunds support</div>
+                <div class="icon right">×</div>
               </div>
               <div class="product">
                 <div class="thumb">CV</div>
                 <div>
-                  <div class="meta">CeraVe</div>
-                  <div class="name">Oil Control Moisturising Gel-Cream</div>
+                  <div class="brand">CeraVe</div>
+                  <div class="name">Oil Control Moisturising Gel-Cream…</div>
                 </div>
               </div>
-              <div class="screen-body">
-                <div class="choice-list">
-                  <div class="choice active">
-                    <span>Refund tracking<span class="hint">How long will my refund take?</span></span>
-                    <span>›</span>
+              <div class="list">
+                <div class="list-item active">
+                  <span class="doc">▤</span>
+                  <div>
+                    <div class="label">Refund tracking</div>
+                    <div class="hint">How long will my refund take?</div>
                   </div>
-                  <div class="choice">
-                    <span>Request a refund<span class="hint">I want to request a refund</span></span>
-                    <span>›</span>
+                </div>
+                <div class="list-item">
+                  <span class="doc">▤</span>
+                  <div>
+                    <div class="label">Returnless refunds</div>
+                    <div class="hint">Refunds without returning an item</div>
                   </div>
-                  <div class="choice">
-                    <span>Refund amount<span class="hint">Wrong refund amount</span></span>
-                    <span>›</span>
+                </div>
+                <div class="list-item">
+                  <span class="doc">▤</span>
+                  <div>
+                    <div class="label">Refund amount</div>
+                    <div class="hint">I received the wrong refund amount</div>
+                  </div>
+                </div>
+                <div class="list-item">
+                  <span class="doc">▤</span>
+                  <div>
+                    <div class="label">Request a refund</div>
+                    <div class="hint">I want to request for a refund</div>
                   </div>
                 </div>
               </div>
@@ -699,20 +692,21 @@
 
         <div class="arrow" aria-hidden="true">
           <span class="tag">Open</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 2</div>
-            <div class="step-title">Active refund</div>
+            <div class="step-title">Active refunds</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">Your refunds</div>
-                <div class="sub">Open for this order</div>
+              <div class="nav">
+                <div class="icon">‹</div>
+                <div class="title">Your refunds</div>
+                <div class="icon right">×</div>
               </div>
               <div class="screen-body">
                 <div class="request-card">
@@ -721,7 +715,7 @@
                   <span class="pill progress">Bank processing</span>
                   <div class="mini-meta"><span>ETA 3–5 days</span><span>Updated today</span></div>
                 </div>
-                <div class="cta">View status</div>
+                <div class="cta">View refund status</div>
               </div>
             </div>
           </div>
@@ -729,20 +723,21 @@
 
         <div class="arrow" aria-hidden="true">
           <span class="tag">Track</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 3</div>
-            <div class="step-title">Refund timeline</div>
+            <div class="step-title">Refund status</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">RF-55218</div>
-                <div class="sub">Refund status</div>
+              <div class="nav">
+                <div class="icon">‹</div>
+                <div class="title">RF-55218</div>
+                <div class="icon right">×</div>
               </div>
               <div class="screen-body">
                 <span class="pill progress">Bank processing</span>
@@ -768,7 +763,7 @@
 
         <div class="arrow" aria-hidden="true">
           <span class="tag">Done</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
@@ -779,9 +774,10 @@
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">RF-55218</div>
-                <div class="sub">Completed</div>
+              <div class="nav">
+                <div class="icon">‹</div>
+                <div class="title">RF-55218</div>
+                <div class="icon right">×</div>
               </div>
               <div class="screen-body">
                 <span class="pill done">Completed</span>
@@ -795,52 +791,53 @@
           </div>
         </div>
       </div>
-      <div class="callout"><strong>Cuts:</strong> “How long will my refund take?” / “Was I refunded?”</div>
+      <div class="note">“Request a refund” from the same menu creates a request that lands on this same tracker.</div>
     </section>
 
     <!-- FLOW 3 -->
     <section class="flow" id="flow-c">
       <div class="flow-head">
-        <div class="chip">Account hub → all open cases</div>
+        <div class="src">Account · all support requests</div>
         <h2>3. My Requests</h2>
-        <p>One place to open any support request and see the latest update.</p>
+        <p>Hub for every request opened from Orders / Refunds / Returns support.</p>
       </div>
 
       <div class="rail">
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 1</div>
-            <div class="step-title">My Requests list</div>
+            <div class="step-title">My Requests</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">My Requests</div>
-                <div class="sub">Track support cases</div>
+              <div class="nav">
+                <div class="icon">‹</div>
+                <div class="title">My Requests</div>
+                <div class="icon right">×</div>
               </div>
               <div class="screen-body">
                 <div class="home-list">
                   <div class="home-item">
                     <div class="row">
-                      <strong style="font-size:0.88rem">Never received shipment</strong>
+                      <strong style="font-size:0.84rem">Never received shipment</strong>
                       <span class="pill progress">Active</span>
                     </div>
                     <div class="mini-meta"><span>SR-109384</span><span>Updated 2h ago</span></div>
                   </div>
                   <div class="home-item">
                     <div class="row">
-                      <strong style="font-size:0.88rem">Refund</strong>
+                      <strong style="font-size:0.84rem">Refund tracking</strong>
                       <span class="pill progress">Active</span>
                     </div>
                     <div class="mini-meta"><span>RF-55218</span><span>Updated today</span></div>
                   </div>
                   <div class="home-item">
                     <div class="row">
-                      <strong style="font-size:0.88rem">Damaged item</strong>
+                      <strong style="font-size:0.84rem">Return pickup</strong>
                       <span class="pill done">Resolved</span>
                     </div>
-                    <div class="mini-meta"><span>SR-109700</span><span>Mar 10</span></div>
+                    <div class="mini-meta"><span>RT-22011</span><span>Mar 10</span></div>
                   </div>
                 </div>
                 <div class="cta">New request</div>
@@ -851,20 +848,21 @@
 
         <div class="arrow" aria-hidden="true">
           <span class="tag">Notify</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 2</div>
-            <div class="step-title">Push / email update</div>
+            <div class="step-title">Status notification</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">Notifications</div>
-                <div class="sub">Support updates</div>
+              <div class="nav">
+                <div class="icon">‹</div>
+                <div class="title">Notifications</div>
+                <div class="icon right">×</div>
               </div>
               <div class="screen-body">
                 <div class="notif">
@@ -883,20 +881,21 @@
 
         <div class="arrow" aria-hidden="true">
           <span class="tag">Open</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 3</div>
-            <div class="step-title">Same request page</div>
+            <div class="step-title">Request page</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">SR-109384</div>
-                <div class="sub">Never received shipment</div>
+              <div class="nav">
+                <div class="icon">‹</div>
+                <div class="title">SR-109384</div>
+                <div class="icon right">×</div>
               </div>
               <div class="screen-body">
                 <span class="pill progress">Investigating delivery</span>
@@ -922,20 +921,21 @@
 
         <div class="arrow" aria-hidden="true">
           <span class="tag">Reply</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 4</div>
-            <div class="step-title">Add info (same ID)</div>
+            <div class="step-title">Add details</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">SR-109384</div>
-                <div class="sub">Add details</div>
+              <div class="nav">
+                <div class="icon">‹</div>
+                <div class="title">SR-109384</div>
+                <div class="icon right">×</div>
               </div>
               <div class="screen-body">
                 <div class="bubble">Could a neighbor have received it?</div>
@@ -950,11 +950,11 @@
           </div>
         </div>
       </div>
-      <div class="callout"><strong>Cuts:</strong> “Just checking in…” and duplicate new tickets for the same issue.</div>
+      <div class="note">Also covers Returns support actions (cancel / reschedule / change address) by opening the return request from this list.</div>
     </section>
 
     <footer>
-      Customer Ticket Tracking — 3 core flows: missing shipment, refund tracking, My Requests.
+      Customer Ticket Tracking — minimal proposed flows from noon Orders / Refunds opening menus + My Requests.
     </footer>
   </div>
 </body>

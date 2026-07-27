@@ -6,411 +6,109 @@
   <title>Customer Ticket Tracking</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --text: #111;
-      --muted: #666;
-      --line: #e6e6e6;
-      --bg: #fff;
-      --soft: #f7f7f7;
-      --ok: #1a7f37;
-      --warn: #9a6700;
-      --blue: #0969da;
-      --noon: #feee00;
+      --ink: #132033;
+      --ink-soft: #3a4a5f;
+      --paper: #f6f3ee;
+      --paper-2: #ebe6dc;
+      --panel: #ffffff;
+      --line: #d7d0c4;
+      --accent: #0f766e;
+      --accent-2: #ea580c;
+      --ok: #15803d;
+      --warn: #b45309;
+      --sky: #e8f4f2;
+      --shadow: 0 18px 40px rgba(19, 32, 51, 0.12);
     }
 
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "IBM Plex Sans", sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.5;
-      font-size: 15px;
+      font-family: "Outfit", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #d9efe9 0%, transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, #ffe7d4 0%, transparent 50%),
+        linear-gradient(180deg, #f8f5f0 0%, #efe9df 100%);
+      line-height: 1.45;
     }
 
     .page {
-      max-width: 1100px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 40px 20px 72px;
+      padding: 48px 24px 80px;
+    }
+
+    header.hero {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 36px;
+      max-width: 640px;
     }
 
     h1 {
-      margin: 0 0 8px;
-      font-size: 1.75rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0;
     }
 
-    h2 {
-      margin: 0 0 6px;
+    .lede {
+      margin: 0;
       font-size: 1.05rem;
-      font-weight: 600;
+      color: var(--ink-soft);
     }
-
-    p { margin: 0; color: var(--muted); }
-
-    .intro {
-      max-width: 68ch;
-      margin-bottom: 28px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .intro p { margin-top: 8px; }
 
     .toc {
-      margin-top: 14px;
-      display: grid;
-      gap: 4px;
-      font-size: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      margin-top: 4px;
+      font-size: 0.92rem;
     }
 
     .toc a {
-      color: var(--text);
+      color: var(--accent);
       text-decoration: none;
-      border-bottom: 1px solid var(--line);
-      width: fit-content;
+      font-weight: 600;
+      border-bottom: 1px solid #b7d8d3;
     }
-
-    .improve {
-      margin: 18px 0 0;
-      padding: 12px 14px;
-      border: 1px solid var(--line);
-      background: var(--soft);
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 80ch;
-    }
-
-    .improve strong { color: var(--text); font-weight: 600; }
 
     .flow {
-      margin-top: 40px;
-      padding-top: 28px;
-      border-top: 1px solid var(--line);
+      margin-top: 48px;
+      padding-top: 8px;
     }
 
     .flow-head {
-      margin-bottom: 16px;
-      max-width: 72ch;
-    }
-
-    .flow-head p { margin-top: 4px; }
-
-    .tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--muted);
-      border: 1px solid var(--line);
-      padding: 2px 6px;
-      margin-bottom: 8px;
-    }
-
-    .phone {
-      width: 100%;
-      max-width: 250px;
-      border: 1px solid #bbb;
-      border-radius: 22px;
-      background: #111;
-      padding: 8px;
-    }
-
-    .phone-inner {
-      background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      min-height: 430px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .sheet-glow {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 140px;
-      height: 90px;
-      background: radial-gradient(circle at 70% 20%, rgba(254,238,0,0.45), transparent 70%);
-      pointer-events: none;
-    }
-
-    .nav {
-      display: grid;
-      grid-template-columns: 28px 1fr 28px;
-      align-items: center;
-      padding: 14px 12px 8px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .nav .title {
-      text-align: center;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    .nav .icon {
-      font-size: 1.1rem;
-      color: #333;
-      line-height: 1;
-    }
-
-    .product {
-      display: grid;
-      grid-template-columns: 42px 1fr;
-      gap: 10px;
-      align-items: center;
-      padding: 8px 14px 14px;
-      border-bottom: 1px solid var(--line);
-      position: relative;
-      z-index: 1;
-    }
-
-    .product .thumb {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: linear-gradient(180deg, #f2f2f2, #e5e5e5);
-      border: 1px solid var(--line);
-      display: grid;
-      place-items: center;
-      font-size: 0.65rem;
-      color: #888;
-      font-weight: 600;
-    }
-
-    .product .brand {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    .product .name {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #333;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .list {
-      display: grid;
-      position: relative;
-      z-index: 1;
-    }
-
-    .list-item {
-      display: grid;
-      grid-template-columns: 22px 1fr;
-      gap: 10px;
-      align-items: start;
-      padding: 14px;
-      border-bottom: 1px solid var(--line);
-      font-size: 0.88rem;
-    }
-
-    .list-item .doc {
-      color: #888;
-      margin-top: 1px;
-    }
-
-    .list-item .label { font-weight: 600; color: #222; }
-    .list-item .hint {
-      margin-top: 2px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      font-weight: 400;
-    }
-
-    .list-item.active {
-      background: #fffef2;
-    }
-
-    .status-bar {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 12px 0;
-      font-size: 10px;
-      color: #666;
-      font-weight: 500;
-      position: relative;
-      z-index: 1;
-    }
-
-    .screen-body {
-      padding: 12px 14px 14px;
-      display: grid;
-      gap: 8px;
-      flex: 1;
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta {
-      margin-top: auto;
-      border: 0;
-      background: #111;
-      color: #fff;
-      font: inherit;
-      font-weight: 500;
-      font-size: 0.82rem;
-      padding: 11px;
-      text-align: center;
-    }
-
-    .cta.secondary {
-      background: #fff;
-      color: #111;
-      border: 1px solid #111;
-    }
-
-    .cta.noon {
-      background: var(--noon);
-      color: #111;
-      font-weight: 600;
-    }
-
-    .request-card {
-      border: 1px solid var(--line);
-      padding: 10px;
       display: grid;
       gap: 6px;
-      background: #fff;
+      margin-bottom: 22px;
+      max-width: 640px;
     }
 
-    .request-id {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+    .flow-head h2 {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.55rem;
+      margin: 0;
     }
 
-    .request-title {
-      font-weight: 600;
-      font-size: 0.88rem;
+    .flow-head p {
+      margin: 0;
+      color: var(--ink-soft);
     }
 
-    .pill {
+    .chip {
       display: inline-flex;
       width: fit-content;
-      padding: 2px 7px;
-      font-size: 0.68rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #e8f7ee;
+      color: var(--ok);
+      font-size: 0.82rem;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      border: 1px solid var(--line);
-      background: var(--soft);
-      color: var(--muted);
-    }
-
-    .pill.open { color: var(--warn); border-color: #e5d4a1; background: #fff8e8; }
-    .pill.progress { color: var(--blue); border-color: #b6d4fe; background: #eff6ff; }
-    .pill.done { color: var(--ok); border-color: #b7e0c2; background: #eefbf1; }
-    .pill.wait { color: #6e40c9; border-color: #d8b9ff; background: #f6f0ff; }
-
-    .timeline { display: grid; gap: 0; margin-top: 2px; }
-
-    .tl-item {
-      display: grid;
-      grid-template-columns: 14px 1fr;
-      gap: 8px;
-      position: relative;
-      padding-bottom: 12px;
-    }
-
-    .tl-item:last-child { padding-bottom: 0; }
-
-    .tl-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      margin-top: 3px;
-      background: #ccc;
-      z-index: 1;
-    }
-
-    .tl-item.done .tl-dot { background: var(--ok); }
-    .tl-item.current .tl-dot { background: #111; }
-
-    .tl-item::before {
-      content: "";
-      position: absolute;
-      left: 4px;
-      top: 13px;
-      bottom: 0;
-      width: 1px;
-      background: var(--line);
-    }
-
-    .tl-item:last-child::before { display: none; }
-
-    .tl-text strong {
-      display: block;
-      font-size: 0.78rem;
-      font-weight: 500;
-    }
-
-    .tl-text span {
-      font-size: 0.7rem;
-      color: var(--muted);
-    }
-
-    .notif {
-      border: 1px solid var(--line);
-      background: var(--soft);
-      padding: 9px 10px;
-      font-size: 0.75rem;
-      display: grid;
-      gap: 3px;
-    }
-
-    .notif strong {
-      font-size: 0.72rem;
-      font-weight: 600;
-    }
-
-    .mini-meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.7rem;
-      color: var(--muted);
-    }
-
-    .form-field { display: grid; gap: 3px; font-size: 0.76rem; }
-    .form-field label { color: var(--muted); }
-
-    .form-field .box {
-      border: 1px solid var(--line);
-      padding: 8px;
-      background: #fff;
-      min-height: 32px;
-      color: var(--text);
-    }
-
-    .form-field .box.tall { min-height: 58px; }
-
-    .upload {
-      border: 1px dashed #bbb;
-      padding: 12px;
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--muted);
-      background: var(--soft);
-    }
-
-    .bubble {
-      padding: 9px 10px;
-      font-size: 0.78rem;
-      max-width: 92%;
-      border: 1px solid var(--line);
-      background: var(--soft);
     }
 
     .rail {
@@ -418,210 +116,479 @@
       align-items: stretch;
       gap: 0;
       overflow-x: auto;
-      padding: 4px 0 12px;
+      padding: 8px 4px 20px;
     }
 
     .step {
       flex: 0 0 auto;
-      width: 250px;
+      width: 240px;
       display: grid;
-      gap: 8px;
+      gap: 10px;
     }
 
-    .step-label { display: grid; gap: 2px; min-height: 58px; }
+    .step-label {
+      display: grid;
+      gap: 3px;
+      min-height: 64px;
+    }
 
     .step-num {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      color: var(--accent);
     }
 
     .step-title {
       font-weight: 600;
-      font-size: 0.88rem;
+      font-size: 0.98rem;
     }
 
-    .step-note {
+    .phone {
+      width: 240px;
+      border-radius: 28px;
+      background: #101820;
+      padding: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .phone-inner {
+      background: var(--panel);
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 450px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 14px 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink-soft);
+    }
+
+    .app-header {
+      padding: 6px 14px 12px;
+      border-bottom: 1px solid var(--paper-2);
+    }
+
+    .app-header .brand {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .app-header .sub {
       font-size: 0.78rem;
-      color: var(--muted);
+      color: var(--ink-soft);
+      margin-top: 2px;
+    }
+
+    .product {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--paper-2);
+      background: #fcfbf8;
+    }
+
+    .product .thumb {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--paper-2);
+      display: grid;
+      place-items: center;
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+    }
+
+    .product .name {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .product .meta {
+      font-size: 0.7rem;
+      color: var(--ink-soft);
+    }
+
+    .screen-body {
+      padding: 14px;
+      display: grid;
+      gap: 10px;
+      flex: 1;
+      background: linear-gradient(180deg, #fff 0%, #fbfaf7 100%);
+    }
+
+    .choice-list { display: grid; gap: 8px; }
+
+    .choice {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 11px 12px;
+      font-size: 0.84rem;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .choice.active {
+      border-color: var(--accent);
+      background: #eef8f6;
+      box-shadow: inset 0 0 0 1px var(--accent);
+    }
+
+    .choice .hint {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.72rem;
+      color: var(--ink-soft);
+      font-weight: 400;
+    }
+
+    .cta {
+      margin-top: auto;
+      border: 0;
+      border-radius: 12px;
+      background: var(--ink);
+      color: #fff;
+      font: inherit;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .cta.secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid #b7d8d3;
+    }
+
+    .request-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      background: #fff;
+      display: grid;
+      gap: 8px;
+    }
+
+    .request-id {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .request-title {
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      width: fit-content;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .pill.open { background: #fff4e5; color: var(--warn); }
+    .pill.progress { background: #e7f3ff; color: #1d4ed8; }
+    .pill.done { background: #e8f7ee; color: var(--ok); }
+    .pill.wait { background: #f3e8ff; color: #6d28d9; }
+
+    .timeline { display: grid; gap: 0; margin-top: 4px; }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 10px;
+      position: relative;
+      padding-bottom: 14px;
+    }
+
+    .tl-item:last-child { padding-bottom: 0; }
+
+    .tl-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-top: 3px;
+      background: var(--line);
+      box-shadow: 0 0 0 3px #fff;
+      z-index: 1;
+    }
+
+    .tl-item.done .tl-dot { background: var(--ok); }
+    .tl-item.current .tl-dot {
+      background: var(--accent-2);
+      box-shadow: 0 0 0 3px #ffe8d6;
+    }
+
+    .tl-item::before {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 14px;
+      bottom: 0;
+      width: 2px;
+      background: var(--paper-2);
+    }
+
+    .tl-item:last-child::before { display: none; }
+
+    .tl-text strong {
+      display: block;
+      font-size: 0.8rem;
+    }
+
+    .tl-text span {
+      font-size: 0.72rem;
+      color: var(--ink-soft);
+    }
+
+    .notif {
+      border-radius: 14px;
+      background: #fff8f1;
+      border: 1px solid #f0d3b8;
+      padding: 11px 12px;
+      font-size: 0.78rem;
+      display: grid;
+      gap: 4px;
+    }
+
+    .notif strong {
+      color: var(--accent-2);
+      font-size: 0.74rem;
+    }
+
+    .mini-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--ink-soft);
+    }
+
+    .form-field { display: grid; gap: 4px; font-size: 0.78rem; }
+    .form-field label { color: var(--ink-soft); font-weight: 500; }
+
+    .form-field .box {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+      background: #fff;
+      min-height: 38px;
+    }
+
+    .form-field .box.tall { min-height: 64px; }
+
+    .upload {
+      border: 1.5px dashed #c9c0b2;
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      background: #fcfbf8;
+    }
+
+    .bubble {
+      border-radius: 16px;
+      padding: 12px 13px;
+      font-size: 0.8rem;
+      max-width: 92%;
+      background: #f1efe8;
+    }
+
+    .home-list { display: grid; gap: 8px; }
+
+    .home-item {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 11px;
+      display: grid;
+      gap: 4px;
+      background: #fff;
+    }
+
+    .home-item .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
     }
 
     .arrow {
       flex: 0 0 auto;
-      width: 44px;
+      width: 52px;
       display: grid;
       place-items: center;
       align-self: center;
-      margin-top: 70px;
-      color: #999;
+      margin-top: 78px;
+      color: var(--ink-soft);
       position: relative;
     }
 
-    .arrow svg { width: 36px; height: 20px; }
+    .arrow svg { width: 44px; height: 26px; }
 
     .arrow .tag {
       position: absolute;
-      top: -16px;
+      top: -18px;
       left: 50%;
       transform: translateX(-50%);
       white-space: nowrap;
-      font-size: 0.62rem;
-      font-weight: 600;
+      font-size: 0.66rem;
+      font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: var(--muted);
-      background: #fff;
-      border: 1px solid var(--line);
-      padding: 2px 5px;
-      margin: 0;
+      color: var(--accent-2);
+      background: #fff4eb;
+      border: 1px solid #f0d3b8;
+      padding: 3px 7px;
+      border-radius: 999px;
     }
 
-    .note {
-      margin-top: 12px;
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      background: var(--soft);
-      font-size: 0.88rem;
-      color: var(--muted);
-      max-width: 80ch;
+    .callout {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-left: 4px solid var(--ok);
+      background: rgba(255,255,255,0.7);
+      border-radius: 0 12px 12px 0;
+      max-width: 720px;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
     }
+
+    .callout strong { color: var(--ok); }
 
     footer {
-      margin-top: 48px;
-      padding-top: 16px;
+      margin-top: 56px;
+      padding-top: 18px;
       border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.82rem;
+      color: var(--ink-soft);
+      font-size: 0.86rem;
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <header class="intro">
+    <header class="hero">
       <h1>Customer Ticket Tracking</h1>
-      <p>
-        Proposed status-tracking flows built on noon’s current entry points
-        (Orders support, Refunds support, Returns support).
-        Focus: after a customer picks an issue, they get a request they can check
-        instead of sending follow-up messages.
+      <p class="lede">
+        Best flows for letting customers see support progress without follow-up messages.
       </p>
       <div class="toc">
-        <a href="#flow-a">A. Never received shipment</a>
-        <a href="#flow-b">B. Damaged / wrong item</a>
-        <a href="#flow-c">C. Refund tracking</a>
-        <a href="#flow-d">D. Request a refund</a>
-        <a href="#flow-e">E. Track return pickup</a>
-      </div>
-      <div class="improve">
-        <strong>Improvement over today’s opening screens:</strong>
-        keep the same issue menus, then attach a request ID + live status page
-        (and push/email on each stage). “Refund tracking” and “I never received my shipment”
-        become the highest-impact places to start.
+        <a href="#flow-a">1. Missing shipment</a>
+        <a href="#flow-b">2. Refund tracking</a>
+        <a href="#flow-c">3. My Requests</a>
       </div>
     </header>
 
-    <!-- FLOW A -->
+    <!-- FLOW 1 -->
     <section class="flow" id="flow-a">
       <div class="flow-head">
-        <div class="tag">Orders support</div>
-        <h2>A. I never received my shipment</h2>
-        <p>Start from the current Orders support list, then open a trackable request instead of only chatting.</p>
+        <div class="chip">Orders support → highest volume</div>
+        <h2>1. I never received my shipment</h2>
+        <p>Issue select → submit → live request timeline.</p>
       </div>
 
       <div class="rail">
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 1</div>
-            <div class="step-title">Orders support (today)</div>
-            <div class="step-note">Same issue list customers already see.</div>
+            <div class="step-title">Pick issue</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
-              <div class="sheet-glow"></div>
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Orders support</div>
-                <div class="icon" style="text-align:right">×</div>
+              <div class="app-header">
+                <div class="brand">Orders support</div>
+                <div class="sub">What happened?</div>
               </div>
               <div class="product">
                 <div class="thumb">CV</div>
                 <div>
-                  <div class="brand">CeraVe</div>
-                  <div class="name">Oil Control Moisturising Gel-Cream…</div>
+                  <div class="meta">CeraVe</div>
+                  <div class="name">Oil Control Moisturising Gel-Cream</div>
                 </div>
               </div>
-              <div class="list">
-                <div class="list-item"><span class="doc">▤</span><div class="label">I received the wrong item</div></div>
-                <div class="list-item"><span class="doc">▤</span><div class="label">I received a fake item</div></div>
-                <div class="list-item"><span class="doc">▤</span><div class="label">I received a damaged item</div></div>
-                <div class="list-item"><span class="doc">▤</span><div class="label">My item is not working properly</div></div>
-                <div class="list-item"><span class="doc">▤</span><div class="label">My shipment is missing an item</div></div>
-                <div class="list-item active"><span class="doc">▤</span><div class="label">I never received my shipment</div></div>
+              <div class="screen-body">
+                <div class="choice-list">
+                  <div class="choice">I received a damaged item <span>›</span></div>
+                  <div class="choice">My shipment is missing an item <span>›</span></div>
+                  <div class="choice active">I never received my shipment <span>›</span></div>
+                </div>
+                <div class="cta">Continue</div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="arrow" aria-hidden="true">
-          <span class="tag">Create</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="tag">Submit</span>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 2</div>
-            <div class="step-title">Quick details</div>
-            <div class="step-note">One screen, then a request is opened.</div>
+            <div class="step-title">Confirm details</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
-              <div class="sheet-glow"></div>
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Never received</div>
-                <div class="icon" style="text-align:right">×</div>
-              </div>
-              <div class="product">
-                <div class="thumb">CV</div>
-                <div>
-                  <div class="brand">Order #N-48291</div>
-                  <div class="name">Marked delivered · not received</div>
-                </div>
+              <div class="app-header">
+                <div class="brand">Never received</div>
+                <div class="sub">Order #N-48291</div>
               </div>
               <div class="screen-body">
                 <div class="form-field">
-                  <label>What should we do?</label>
+                  <label>Preferred fix</label>
                   <div class="box">Reship or refund</div>
                 </div>
-                <div class="upload">+ Add doorstep / gate photo</div>
-                <div class="cta noon">Submit request</div>
+                <div class="upload">+ Add photo (optional)</div>
+                <div class="cta">Submit request</div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="arrow" aria-hidden="true">
-          <span class="tag">Track</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="tag">Created</span>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 3</div>
-            <div class="step-title">Request status page</div>
-            <div class="step-note">New: live stages + notifications.</div>
+            <div class="step-title">Request timeline</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Request SR-109384</div>
-                <div class="icon" style="text-align:right">×</div>
+              <div class="app-header">
+                <div class="brand">SR-109384</div>
+                <div class="sub">Never received shipment</div>
               </div>
               <div class="screen-body">
                 <span class="pill progress">Investigating delivery</span>
@@ -636,15 +603,14 @@
                   </div>
                   <div class="tl-item">
                     <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Decision: reship or refund</strong><span>Pending</span></div>
+                    <div class="tl-text"><strong>Reship or refund</strong><span>Pending</span></div>
                   </div>
                   <div class="tl-item">
                     <div class="tl-dot"></div>
                     <div class="tl-text"><strong>Resolved</strong><span>Pending</span></div>
                   </div>
                 </div>
-                <div class="notif"><strong>We’ll notify you</strong>No need to message for updates.</div>
-                <div class="cta secondary">Add more details</div>
+                <div class="notif"><strong>Updates on</strong>We’ll notify you — no need to follow up.</div>
               </div>
             </div>
           </div>
@@ -652,27 +618,25 @@
 
         <div class="arrow" aria-hidden="true">
           <span class="tag">Done</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 4</div>
-            <div class="step-title">Resolved on-page</div>
-            <div class="step-note">Outcome visible without chasing.</div>
+            <div class="step-title">Resolved</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Request SR-109384</div>
-                <div class="icon" style="text-align:right">×</div>
+              <div class="app-header">
+                <div class="brand">SR-109384</div>
+                <div class="sub">Resolved</div>
               </div>
               <div class="screen-body">
                 <span class="pill done">Resolved</span>
                 <div class="request-card">
-                  <div class="request-title">Replacement order #N-99014</div>
+                  <div class="request-title">Replacement #N-99014</div>
                   <div class="mini-meta"><span>Ships today</span><span>Track in Orders</span></div>
                 </div>
                 <div class="bubble">Courier confirmed a delivery exception. Replacement arranged.</div>
@@ -682,229 +646,50 @@
           </div>
         </div>
       </div>
-      <div class="note">Same entry as today → adds request ID + timeline so “any update on my missing order?” drops.</div>
+      <div class="callout"><strong>Cuts:</strong> “Any update on my missing order?”</div>
     </section>
 
-    <!-- FLOW B -->
+    <!-- FLOW 2 -->
     <section class="flow" id="flow-b">
       <div class="flow-head">
-        <div class="tag">Orders support</div>
-        <h2>B. Damaged / wrong item</h2>
-        <p>Use the existing damaged/wrong item options, then pause clearly when a photo is needed.</p>
+        <div class="chip">Refunds support → most follow-ups</div>
+        <h2>2. Refund tracking</h2>
+        <p>Turn “How long will my refund take?” into a live refund status page.</p>
       </div>
 
       <div class="rail">
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 1</div>
-            <div class="step-title">Pick issue</div>
-            <div class="step-note">From current Orders support menu.</div>
+            <div class="step-title">Refunds support</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
-              <div class="sheet-glow"></div>
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Orders support</div>
-                <div class="icon" style="text-align:right">×</div>
+              <div class="app-header">
+                <div class="brand">Refunds support</div>
+                <div class="sub">Choose an option</div>
               </div>
               <div class="product">
                 <div class="thumb">CV</div>
                 <div>
-                  <div class="brand">CeraVe</div>
-                  <div class="name">Oil Control Moisturising Gel-Cream…</div>
+                  <div class="meta">CeraVe</div>
+                  <div class="name">Oil Control Moisturising Gel-Cream</div>
                 </div>
-              </div>
-              <div class="list">
-                <div class="list-item"><span class="doc">▤</span><div class="label">I received the wrong item</div></div>
-                <div class="list-item"><span class="doc">▤</span><div class="label">I received a fake item</div></div>
-                <div class="list-item active"><span class="doc">▤</span><div class="label">I received a damaged item</div></div>
-                <div class="list-item"><span class="doc">▤</span><div class="label">My item is not working properly</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Need</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 2</div>
-            <div class="step-title">Action needed</div>
-            <div class="step-note">Explain why the case is waiting.</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Request SR-109700</div>
-                <div class="icon" style="text-align:right">×</div>
               </div>
               <div class="screen-body">
-                <span class="pill open">Action needed</span>
-                <div class="notif">
-                  <strong>Photo required</strong>
-                  Upload a clear picture of the damage to continue.
-                </div>
-                <div class="timeline">
-                  <div class="tl-item done">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Request received</strong><span>Yesterday</span></div>
+                <div class="choice-list">
+                  <div class="choice active">
+                    <span>Refund tracking<span class="hint">How long will my refund take?</span></span>
+                    <span>›</span>
                   </div>
-                  <div class="tl-item current">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Waiting on your photo</strong><span>Since 9:10 AM</span></div>
+                  <div class="choice">
+                    <span>Request a refund<span class="hint">I want to request a refund</span></span>
+                    <span>›</span>
                   </div>
-                  <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Review &amp; decision</strong><span>Pending</span></div>
-                  </div>
-                </div>
-                <div class="cta noon">Upload photo</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Resume</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 3</div>
-            <div class="step-title">Back in review</div>
-            <div class="step-note">Same request ID after upload.</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Request SR-109700</div>
-                <div class="icon" style="text-align:right">×</div>
-              </div>
-              <div class="screen-body">
-                <span class="pill progress">Under review</span>
-                <div class="timeline">
-                  <div class="tl-item done">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Photo received</strong><span>Today, 9:44 AM</span></div>
-                  </div>
-                  <div class="tl-item current">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Specialist reviewing</strong><span>In progress</span></div>
-                  </div>
-                  <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Resolved</strong><span>Pending</span></div>
-                  </div>
-                </div>
-                <div class="notif"><strong>Thanks</strong>We’ll update this page when a decision is ready.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Done</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 4</div>
-            <div class="step-title">Decision</div>
-            <div class="step-note">Refund / replacement shown here.</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Request SR-109700</div>
-                <div class="icon" style="text-align:right">×</div>
-              </div>
-              <div class="screen-body">
-                <span class="pill done">Resolved</span>
-                <div class="request-card">
-                  <div class="request-title">Full refund · AED 89</div>
-                  <div class="mini-meta"><span>3–5 days</span><span>Completed</span></div>
-                </div>
-                <div class="bubble">Photo confirmed damage. Refund issued to original payment method.</div>
-                <div class="cta secondary">This didn’t fix it</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="note">Also covers wrong item / fake item / not working — same “action needed → review → resolved” pattern.</div>
-    </section>
-
-    <!-- FLOW C -->
-    <section class="flow" id="flow-c">
-      <div class="flow-head">
-        <div class="tag">Refunds support</div>
-        <h2>C. Refund tracking</h2>
-        <p>Today this reads like an FAQ (“How long will my refund take?”). Proposed: open the actual refund request status.</p>
-      </div>
-
-      <div class="rail">
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 1</div>
-            <div class="step-title">Refunds support (today)</div>
-            <div class="step-note">Keep the menu; change the destination.</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="sheet-glow"></div>
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Refunds support</div>
-                <div class="icon" style="text-align:right">×</div>
-              </div>
-              <div class="product">
-                <div class="thumb">CV</div>
-                <div>
-                  <div class="brand">CeraVe</div>
-                  <div class="name">Oil Control Moisturising Gel-Cream…</div>
-                </div>
-              </div>
-              <div class="list">
-                <div class="list-item active">
-                  <span class="doc">▤</span>
-                  <div>
-                    <div class="label">Refund tracking</div>
-                    <div class="hint">How long will my refund take?</div>
-                  </div>
-                </div>
-                <div class="list-item">
-                  <span class="doc">▤</span>
-                  <div>
-                    <div class="label">Returnless refunds</div>
-                    <div class="hint">Refunds without returning an item</div>
-                  </div>
-                </div>
-                <div class="list-item">
-                  <span class="doc">▤</span>
-                  <div>
-                    <div class="label">Refund amount</div>
-                    <div class="hint">I received the wrong refund amount</div>
-                  </div>
-                </div>
-                <div class="list-item">
-                  <span class="doc">▤</span>
-                  <div>
-                    <div class="label">Request a refund</div>
-                    <div class="hint">I want to request for a refund</div>
+                  <div class="choice">
+                    <span>Refund amount<span class="hint">Wrong refund amount</span></span>
+                    <span>›</span>
                   </div>
                 </div>
               </div>
@@ -914,22 +699,20 @@
 
         <div class="arrow" aria-hidden="true">
           <span class="tag">Open</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 2</div>
-            <div class="step-title">Active refunds</div>
-            <div class="step-note">List open refunds for this order/item.</div>
+            <div class="step-title">Active refund</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Your refunds</div>
-                <div class="icon" style="text-align:right">×</div>
+              <div class="app-header">
+                <div class="brand">Your refunds</div>
+                <div class="sub">Open for this order</div>
               </div>
               <div class="screen-body">
                 <div class="request-card">
@@ -938,30 +721,28 @@
                   <span class="pill progress">Bank processing</span>
                   <div class="mini-meta"><span>ETA 3–5 days</span><span>Updated today</span></div>
                 </div>
-                <div class="cta noon">View refund status</div>
+                <div class="cta">View status</div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="arrow" aria-hidden="true">
-          <span class="tag">Status</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="tag">Track</span>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 3</div>
             <div class="step-title">Refund timeline</div>
-            <div class="step-note">Answers timing without a new message.</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">RF-55218</div>
-                <div class="icon" style="text-align:right">×</div>
+              <div class="app-header">
+                <div class="brand">RF-55218</div>
+                <div class="sub">Refund status</div>
               </div>
               <div class="screen-body">
                 <span class="pill progress">Bank processing</span>
@@ -976,7 +757,7 @@
                   </div>
                   <div class="tl-item">
                     <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Money in account</strong><span>Usually 3–5 days</span></div>
+                    <div class="tl-text"><strong>In your account</strong><span>Usually 3–5 days</span></div>
                   </div>
                 </div>
                 <div class="notif"><strong>No action needed</strong>We’ll notify you when it’s completed.</div>
@@ -987,22 +768,20 @@
 
         <div class="arrow" aria-hidden="true">
           <span class="tag">Done</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 4</div>
             <div class="step-title">Completed</div>
-            <div class="step-note">If wrong amount, open a new case from here.</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">RF-55218</div>
-                <div class="icon" style="text-align:right">×</div>
+              <div class="app-header">
+                <div class="brand">RF-55218</div>
+                <div class="sub">Completed</div>
               </div>
               <div class="screen-body">
                 <span class="pill done">Completed</span>
@@ -1016,246 +795,87 @@
           </div>
         </div>
       </div>
-      <div class="note">Highest leverage change: Refund tracking → real status, not only article copy.</div>
+      <div class="callout"><strong>Cuts:</strong> “How long will my refund take?” / “Was I refunded?”</div>
     </section>
 
-    <!-- FLOW D -->
-    <section class="flow" id="flow-d">
+    <!-- FLOW 3 -->
+    <section class="flow" id="flow-c">
       <div class="flow-head">
-        <div class="tag">Refunds support</div>
-        <h2>D. Request a refund</h2>
-        <p>From “I want to request for a refund” — create the case, then land on the same tracker used above.</p>
+        <div class="chip">Account hub → all open cases</div>
+        <h2>3. My Requests</h2>
+        <p>One place to open any support request and see the latest update.</p>
       </div>
 
       <div class="rail">
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 1</div>
-            <div class="step-title">Start request</div>
-            <div class="step-note">Current Refunds support entry.</div>
+            <div class="step-title">My Requests list</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
-              <div class="sheet-glow"></div>
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Refunds support</div>
-                <div class="icon" style="text-align:right">×</div>
+              <div class="app-header">
+                <div class="brand">My Requests</div>
+                <div class="sub">Track support cases</div>
               </div>
-              <div class="product">
-                <div class="thumb">CV</div>
-                <div>
-                  <div class="brand">CeraVe</div>
-                  <div class="name">Oil Control Moisturising Gel-Cream…</div>
-                </div>
-              </div>
-              <div class="list">
-                <div class="list-item">
-                  <span class="doc">▤</span>
-                  <div>
-                    <div class="label">Refund tracking</div>
-                    <div class="hint">How long will my refund take?</div>
+              <div class="screen-body">
+                <div class="home-list">
+                  <div class="home-item">
+                    <div class="row">
+                      <strong style="font-size:0.88rem">Never received shipment</strong>
+                      <span class="pill progress">Active</span>
+                    </div>
+                    <div class="mini-meta"><span>SR-109384</span><span>Updated 2h ago</span></div>
+                  </div>
+                  <div class="home-item">
+                    <div class="row">
+                      <strong style="font-size:0.88rem">Refund</strong>
+                      <span class="pill progress">Active</span>
+                    </div>
+                    <div class="mini-meta"><span>RF-55218</span><span>Updated today</span></div>
+                  </div>
+                  <div class="home-item">
+                    <div class="row">
+                      <strong style="font-size:0.88rem">Damaged item</strong>
+                      <span class="pill done">Resolved</span>
+                    </div>
+                    <div class="mini-meta"><span>SR-109700</span><span>Mar 10</span></div>
                   </div>
                 </div>
-                <div class="list-item active">
-                  <span class="doc">▤</span>
-                  <div>
-                    <div class="label">Request a refund</div>
-                    <div class="hint">I want to request for a refund</div>
-                  </div>
-                </div>
+                <div class="cta">New request</div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="arrow" aria-hidden="true">
-          <span class="tag">Form</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="tag">Notify</span>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 2</div>
-            <div class="step-title">Refund form</div>
-            <div class="step-note">Reason + evidence in one place.</div>
+            <div class="step-title">Push / email update</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Request a refund</div>
-                <div class="icon" style="text-align:right">×</div>
+              <div class="app-header">
+                <div class="brand">Notifications</div>
+                <div class="sub">Support updates</div>
               </div>
               <div class="screen-body">
-                <div class="form-field">
-                  <label>Reason</label>
-                  <div class="box">Item not as described</div>
+                <div class="notif">
+                  <strong>Update on SR-109384</strong>
+                  Checking with courier — usually resolved in 24–48h.
                 </div>
-                <div class="form-field">
-                  <label>Refund to</label>
-                  <div class="box">Original payment method</div>
+                <div class="notif">
+                  <strong>Update on RF-55218</strong>
+                  Refund sent to your bank.
                 </div>
-                <div class="upload">+ Upload photos</div>
-                <div class="cta noon">Submit refund request</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Created</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 3</div>
-            <div class="step-title">Under review</div>
-            <div class="step-note">Same tracker as Refund tracking.</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">RF-55290</div>
-                <div class="icon" style="text-align:right">×</div>
-              </div>
-              <div class="screen-body">
-                <span class="pill wait">Under review</span>
-                <div class="timeline">
-                  <div class="tl-item done">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Request received</strong><span>Just now</span></div>
-                  </div>
-                  <div class="tl-item current">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Reviewing evidence</strong><span>In progress</span></div>
-                  </div>
-                  <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Approved / declined</strong><span>Pending</span></div>
-                  </div>
-                  <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Money returned</strong><span>Pending</span></div>
-                  </div>
-                </div>
-                <div class="cta secondary">View in Refund tracking</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Paid</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 4</div>
-            <div class="step-title">Approved → payout</div>
-            <div class="step-note">Customer watches bank processing.</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">RF-55290</div>
-                <div class="icon" style="text-align:right">×</div>
-              </div>
-              <div class="screen-body">
-                <span class="pill done">Refund approved</span>
-                <div class="request-card">
-                  <div class="request-title">AED 189 to Visa ••4242</div>
-                  <div class="mini-meta"><span>3–5 days</span><span>Updated 1:20 PM</span></div>
-                </div>
-                <div class="timeline">
-                  <div class="tl-item done">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Approved</strong><span>Today, 1:20 PM</span></div>
-                  </div>
-                  <div class="tl-item current">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Bank processing</strong><span>In progress</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="note">Request a refund and Refund tracking share one status object — fewer duplicate tickets.</div>
-    </section>
-
-    <!-- FLOW E -->
-    <section class="flow" id="flow-e">
-      <div class="flow-head">
-        <div class="tag">Returns support</div>
-        <h2>E. Track return pickup</h2>
-        <p>
-          Today: separate FAQ items (cancel, change address, reschedule).
-          Proposed: one return request page with status + those actions on it.
-        </p>
-      </div>
-
-      <div class="rail">
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 1</div>
-            <div class="step-title">Returns support (today)</div>
-            <div class="step-note">Keep policy FAQ; route ops to tracker.</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="sheet-glow"></div>
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Returns support</div>
-                <div class="icon" style="text-align:right">×</div>
-              </div>
-              <div class="product">
-                <div class="thumb">CV</div>
-                <div>
-                  <div class="brand">CeraVe</div>
-                  <div class="name">Oil Control Moisturising Gel-Cream…</div>
-                </div>
-              </div>
-              <div class="list">
-                <div class="list-item">
-                  <span class="doc">▤</span>
-                  <div>
-                    <div class="label">Return policy</div>
-                    <div class="hint">What is noon’s return policy?</div>
-                  </div>
-                </div>
-                <div class="list-item active">
-                  <span class="doc">▤</span>
-                  <div>
-                    <div class="label">Track my return</div>
-                    <div class="hint">Cancel, reschedule, or change address</div>
-                  </div>
-                </div>
-                <div class="list-item">
-                  <span class="doc">▤</span>
-                  <div>
-                    <div class="label">Cancelling a return request</div>
-                    <div class="hint">How do I cancel a return request</div>
-                  </div>
-                </div>
-                <div class="list-item">
-                  <span class="doc">▤</span>
-                  <div>
-                    <div class="label">Rescheduling a pickup</div>
-                    <div class="hint">How do I reschedule a pickup</div>
-                  </div>
-                </div>
+                <div class="cta">Open request</div>
               </div>
             </div>
           </div>
@@ -1263,138 +883,78 @@
 
         <div class="arrow" aria-hidden="true">
           <span class="tag">Open</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 2</div>
-            <div class="step-title">Return request page</div>
-            <div class="step-note">Status + actions in one place.</div>
-          </div>
-          <div class="phone">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Return RT-22011</div>
-                <div class="icon" style="text-align:right">×</div>
-              </div>
-              <div class="screen-body">
-                <span class="pill progress">Pickup scheduled</span>
-                <div class="request-card">
-                  <div class="request-title">Thu 4–6 PM · Marina Gate</div>
-                  <div class="mini-meta"><span>Courier assigned</span><span>Updated 1h ago</span></div>
-                </div>
-                <div class="timeline">
-                  <div class="tl-item done">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Return approved</strong><span>Mon</span></div>
-                  </div>
-                  <div class="tl-item current">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Pickup scheduled</strong><span>Thu 4–6 PM</span></div>
-                  </div>
-                  <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Picked up</strong><span>Pending</span></div>
-                  </div>
-                  <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Refund started</strong><span>Pending</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Edit</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 3</div>
-            <div class="step-title">Self-serve actions</div>
-            <div class="step-note">Cancel / reschedule / address here.</div>
+            <div class="step-title">Same request page</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Manage return</div>
-                <div class="icon" style="text-align:right">×</div>
+              <div class="app-header">
+                <div class="brand">SR-109384</div>
+                <div class="sub">Never received shipment</div>
               </div>
               <div class="screen-body">
-                <div class="list" style="border:1px solid var(--line)">
-                  <div class="list-item active">
-                    <span class="doc">▤</span>
-                    <div>
-                      <div class="label">Reschedule pickup</div>
-                      <div class="hint">Pick a new date/time</div>
-                    </div>
+                <span class="pill progress">Investigating delivery</span>
+                <div class="timeline">
+                  <div class="tl-item done">
+                    <div class="tl-dot"></div>
+                    <div class="tl-text"><strong>Request received</strong><span>Today, 9:41 AM</span></div>
                   </div>
-                  <div class="list-item">
-                    <span class="doc">▤</span>
-                    <div>
-                      <div class="label">Change pickup address</div>
-                      <div class="hint">Update where to collect</div>
-                    </div>
+                  <div class="tl-item current">
+                    <div class="tl-dot"></div>
+                    <div class="tl-text"><strong>Checking with courier</strong><span>Updated 11:05 AM</span></div>
                   </div>
-                  <div class="list-item">
-                    <span class="doc">▤</span>
-                    <div>
-                      <div class="label">Cancel return request</div>
-                      <div class="hint">Stop this return</div>
-                    </div>
+                  <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-text"><strong>Resolved</strong><span>Pending</span></div>
                   </div>
                 </div>
-                <div class="cta noon">Reschedule</div>
+                <div class="cta secondary">Add more details</div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="arrow" aria-hidden="true">
-          <span class="tag">Update</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="tag">Reply</span>
+          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <div class="step">
           <div class="step-label">
             <div class="step-num">Step 4</div>
-            <div class="step-title">Status refreshed</div>
-            <div class="step-note">Page shows the new plan immediately.</div>
+            <div class="step-title">Add info (same ID)</div>
           </div>
           <div class="phone">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="nav">
-                <div class="icon">‹</div>
-                <div class="title">Return RT-22011</div>
-                <div class="icon" style="text-align:right">×</div>
+              <div class="app-header">
+                <div class="brand">SR-109384</div>
+                <div class="sub">Add details</div>
               </div>
               <div class="screen-body">
-                <span class="pill progress">Pickup rescheduled</span>
-                <div class="request-card">
-                  <div class="request-title">Sat 2–4 PM · Marina Gate</div>
-                  <div class="mini-meta"><span>Confirmed</span><span>Just now</span></div>
+                <div class="bubble">Could a neighbor have received it?</div>
+                <div class="form-field">
+                  <label>Your reply</label>
+                  <div class="box tall">Checked neighbors — no one has it.</div>
                 </div>
-                <div class="notif"><strong>Updated</strong>We’ll remind you before the courier arrives.</div>
-                <div class="cta secondary">Manage return</div>
+                <div class="upload">+ Attach screenshot</div>
+                <div class="cta">Send update</div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="note">Better than three separate FAQ dead-ends: one return object with status + self-serve actions.</div>
+      <div class="callout"><strong>Cuts:</strong> “Just checking in…” and duplicate new tickets for the same issue.</div>
     </section>
 
     <footer>
-      Customer Ticket Tracking — proposed flows on top of noon Orders / Refunds / Returns support entry points.
+      Customer Ticket Tracking — 3 core flows: missing shipment, refund tracking, My Requests.
     </footer>
   </div>
 </body>

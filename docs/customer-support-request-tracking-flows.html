@@ -3,187 +3,143 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Customer Support Request Tracking — Flow Screens</title>
+  <title>Customer Ticket Tracking</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --ink: #132033;
-      --ink-soft: #3a4a5f;
-      --paper: #f6f3ee;
-      --paper-2: #ebe6dc;
-      --panel: #ffffff;
-      --line: #d7d0c4;
-      --accent: #0f766e;
-      --accent-2: #ea580c;
-      --ok: #15803d;
-      --warn: #b45309;
-      --sky: #e8f4f2;
-      --shadow: 0 18px 40px rgba(19, 32, 51, 0.12);
+      --text: #111;
+      --muted: #555;
+      --line: #ddd;
+      --bg: #fff;
+      --soft: #f7f7f7;
+      --soft-2: #f0f0f0;
+      --ok: #1a7f37;
+      --warn: #9a6700;
+      --blue: #0969da;
     }
 
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "Outfit", sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(1200px 600px at 10% -10%, #d9efe9 0%, transparent 55%),
-        radial-gradient(900px 500px at 100% 0%, #ffe7d4 0%, transparent 50%),
-        linear-gradient(180deg, #f8f5f0 0%, #efe9df 100%);
-      line-height: 1.45;
+      font-family: "IBM Plex Sans", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+      font-size: 15px;
     }
 
     .page {
-      max-width: 1240px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 48px 24px 80px;
-    }
-
-    header.hero {
-      display: grid;
-      gap: 14px;
-      margin-bottom: 48px;
-      max-width: 760px;
-    }
-
-    .eyebrow {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
+      padding: 40px 20px 72px;
     }
 
     h1 {
-      font-family: "Fraunces", Georgia, serif;
-      font-size: clamp(2rem, 4vw, 3.1rem);
-      font-weight: 700;
-      line-height: 1.1;
-      margin: 0;
-    }
-
-    .lede {
-      margin: 0;
-      font-size: 1.1rem;
-      color: var(--ink-soft);
-      max-width: 62ch;
-    }
-
-    .legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 18px;
-      margin-top: 8px;
-      font-size: 0.92rem;
-      color: var(--ink-soft);
-    }
-
-    .legend span::before {
-      content: "";
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      margin-right: 8px;
-      vertical-align: middle;
-    }
-    .legend .customer::before { background: var(--accent); }
-    .legend .system::before { background: var(--accent-2); }
-    .legend .reduce::before { background: var(--ok); }
-
-    .flow {
-      margin-top: 56px;
-      padding-top: 8px;
-    }
-
-    .flow-head {
-      display: grid;
-      gap: 8px;
-      margin-bottom: 28px;
-      max-width: 720px;
-    }
-
-    .flow-head h2 {
-      font-family: "Fraunces", Georgia, serif;
+      margin: 0 0 8px;
       font-size: 1.75rem;
-      margin: 0;
+      font-weight: 600;
+      letter-spacing: -0.02em;
     }
 
-    .flow-head p {
-      margin: 0;
-      color: var(--ink-soft);
-    }
-
-    .goal-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      width: fit-content;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: #e8f7ee;
-      color: var(--ok);
-      font-size: 0.88rem;
+    h2 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
       font-weight: 600;
     }
 
-    .rail {
-      display: flex;
-      align-items: stretch;
-      gap: 0;
-      overflow-x: auto;
-      padding: 8px 4px 24px;
-      scroll-snap-type: x proximity;
-    }
-
-    .step {
-      flex: 0 0 auto;
-      width: 250px;
-      scroll-snap-align: start;
-      display: grid;
-      gap: 12px;
-    }
-
-    .step-label {
-      display: grid;
-      gap: 4px;
-      min-height: 72px;
-    }
-
-    .step-num {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .step-title {
+    h3 {
+      margin: 0 0 6px;
+      font-size: 0.95rem;
       font-weight: 600;
-      font-size: 1rem;
     }
 
-    .step-note {
-      font-size: 0.84rem;
-      color: var(--ink-soft);
+    p { margin: 0; color: var(--muted); }
+
+    .intro {
+      max-width: 62ch;
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .intro p { margin-top: 8px; }
+
+    section { margin-top: 40px; }
+
+    .section-head {
+      margin-bottom: 18px;
+      max-width: 70ch;
+    }
+
+    .section-head p { margin-top: 6px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--soft);
+      font-weight: 600;
+      font-size: 0.82rem;
+    }
+
+    td { color: var(--muted); }
+    td strong { color: var(--text); font-weight: 500; }
+
+    .bench-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .bench-card {
+      border: 1px solid var(--line);
+      background: var(--bg);
+    }
+
+    .bench-card .meta {
+      padding: 12px 12px 0;
+    }
+
+    .bench-card .meta .name {
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .bench-card .meta .desc {
+      margin-top: 4px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      min-height: 2.6em;
     }
 
     .phone {
-      width: 250px;
-      border-radius: 28px;
-      background: #101820;
-      padding: 10px;
-      box-shadow: var(--shadow);
-      position: relative;
+      width: 100%;
+      max-width: 250px;
+      margin: 12px auto 14px;
+      border: 1px solid #bbb;
+      border-radius: 18px;
+      background: #111;
+      padding: 8px;
     }
 
     .phone-inner {
-      background: var(--panel);
-      border-radius: 20px;
+      background: #fff;
+      border-radius: 12px;
       overflow: hidden;
-      min-height: 460px;
+      min-height: 390px;
       display: flex;
       flex-direction: column;
     }
@@ -191,336 +147,221 @@
     .status-bar {
       display: flex;
       justify-content: space-between;
-      padding: 10px 14px 6px;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--ink-soft);
+      padding: 8px 10px 4px;
+      font-size: 10px;
+      color: #666;
+      font-weight: 500;
     }
 
     .app-header {
-      padding: 6px 14px 12px;
-      border-bottom: 1px solid var(--paper-2);
+      padding: 4px 10px 10px;
+      border-bottom: 1px solid var(--line);
     }
 
     .app-header .brand {
-      font-family: "Fraunces", Georgia, serif;
-      font-size: 1.15rem;
-      font-weight: 700;
+      font-size: 0.95rem;
+      font-weight: 600;
     }
 
     .app-header .sub {
-      font-size: 0.78rem;
-      color: var(--ink-soft);
+      font-size: 0.72rem;
+      color: var(--muted);
       margin-top: 2px;
     }
 
     .screen-body {
-      padding: 14px;
-      display: grid;
-      gap: 10px;
-      flex: 1;
-      background:
-        linear-gradient(180deg, #fff 0%, #fbfaf7 100%);
-    }
-
-    .bubble {
-      border-radius: 16px;
-      padding: 12px 13px;
-      font-size: 0.84rem;
-      max-width: 92%;
-    }
-
-    .bubble.user {
-      background: var(--sky);
-      color: var(--ink);
-      justify-self: end;
-      border-bottom-right-radius: 6px;
-    }
-
-    .bubble.agent {
-      background: #f1efe8;
-      color: var(--ink);
-      justify-self: start;
-      border-bottom-left-radius: 6px;
-    }
-
-    .choice-list {
+      padding: 10px;
       display: grid;
       gap: 8px;
+      flex: 1;
+      background: #fff;
     }
+
+    .choice-list { display: grid; gap: 6px; }
 
     .choice {
       border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 11px 12px;
-      font-size: 0.86rem;
-      background: #fff;
+      padding: 9px 10px;
+      font-size: 0.8rem;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      gap: 8px;
+      background: #fff;
     }
 
     .choice.active {
-      border-color: var(--accent);
-      background: #eef8f6;
-      box-shadow: inset 0 0 0 1px var(--accent);
+      border-color: #111;
+      background: var(--soft);
     }
-
-    .choice .chev { color: var(--ink-soft); font-size: 0.9rem; }
 
     .cta {
       margin-top: auto;
       border: 0;
-      border-radius: 12px;
-      background: var(--ink);
+      background: #111;
       color: #fff;
       font: inherit;
-      font-weight: 600;
-      font-size: 0.9rem;
-      padding: 12px;
+      font-weight: 500;
+      font-size: 0.82rem;
+      padding: 10px;
       text-align: center;
     }
 
     .cta.secondary {
-      background: transparent;
-      color: var(--accent);
-      border: 1px solid #b7d8d3;
+      background: #fff;
+      color: #111;
+      border: 1px solid #111;
     }
 
     .request-card {
       border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 12px;
-      background: #fff;
+      padding: 10px;
       display: grid;
-      gap: 8px;
+      gap: 6px;
+      background: #fff;
     }
 
     .request-id {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--muted);
       text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .request-title {
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.88rem;
     }
 
     .pill {
       display: inline-flex;
       width: fit-content;
-      padding: 4px 8px;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
+      padding: 2px 7px;
+      font-size: 0.68rem;
+      font-weight: 600;
       text-transform: uppercase;
+      letter-spacing: 0.03em;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      color: var(--muted);
     }
 
-    .pill.open { background: #fff4e5; color: var(--warn); }
-    .pill.progress { background: #e7f3ff; color: #1d4ed8; }
-    .pill.done { background: #e8f7ee; color: var(--ok); }
-    .pill.wait { background: #f3e8ff; color: #6d28d9; }
+    .pill.open { color: var(--warn); border-color: #e5d4a1; background: #fff8e8; }
+    .pill.progress { color: var(--blue); border-color: #b6d4fe; background: #eff6ff; }
+    .pill.done { color: var(--ok); border-color: #b7e0c2; background: #eefbf1; }
+    .pill.wait { color: #6e40c9; border-color: #d8b9ff; background: #f6f0ff; }
 
-    .timeline {
-      display: grid;
-      gap: 0;
-      margin-top: 4px;
-    }
+    .timeline { display: grid; gap: 0; margin-top: 2px; }
 
     .tl-item {
       display: grid;
-      grid-template-columns: 18px 1fr;
-      gap: 10px;
+      grid-template-columns: 14px 1fr;
+      gap: 8px;
       position: relative;
-      padding-bottom: 14px;
+      padding-bottom: 12px;
     }
 
     .tl-item:last-child { padding-bottom: 0; }
 
     .tl-dot {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       margin-top: 3px;
-      background: var(--line);
-      box-shadow: 0 0 0 3px #fff;
+      background: #ccc;
       z-index: 1;
     }
 
     .tl-item.done .tl-dot { background: var(--ok); }
-    .tl-item.current .tl-dot {
-      background: var(--accent-2);
-      box-shadow: 0 0 0 3px #ffe8d6;
-    }
+    .tl-item.current .tl-dot { background: #111; }
 
     .tl-item::before {
       content: "";
       position: absolute;
-      left: 5px;
-      top: 14px;
+      left: 4px;
+      top: 13px;
       bottom: 0;
-      width: 2px;
-      background: var(--paper-2);
+      width: 1px;
+      background: var(--line);
     }
 
     .tl-item:last-child::before { display: none; }
 
     .tl-text strong {
       display: block;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
+      font-weight: 500;
     }
 
     .tl-text span {
-      font-size: 0.74rem;
-      color: var(--ink-soft);
+      font-size: 0.7rem;
+      color: var(--muted);
     }
 
     .notif {
-      border-radius: 14px;
-      background: #fff8f1;
-      border: 1px solid #f0d3b8;
-      padding: 11px 12px;
-      font-size: 0.8rem;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 9px 10px;
+      font-size: 0.75rem;
       display: grid;
-      gap: 4px;
+      gap: 3px;
     }
 
-    .notif strong { color: var(--accent-2); font-size: 0.78rem; }
+    .notif strong {
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
 
     .mini-meta {
       display: flex;
       justify-content: space-between;
-      font-size: 0.74rem;
-      color: var(--ink-soft);
+      font-size: 0.7rem;
+      color: var(--muted);
     }
 
-    .arrow {
-      flex: 0 0 auto;
-      width: 56px;
-      display: grid;
-      place-items: center;
-      align-self: center;
-      margin-top: 84px;
-      color: var(--ink-soft);
-      position: relative;
-    }
-
-    .arrow svg { width: 48px; height: 28px; }
-
-    .arrow .tag {
-      position: absolute;
-      top: -18px;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-      background: #fff4eb;
-      border: 1px solid #f0d3b8;
-      padding: 3px 7px;
-      border-radius: 999px;
-    }
-
-    .callout {
-      margin-top: 18px;
-      padding: 14px 16px;
-      border-left: 4px solid var(--ok);
-      background: rgba(255,255,255,0.7);
-      border-radius: 0 12px 12px 0;
-      max-width: 820px;
-      font-size: 0.95rem;
-    }
-
-    .callout strong { color: var(--ok); }
-
-    .compare {
-      margin-top: 64px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    @media (max-width: 860px) {
-      .compare { grid-template-columns: 1fr; }
-    }
-
-    .compare-card {
-      background: rgba(255,255,255,0.75);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 20px;
-    }
-
-    .compare-card h3 {
-      margin: 0 0 8px;
-      font-family: "Fraunces", Georgia, serif;
-    }
-
-    .compare-card ul {
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--ink-soft);
-    }
-
-    .compare-card.bad { border-color: #f0c4c4; background: #fff7f7; }
-    .compare-card.good { border-color: #b9e0c6; background: #f4fbf6; }
-
-    footer {
-      margin-top: 64px;
-      padding-top: 20px;
-      border-top: 1px solid var(--line);
-      color: var(--ink-soft);
-      font-size: 0.88rem;
-    }
-
-    .form-field {
-      display: grid;
-      gap: 4px;
-      font-size: 0.8rem;
-    }
-
-    .form-field label { color: var(--ink-soft); font-weight: 500; }
+    .form-field { display: grid; gap: 3px; font-size: 0.76rem; }
+    .form-field label { color: var(--muted); }
 
     .form-field .box {
       border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 10px;
+      padding: 8px;
       background: #fff;
-      min-height: 38px;
-      color: var(--ink);
+      min-height: 32px;
+      color: var(--text);
     }
 
-    .form-field .box.tall { min-height: 72px; }
+    .form-field .box.tall { min-height: 58px; }
 
     .upload {
-      border: 1.5px dashed #c9c0b2;
-      border-radius: 12px;
-      padding: 14px;
+      border: 1px dashed #bbb;
+      padding: 12px;
       text-align: center;
-      font-size: 0.8rem;
-      color: var(--ink-soft);
-      background: #fcfbf8;
+      font-size: 0.75rem;
+      color: var(--muted);
+      background: var(--soft);
     }
 
-    .home-list {
-      display: grid;
-      gap: 8px;
+    .bubble {
+      padding: 9px 10px;
+      font-size: 0.78rem;
+      max-width: 92%;
+      border: 1px solid var(--line);
+      background: var(--soft);
     }
+
+    .bubble.user {
+      justify-self: end;
+      background: #fff;
+    }
+
+    .bubble.agent { justify-self: start; }
+
+    .home-list { display: grid; gap: 7px; }
 
     .home-item {
       border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 11px;
+      padding: 9px;
       display: grid;
-      gap: 4px;
+      gap: 3px;
       background: #fff;
     }
 
@@ -530,508 +371,753 @@
       gap: 8px;
       align-items: center;
     }
+
+    .rail {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      overflow-x: auto;
+      padding: 4px 0 12px;
+    }
+
+    .step {
+      flex: 0 0 auto;
+      width: 230px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .step-label { display: grid; gap: 2px; min-height: 58px; }
+
+    .step-num {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .step-title {
+      font-weight: 600;
+      font-size: 0.88rem;
+    }
+
+    .step-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .arrow {
+      flex: 0 0 auto;
+      width: 44px;
+      display: grid;
+      place-items: center;
+      align-self: center;
+      margin-top: 70px;
+      color: #999;
+      position: relative;
+    }
+
+    .arrow svg { width: 36px; height: 20px; }
+
+    .arrow .tag {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 2px 5px;
+    }
+
+    .note {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 80ch;
+    }
+
+    .flow { margin-top: 32px; }
+
+    .flow + .flow {
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .vendor-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 2px 6px;
+      margin-bottom: 6px;
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
   </style>
 </head>
 <body>
   <div class="page">
-    <header class="hero">
-      <div class="eyebrow">Customer-facing support request tracking</div>
-      <h1>See updates without sending a follow-up</h1>
-      <p class="lede">
-        Visual flows for complaint / request tracking (not order tracking).
-        Goal: after a customer reports “order didn’t arrive” or “I need a refund,”
-        they can open a live request page instead of messaging “any update?”
+    <header class="intro">
+      <h1>Customer Ticket Tracking</h1>
+      <p>
+        Customer-facing status for support requests (missing order, refund, etc.),
+        not shipment tracking. Focus: let customers see progress without sending follow-up messages.
       </p>
-      <div class="legend">
-        <span class="customer">Customer action</span>
-        <span class="system">System / status update</span>
-        <span class="reduce">Follow-up prevented</span>
-      </div>
     </header>
 
-    <!-- FLOW 1 -->
-    <section class="flow" id="flow-not-arrived">
-      <div class="flow-head">
-        <div class="goal-chip">Flow A · Order did not arrive</div>
-        <h2>From complaint → live request status</h2>
-        <p>Customer reports a missing order, gets a request ID, then watches status change without chasing support.</p>
+    <!-- BENCHMARKS -->
+    <section id="benchmarks">
+      <div class="section-head">
+        <h2>1. Benchmarks</h2>
+        <p>
+          How common platforms expose ticket status to customers today.
+          Screens below are simplified representations of each pattern.
+        </p>
       </div>
 
-      <div class="rail" aria-label="Order not arrived flow screens">
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 1</div>
-            <div class="step-title">Open Help &amp; choose issue</div>
-            <div class="step-note">Customer starts a support request, not an order tracker.</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Customer sees</th>
+            <th>How they get updates</th>
+            <th>Gap for this use case</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Zendesk Help Center</strong></td>
+            <td>Logged-in portal: list of requests, status, comments</td>
+            <td>Email + portal</td>
+            <td>Statuses often generic unless customized</td>
+          </tr>
+          <tr>
+            <td><strong>Freshdesk Portal</strong></td>
+            <td>Branded portal: raise ticket, view status, reply</td>
+            <td>Email + portal / public ticket link</td>
+            <td>Needs custom stages to feel like a clear timeline</td>
+          </tr>
+          <tr>
+            <td><strong>Amazon / Noon pattern</strong></td>
+            <td>In-account “My requests” with staged progress</td>
+            <td>App push / email deep links</td>
+            <td>Built in-house; closest UX reference</td>
+          </tr>
+          <tr>
+            <td><strong>Gorgias</strong></td>
+            <td>Chat widget self-serve (orders/returns)</td>
+            <td>Chat / email thread</td>
+            <td>Weak standalone case status page</td>
+          </tr>
+          <tr>
+            <td><strong>SupportBee / Hiver</strong></td>
+            <td>Portal or magic link to ticket thread</td>
+            <td>Email with private link</td>
+            <td>Lighter workflow / analytics depth</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="bench-grid">
+        <!-- Zendesk-like -->
+        <article class="bench-card">
+          <div class="meta">
+            <div class="vendor-tag">Zendesk-style</div>
+            <div class="name">Request list in help center</div>
+            <div class="desc">Customer logs in and sees open / solved requests.</div>
           </div>
-          <div class="phone" aria-label="Screenshot: choose issue type">
+          <div class="phone" aria-label="Benchmark: Zendesk-style portal">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
               <div class="app-header">
-                <div class="brand">Help Center</div>
-                <div class="sub">What do you need help with?</div>
+                <div class="brand">My requests</div>
+                <div class="sub">Help Center</div>
               </div>
               <div class="screen-body">
-                <div class="choice-list">
-                  <div class="choice">Order delayed <span class="chev">›</span></div>
-                  <div class="choice active">Order did not arrive <span class="chev">›</span></div>
-                  <div class="choice">Request a refund <span class="chev">›</span></div>
-                  <div class="choice">Damaged / wrong item <span class="chev">›</span></div>
+                <div class="home-list">
+                  <div class="home-item">
+                    <div class="row">
+                      <strong style="font-size:0.82rem">Missing delivery</strong>
+                      <span class="pill open">Open</span>
+                    </div>
+                    <div class="mini-meta"><span>#4521</span><span>Updated today</span></div>
+                  </div>
+                  <div class="home-item">
+                    <div class="row">
+                      <strong style="font-size:0.82rem">Refund question</strong>
+                      <span class="pill done">Solved</span>
+                    </div>
+                    <div class="mini-meta"><span>#4488</span><span>2 days ago</span></div>
+                  </div>
                 </div>
-                <div class="cta">Continue</div>
+                <div class="cta">Submit a request</div>
               </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Submit</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 2</div>
-            <div class="step-title">Describe the problem</div>
-            <div class="step-note">Capture details once so agents don’t ask again.</div>
+        <!-- Freshdesk-like -->
+        <article class="bench-card">
+          <div class="meta">
+            <div class="vendor-tag">Freshdesk-style</div>
+            <div class="name">Ticket status page</div>
+            <div class="desc">Customer opens ticket and sees status + conversation.</div>
           </div>
-          <div class="phone" aria-label="Screenshot: describe complaint">
+          <div class="phone" aria-label="Benchmark: Freshdesk-style ticket">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
               <div class="app-header">
-                <div class="brand">Order did not arrive</div>
-                <div class="sub">Order #N-48291 · Delivered claim</div>
+                <div class="brand">Ticket #88421</div>
+                <div class="sub">Being processed</div>
               </div>
               <div class="screen-body">
-                <div class="form-field">
-                  <label>What happened?</label>
-                  <div class="box tall">Courier marked delivered, but I never received the package.</div>
-                </div>
-                <div class="form-field">
-                  <label>Preferred resolution</label>
-                  <div class="box">Reship or refund</div>
-                </div>
-                <div class="upload">＋ Add photo of doorstep / proof</div>
-                <div class="cta">Submit request</div>
+                <span class="pill progress">Being processed</span>
+                <div class="bubble agent">We’re looking into your refund. We’ll reply here.</div>
+                <div class="bubble user">Thanks — please keep me posted.</div>
+                <div class="cta secondary">Add reply</div>
               </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Created</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 3</div>
-            <div class="step-title">Request confirmation</div>
-            <div class="step-note">Customer gets a Request ID + “View updates” link.</div>
+        <!-- Amazon/Noon-like -->
+        <article class="bench-card">
+          <div class="meta">
+            <div class="vendor-tag">Amazon / Noon pattern</div>
+            <div class="name">Staged request timeline</div>
+            <div class="desc">In-app case with explicit stages and notifications.</div>
           </div>
-          <div class="phone" aria-label="Screenshot: request created">
+          <div class="phone" aria-label="Benchmark: marketplace request timeline">
             <div class="phone-inner">
               <div class="status-bar"><span>9:41</span><span>●●●</span></div>
               <div class="app-header">
-                <div class="brand">Request submitted</div>
-                <div class="sub">We’ll update this page as we investigate</div>
+                <div class="brand">Support request</div>
+                <div class="sub">Order didn’t arrive</div>
               </div>
               <div class="screen-body">
-                <div class="request-card">
-                  <div class="request-id">Request · SR-109384</div>
-                  <div class="request-title">Order did not arrive</div>
-                  <span class="pill open">Received</span>
-                  <div class="mini-meta"><span>ETA 24–48h</span><span>Just now</span></div>
-                </div>
-                <div class="notif">
-                  <strong>Notification sent</strong>
-                  Save this page. We’ll notify you when status changes — no need to message us.
-                </div>
-                <div class="cta">View request status</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Auto update</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 4</div>
-            <div class="step-title">Live status timeline</div>
-            <div class="step-note">Customer checks progress here instead of asking again.</div>
-          </div>
-          <div class="phone" aria-label="Screenshot: live status timeline">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">SR-109384</div>
-                <div class="sub">Order did not arrive</div>
-              </div>
-              <div class="screen-body">
-                <span class="pill progress">Investigating delivery</span>
+                <span class="pill progress">In progress</span>
                 <div class="timeline">
                   <div class="tl-item done">
                     <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Request received</strong><span>Today, 9:41 AM</span></div>
+                    <div class="tl-text"><strong>Request created</strong><span>Yesterday</span></div>
                   </div>
                   <div class="tl-item current">
                     <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Checking with courier</strong><span>Updated 11:05 AM</span></div>
-                  </div>
-                  <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Decision: reship or refund</strong><span>Pending</span></div>
+                    <div class="tl-text"><strong>Investigating</strong><span>Updated 1h ago</span></div>
                   </div>
                   <div class="tl-item">
                     <div class="tl-dot"></div>
                     <div class="tl-text"><strong>Resolved</strong><span>Pending</span></div>
                   </div>
                 </div>
-                <div class="cta secondary">Add more details</div>
+                <div class="notif"><strong>Alert</strong>You’ll get a notification on the next update.</div>
               </div>
             </div>
           </div>
-        </div>
+        </article>
+
+        <!-- Gorgias-like -->
+        <article class="bench-card">
+          <div class="meta">
+            <div class="vendor-tag">Gorgias-style</div>
+            <div class="name">Chat self-serve</div>
+            <div class="desc">Actions inside chat; less of a persistent status page.</div>
+          </div>
+          <div class="phone" aria-label="Benchmark: Gorgias-style chat">
+            <div class="phone-inner">
+              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+              <div class="app-header">
+                <div class="brand">Chat</div>
+                <div class="sub">How can we help?</div>
+              </div>
+              <div class="screen-body">
+                <div class="choice-list">
+                  <div class="choice">Track order <span>›</span></div>
+                  <div class="choice active">Start a return <span>›</span></div>
+                  <div class="choice">Talk to an agent <span>›</span></div>
+                </div>
+                <div class="bubble agent">I can help with a return. Want me to open one?</div>
+                <div class="cta">Continue in chat</div>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
 
-      <div class="callout">
-        <strong>Follow-up prevented:</strong> “Any update on my missing order?” is answered by the timeline + push/email when status moves.
+      <div class="note">
+        Takeaway: portals reduce some follow-ups, but the marketplace pattern (request ID + stages + push/email) is what most clearly answers “any update?” without a new message.
       </div>
     </section>
 
-    <!-- FLOW 2 -->
-    <section class="flow" id="flow-refund">
-      <div class="flow-head">
-        <div class="goal-chip">Flow B · Refund request</div>
-        <h2>Refund progress the customer can watch</h2>
-        <p>Same pattern: one request, staged updates, payment confirmation without chasing.</p>
+    <!-- PROPOSED -->
+    <section id="proposed">
+      <div class="section-head">
+        <h2>2. Proposed design</h2>
+        <p>
+          Customer-facing request tracking with a request ID, visible stages,
+          and notifications on each change. Same request is reused when the customer adds more info.
+        </p>
       </div>
 
-      <div class="rail" aria-label="Refund request flow screens">
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 1</div>
-            <div class="step-title">Start refund request</div>
-            <div class="step-note">Customer picks reason + method once.</div>
-          </div>
-          <div class="phone" aria-label="Screenshot: refund form">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">Request a refund</div>
-                <div class="sub">Order #N-77320 · AED 189</div>
-              </div>
-              <div class="screen-body">
-                <div class="form-field">
-                  <label>Reason</label>
-                  <div class="box">Item not as described</div>
-                </div>
-                <div class="form-field">
-                  <label>Refund to</label>
-                  <div class="box">Original payment method</div>
-                </div>
-                <div class="upload">＋ Upload photos</div>
-                <div class="cta">Submit refund request</div>
-              </div>
+      <!-- Flow A -->
+      <div class="flow" id="flow-not-arrived">
+        <h3>A. Order did not arrive</h3>
+        <p style="margin-bottom:14px">Complaint → request ID → live timeline</p>
+
+        <div class="rail">
+          <div class="step">
+            <div class="step-label">
+              <div class="step-num">Step 1</div>
+              <div class="step-title">Choose issue</div>
+              <div class="step-note">Support request, not order tracking.</div>
             </div>
-          </div>
-        </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Review</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 2</div>
-            <div class="step-title">Under review</div>
-            <div class="step-note">Clear stage so customer knows work is in progress.</div>
-          </div>
-          <div class="phone" aria-label="Screenshot: refund under review">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">SR-109512</div>
-                <div class="sub">Refund request</div>
-              </div>
-              <div class="screen-body">
-                <span class="pill wait">Under review</span>
-                <div class="timeline">
-                  <div class="tl-item done">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Request received</strong><span>Yesterday, 4:12 PM</span></div>
-                  </div>
-                  <div class="tl-item current">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Specialist reviewing evidence</strong><span>Updated today, 10:02 AM</span></div>
-                  </div>
-                  <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Refund approved</strong><span>Pending</span></div>
-                  </div>
-                  <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Money returned</strong><span>Pending</span></div>
-                  </div>
+            <div class="phone">
+              <div class="phone-inner">
+                <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+                <div class="app-header">
+                  <div class="brand">Help</div>
+                  <div class="sub">What do you need help with?</div>
                 </div>
-                <div class="notif">
-                  <strong>No action needed</strong>
-                  We’ll notify you when a decision is made.
+                <div class="screen-body">
+                  <div class="choice-list">
+                    <div class="choice">Order delayed <span>›</span></div>
+                    <div class="choice active">Order did not arrive <span>›</span></div>
+                    <div class="choice">Request a refund <span>›</span></div>
+                    <div class="choice">Damaged / wrong item <span>›</span></div>
+                  </div>
+                  <div class="cta">Continue</div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Approved</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 3</div>
-            <div class="step-title">Approved → payout</div>
-            <div class="step-note">Push/email + page update replaces “was I refunded?”</div>
+          <div class="arrow" aria-hidden="true">
+            <span class="tag">Next</span>
+            <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="phone" aria-label="Screenshot: refund approved">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">SR-109512</div>
-                <div class="sub">Refund request</div>
-              </div>
-              <div class="screen-body">
-                <span class="pill done">Refund approved</span>
-                <div class="request-card">
-                  <div class="request-title">AED 189 to Visa ••4242</div>
-                  <div class="mini-meta"><span>Arrives in 3–5 days</span><span>Updated 1:20 PM</span></div>
+
+          <div class="step">
+            <div class="step-label">
+              <div class="step-num">Step 2</div>
+              <div class="step-title">Describe problem</div>
+              <div class="step-note">Collect details once.</div>
+            </div>
+            <div class="phone">
+              <div class="phone-inner">
+                <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+                <div class="app-header">
+                  <div class="brand">Order did not arrive</div>
+                  <div class="sub">Order #N-48291</div>
                 </div>
-                <div class="timeline">
-                  <div class="tl-item done">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Refund approved</strong><span>Today, 1:20 PM</span></div>
+                <div class="screen-body">
+                  <div class="form-field">
+                    <label>What happened?</label>
+                    <div class="box tall">Marked delivered, but I never received it.</div>
                   </div>
-                  <div class="tl-item current">
-                    <div class="tl-dot"></div>
-                    <div class="tl-text"><strong>Bank processing payout</strong><span>In progress</span></div>
+                  <div class="form-field">
+                    <label>Preferred resolution</label>
+                    <div class="box">Reship or refund</div>
                   </div>
+                  <div class="upload">+ Add photo</div>
+                  <div class="cta">Submit request</div>
                 </div>
-                <div class="cta secondary">View in My Requests</div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Done</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 4</div>
-            <div class="step-title">Resolved confirmation</div>
-            <div class="step-note">Closure is visible; reopen only if needed.</div>
+          <div class="arrow" aria-hidden="true">
+            <span class="tag">Created</span>
+            <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="phone" aria-label="Screenshot: refund resolved">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">SR-109512</div>
-                <div class="sub">Refund complete</div>
-              </div>
-              <div class="screen-body">
-                <span class="pill done">Resolved</span>
-                <div class="request-card">
-                  <div class="request-title">AED 189 returned</div>
-                  <div class="mini-meta"><span>Completed</span><span>Mar 12</span></div>
+
+          <div class="step">
+            <div class="step-label">
+              <div class="step-num">Step 3</div>
+              <div class="step-title">Confirmation</div>
+              <div class="step-note">Request ID + link to status.</div>
+            </div>
+            <div class="phone">
+              <div class="phone-inner">
+                <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+                <div class="app-header">
+                  <div class="brand">Request submitted</div>
+                  <div class="sub">Updates will appear on this page</div>
                 </div>
-                <div class="bubble agent">Your refund has been deposited. If you don’t see it yet, allow 1 more business day for your bank.</div>
-                <div class="cta secondary">This didn’t fix it</div>
+                <div class="screen-body">
+                  <div class="request-card">
+                    <div class="request-id">Request · SR-109384</div>
+                    <div class="request-title">Order did not arrive</div>
+                    <span class="pill open">Received</span>
+                    <div class="mini-meta"><span>ETA 24–48h</span><span>Just now</span></div>
+                  </div>
+                  <div class="notif">
+                    <strong>Notification on</strong>
+                    You’ll be notified when the status changes.
+                  </div>
+                  <div class="cta">View request status</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="callout">
-        <strong>Follow-up prevented:</strong> “Did you approve my refund?” and “When will the money hit?” are answered by staged statuses + notifications.
-      </div>
-    </section>
-
-    <!-- FLOW 3 -->
-    <section class="flow" id="flow-my-requests">
-      <div class="flow-head">
-        <div class="goal-chip">Flow C · My Requests hub</div>
-        <h2>One place to check all open complaints</h2>
-        <p>Amazon/Noon pattern: account → My Requests → open a case → see latest update time.</p>
-      </div>
-
-      <div class="rail" aria-label="My requests hub flow">
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 1</div>
-            <div class="step-title">My Requests list</div>
-            <div class="step-note">Customer opens hub instead of writing support.</div>
+          <div class="arrow" aria-hidden="true">
+            <span class="tag">Update</span>
+            <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="phone" aria-label="Screenshot: my requests list">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">My Requests</div>
-                <div class="sub">Track support cases</div>
-              </div>
-              <div class="screen-body">
-                <div class="home-list">
-                  <div class="home-item">
-                    <div class="row">
-                      <strong style="font-size:0.9rem">Order did not arrive</strong>
-                      <span class="pill progress">Active</span>
+
+          <div class="step">
+            <div class="step-label">
+              <div class="step-num">Step 4</div>
+              <div class="step-title">Live timeline</div>
+              <div class="step-note">Replaces “any update?” messages.</div>
+            </div>
+            <div class="phone">
+              <div class="phone-inner">
+                <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+                <div class="app-header">
+                  <div class="brand">SR-109384</div>
+                  <div class="sub">Order did not arrive</div>
+                </div>
+                <div class="screen-body">
+                  <span class="pill progress">Investigating delivery</span>
+                  <div class="timeline">
+                    <div class="tl-item done">
+                      <div class="tl-dot"></div>
+                      <div class="tl-text"><strong>Request received</strong><span>Today, 9:41 AM</span></div>
                     </div>
-                    <div class="mini-meta"><span>SR-109384</span><span>Updated 2h ago</span></div>
-                  </div>
-                  <div class="home-item">
-                    <div class="row">
-                      <strong style="font-size:0.9rem">Refund request</strong>
-                      <span class="pill done">Resolved</span>
+                    <div class="tl-item current">
+                      <div class="tl-dot"></div>
+                      <div class="tl-text"><strong>Checking with courier</strong><span>Updated 11:05 AM</span></div>
                     </div>
-                    <div class="mini-meta"><span>SR-109512</span><span>Mar 12</span></div>
+                    <div class="tl-item">
+                      <div class="tl-dot"></div>
+                      <div class="tl-text"><strong>Decision: reship or refund</strong><span>Pending</span></div>
+                    </div>
+                    <div class="tl-item">
+                      <div class="tl-dot"></div>
+                      <div class="tl-text"><strong>Resolved</strong><span>Pending</span></div>
+                    </div>
                   </div>
+                  <div class="cta secondary">Add more details</div>
                 </div>
-                <div class="cta">New request</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Open</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 2</div>
-            <div class="step-title">Push / email deep link</div>
-            <div class="step-note">Every status change lands them on the same page.</div>
-          </div>
-          <div class="phone" aria-label="Screenshot: status notification">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">Notifications</div>
-                <div class="sub">Support updates</div>
-              </div>
-              <div class="screen-body">
-                <div class="notif">
-                  <strong>Update on SR-109384</strong>
-                  Courier confirmed a delivery exception. We’re preparing a replacement.
-                </div>
-                <div class="notif">
-                  <strong>Update on SR-109512</strong>
-                  Refund of AED 189 was approved.
-                </div>
-                <div class="cta">Open request</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Reply here</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 3</div>
-            <div class="step-title">Add info on same request</div>
-            <div class="step-note">Extra details stay on one thread — no new ticket.</div>
-          </div>
-          <div class="phone" aria-label="Screenshot: add details to same request">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">SR-109384</div>
-                <div class="sub">Add details</div>
-              </div>
-              <div class="screen-body">
-                <div class="bubble agent">Can you confirm if a neighbor may have received it?</div>
-                <div class="bubble user">Checked with neighbors — nobody has it. Gate camera shows no delivery.</div>
-                <div class="upload">＋ Attach gate camera screenshot</div>
-                <div class="cta">Send update</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="arrow" aria-hidden="true">
-          <span class="tag">Same ID</span>
-          <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#9a8f7e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="step">
-          <div class="step-label">
-            <div class="step-num">Step 4</div>
-            <div class="step-title">Resolution on the page</div>
-            <div class="step-note">Outcome visible; CSAT optional — still no chase message.</div>
-          </div>
-          <div class="phone" aria-label="Screenshot: final resolution">
-            <div class="phone-inner">
-              <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-              <div class="app-header">
-                <div class="brand">SR-109384</div>
-                <div class="sub">Replacement arranged</div>
-              </div>
-              <div class="screen-body">
-                <span class="pill done">Resolved</span>
-                <div class="request-card">
-                  <div class="request-title">Replacement order #N-99014</div>
-                  <div class="mini-meta"><span>Ships today</span><span>Track in Orders</span></div>
-                </div>
-                <div class="bubble agent">We’ve closed this support request. Your replacement is on the way.</div>
-                <div class="cta secondary">Rate this help</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="callout">
-        <strong>Follow-up prevented:</strong> “Just checking in…” messages drop when customers have a hub + last-updated timestamp + proactive alerts.
-      </div>
-    </section>
+      <!-- Flow B -->
+      <div class="flow" id="flow-refund">
+        <h3>B. Refund request</h3>
+        <p style="margin-bottom:14px">Submit → review → approved → paid</p>
 
-    <section class="compare">
-      <div class="compare-card bad">
-        <h3>Without request tracking</h3>
-        <ul>
-          <li>Customer messages “any update?” repeatedly</li>
-          <li>Each ping becomes a new agent touch</li>
-          <li>Context scattered across chats</li>
-          <li>Higher reopen / duplicate rate</li>
-        </ul>
+        <div class="rail">
+          <div class="step">
+            <div class="step-label">
+              <div class="step-num">Step 1</div>
+              <div class="step-title">Start refund</div>
+              <div class="step-note">Reason and method captured once.</div>
+            </div>
+            <div class="phone">
+              <div class="phone-inner">
+                <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+                <div class="app-header">
+                  <div class="brand">Request a refund</div>
+                  <div class="sub">Order #N-77320 · AED 189</div>
+                </div>
+                <div class="screen-body">
+                  <div class="form-field">
+                    <label>Reason</label>
+                    <div class="box">Item not as described</div>
+                  </div>
+                  <div class="form-field">
+                    <label>Refund to</label>
+                    <div class="box">Original payment method</div>
+                  </div>
+                  <div class="upload">+ Upload photos</div>
+                  <div class="cta">Submit refund request</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow" aria-hidden="true">
+            <span class="tag">Review</span>
+            <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <div class="step">
+            <div class="step-label">
+              <div class="step-num">Step 2</div>
+              <div class="step-title">Under review</div>
+              <div class="step-note">Customer can wait without chasing.</div>
+            </div>
+            <div class="phone">
+              <div class="phone-inner">
+                <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+                <div class="app-header">
+                  <div class="brand">SR-109512</div>
+                  <div class="sub">Refund request</div>
+                </div>
+                <div class="screen-body">
+                  <span class="pill wait">Under review</span>
+                  <div class="timeline">
+                    <div class="tl-item done">
+                      <div class="tl-dot"></div>
+                      <div class="tl-text"><strong>Request received</strong><span>Yesterday, 4:12 PM</span></div>
+                    </div>
+                    <div class="tl-item current">
+                      <div class="tl-dot"></div>
+                      <div class="tl-text"><strong>Reviewing evidence</strong><span>Updated today, 10:02 AM</span></div>
+                    </div>
+                    <div class="tl-item">
+                      <div class="tl-dot"></div>
+                      <div class="tl-text"><strong>Refund approved</strong><span>Pending</span></div>
+                    </div>
+                    <div class="tl-item">
+                      <div class="tl-dot"></div>
+                      <div class="tl-text"><strong>Money returned</strong><span>Pending</span></div>
+                    </div>
+                  </div>
+                  <div class="notif"><strong>No action needed</strong>You’ll be notified when a decision is made.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow" aria-hidden="true">
+            <span class="tag">Approved</span>
+            <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <div class="step">
+            <div class="step-label">
+              <div class="step-num">Step 3</div>
+              <div class="step-title">Payout in progress</div>
+              <div class="step-note">Answers “was I refunded?”</div>
+            </div>
+            <div class="phone">
+              <div class="phone-inner">
+                <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+                <div class="app-header">
+                  <div class="brand">SR-109512</div>
+                  <div class="sub">Refund request</div>
+                </div>
+                <div class="screen-body">
+                  <span class="pill done">Refund approved</span>
+                  <div class="request-card">
+                    <div class="request-title">AED 189 to Visa ••4242</div>
+                    <div class="mini-meta"><span>Arrives in 3–5 days</span><span>1:20 PM</span></div>
+                  </div>
+                  <div class="timeline">
+                    <div class="tl-item done">
+                      <div class="tl-dot"></div>
+                      <div class="tl-text"><strong>Refund approved</strong><span>Today, 1:20 PM</span></div>
+                    </div>
+                    <div class="tl-item current">
+                      <div class="tl-dot"></div>
+                      <div class="tl-text"><strong>Bank processing</strong><span>In progress</span></div>
+                    </div>
+                  </div>
+                  <div class="cta secondary">View in My Requests</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow" aria-hidden="true">
+            <span class="tag">Done</span>
+            <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <div class="step">
+            <div class="step-label">
+              <div class="step-num">Step 4</div>
+              <div class="step-title">Resolved</div>
+              <div class="step-note">Outcome stays on the request page.</div>
+            </div>
+            <div class="phone">
+              <div class="phone-inner">
+                <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+                <div class="app-header">
+                  <div class="brand">SR-109512</div>
+                  <div class="sub">Refund complete</div>
+                </div>
+                <div class="screen-body">
+                  <span class="pill done">Resolved</span>
+                  <div class="request-card">
+                    <div class="request-title">AED 189 returned</div>
+                    <div class="mini-meta"><span>Completed</span><span>Mar 12</span></div>
+                  </div>
+                  <div class="bubble agent">Refund deposited. Allow 1 more business day if it isn’t visible yet.</div>
+                  <div class="cta secondary">This didn’t fix it</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="compare-card good">
-        <h3>With customer-facing status</h3>
-        <ul>
-          <li>One Request ID + timeline page</li>
-          <li>Auto notify on every stage change</li>
-          <li>Customer adds info on the same case</li>
-          <li>Fewer follow-ups, faster root resolution</li>
-        </ul>
+
+      <!-- Flow C -->
+      <div class="flow" id="flow-my-requests">
+        <h3>C. My Requests hub</h3>
+        <p style="margin-bottom:14px">Account entry point + notifications + same-thread replies</p>
+
+        <div class="rail">
+          <div class="step">
+            <div class="step-label">
+              <div class="step-num">Step 1</div>
+              <div class="step-title">Request list</div>
+              <div class="step-note">Check status instead of messaging.</div>
+            </div>
+            <div class="phone">
+              <div class="phone-inner">
+                <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+                <div class="app-header">
+                  <div class="brand">My Requests</div>
+                  <div class="sub">Support cases</div>
+                </div>
+                <div class="screen-body">
+                  <div class="home-list">
+                    <div class="home-item">
+                      <div class="row">
+                        <strong style="font-size:0.82rem">Order did not arrive</strong>
+                        <span class="pill progress">Active</span>
+                      </div>
+                      <div class="mini-meta"><span>SR-109384</span><span>Updated 2h ago</span></div>
+                    </div>
+                    <div class="home-item">
+                      <div class="row">
+                        <strong style="font-size:0.82rem">Refund request</strong>
+                        <span class="pill done">Resolved</span>
+                      </div>
+                      <div class="mini-meta"><span>SR-109512</span><span>Mar 12</span></div>
+                    </div>
+                  </div>
+                  <div class="cta">New request</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow" aria-hidden="true">
+            <span class="tag">Notify</span>
+            <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <div class="step">
+            <div class="step-label">
+              <div class="step-num">Step 2</div>
+              <div class="step-title">Status notification</div>
+              <div class="step-note">Deep link back to the same request.</div>
+            </div>
+            <div class="phone">
+              <div class="phone-inner">
+                <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+                <div class="app-header">
+                  <div class="brand">Notifications</div>
+                  <div class="sub">Support updates</div>
+                </div>
+                <div class="screen-body">
+                  <div class="notif">
+                    <strong>Update on SR-109384</strong>
+                    Courier confirmed a delivery exception. Preparing a replacement.
+                  </div>
+                  <div class="notif">
+                    <strong>Update on SR-109512</strong>
+                    Refund of AED 189 was approved.
+                  </div>
+                  <div class="cta">Open request</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow" aria-hidden="true">
+            <span class="tag">Reply</span>
+            <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <div class="step">
+            <div class="step-label">
+              <div class="step-num">Step 3</div>
+              <div class="step-title">Add info (same ID)</div>
+              <div class="step-note">No new ticket created.</div>
+            </div>
+            <div class="phone">
+              <div class="phone-inner">
+                <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+                <div class="app-header">
+                  <div class="brand">SR-109384</div>
+                  <div class="sub">Add details</div>
+                </div>
+                <div class="screen-body">
+                  <div class="bubble agent">Could a neighbor have received it?</div>
+                  <div class="bubble user">Checked — nobody has it. Gate camera shows no delivery.</div>
+                  <div class="upload">+ Attach screenshot</div>
+                  <div class="cta">Send update</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow" aria-hidden="true">
+            <span class="tag">Close</span>
+            <svg viewBox="0 0 48 28" fill="none"><path d="M2 14h36M30 4l12 10-12 10" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <div class="step">
+            <div class="step-label">
+              <div class="step-num">Step 4</div>
+              <div class="step-title">Resolution</div>
+              <div class="step-note">Outcome visible on the request.</div>
+            </div>
+            <div class="phone">
+              <div class="phone-inner">
+                <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+                <div class="app-header">
+                  <div class="brand">SR-109384</div>
+                  <div class="sub">Replacement arranged</div>
+                </div>
+                <div class="screen-body">
+                  <span class="pill done">Resolved</span>
+                  <div class="request-card">
+                    <div class="request-title">Replacement order #N-99014</div>
+                    <div class="mini-meta"><span>Ships today</span><span>Track in Orders</span></div>
+                  </div>
+                  <div class="bubble agent">This support request is closed. Replacement is on the way.</div>
+                  <div class="cta secondary">Rate this help</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note">
+        Success signal: drop in repeat contacts on open cases (“any update?”, “was my refund approved?”).
       </div>
     </section>
 
     <footer>
-      Open this file in a browser to scroll the screenshot rails.
-      Flows cover: missing order, refund, and My Requests hub — designed to reduce follow-up support messages.
+      Customer Ticket Tracking — benchmarks and proposed customer-facing request status flows.
     </footer>
   </div>
 </body>
